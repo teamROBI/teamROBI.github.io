@@ -142,16 +142,16 @@ nav_order: 2
 
 ## All Awards
 
-| Year       | Award                                                             | Competition / Event                                                         |
-| ---------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| 2026       | 1st Place (Minister of Trade, Industry & Energy Award)              | Humanoid AI Challenge                                                        |
-| 2024       | Director's Award                                                    | Disaster Safety Data Hackathon, National Disaster Management Research Institute |
-| 2023       | 1st Place (Champion), DSPL League                                   | RoboCup@Home International AI Robot Competition                             |
-| 2023       | 1st Place (Minister of Science & ICT Award)                         | AI Competition for Space Radio Disaster Prediction                          |
-| 2023       | Outstanding Paper Award                                             | Korea Computer Congress (KCC)                                               |
-| 2022, 2023 | 1st Place (Grand Prize)                                             | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU |
-| 2022       | 1st Place (Presidential Award)                                      | ZEUS Arm-Robot Competition, International Robot Contest (R-Biz Challenge)     |
-| 2022       | Honorable Mention                                                   | Logistics Paper Competition                                                  |
+| Year       | Award                                                  | Competition / Event                                                             |
+| ---------- | ------------------------------------------------------ | ------------------------------------------------------------------------------- |
+| 2026       | 1st Place (Minister of Trade, Industry & Energy Award) | Humanoid AI Challenge                                                           |
+| 2024       | Director's Award                                       | Disaster Safety Data Hackathon, National Disaster Management Research Institute |
+| 2023       | 1st Place (Champion), DSPL League                      | RoboCup@Home International AI Robot Competition                                 |
+| 2023       | 1st Place (Minister of Science & ICT Award)            | AI Competition for Space Radio Disaster Prediction                              |
+| 2023       | Outstanding Paper Award                                | Korea Computer Congress (KCC)                                                   |
+| 2022, 2023 | 1st Place (Grand Prize)                                | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU  |
+| 2022       | 1st Place (Presidential Award)                         | ZEUS Arm-Robot Competition, International Robot Contest (R-Biz Challenge)       |
+| 2022       | Honorable Mention                                      | Logistics Paper Competition                                                     |
 
 ## Press & Media
 
