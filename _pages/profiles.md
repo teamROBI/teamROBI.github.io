@@ -2,27 +2,28 @@
 layout: profiles
 permalink: /people/
 title: people
-description: members of the lab or group
+description: Team ROBI - Biointelligence Lab, Seoul National University
 nav: true
-nav_order: 7
+nav_order: 4
 
 profiles:
-  # if you want to include more than one profile, just replicate the following block
-  # and create one content file for each profile inside _pages/
   - align: right
     image: prof_pic.jpg
-    content: about_einstein.md
+    content: about_hyejung_yoon.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>555 your office number</p>
-      <p>123 your address street</p>
-      <p>Your City, State 12345</p>
+      <p>HyeJung Yoon</p>
+      <p><a href="https://www.linkedin.com/in/hyejung-yoon-19a271239" target="_blank">LinkedIn</a></p>
   - align: left
     image: prof_pic.jpg
-    content: about_einstein.md
+    content: about_juno_kim.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>555 your office number</p>
-      <p>123 your address street</p>
-      <p>Your City, State 12345</p>
+      <p>Juno Kim</p>
+  - align: right
+    image: prof_pic.jpg
+    content: about_yesol_park.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>Yesol Park</p>
 ---
