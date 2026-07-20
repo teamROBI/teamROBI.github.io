@@ -19,8 +19,7 @@
 (function () {
   "use strict";
 
-  var prefersReducedMotion =
-    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function activateVideosIn(panel) {
     var videos = panel.querySelectorAll("video[data-src]");

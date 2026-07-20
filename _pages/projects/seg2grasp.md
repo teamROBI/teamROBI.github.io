@@ -183,6 +183,7 @@ _styles: |
       bundled <code>demo/samples/</code> set, reflecting the current code
       release's segmentation/classification models.
     </p>
+
   </section>
 
   <section class="pp-section" id="results">
@@ -244,6 +245,7 @@ _styles: |
     <figure class="pp-figure">
       {% include figure.liquid loading="lazy" path="assets/img/projects/seg2grasp/gallery.jpg" class="img-fluid rounded z-depth-1" alt="Qualitative results: 24 bin-picking frames, each showing the segmented target object outlined, its predicted category and confidence, and the selected suction point." caption="Qualitative results across all 24 bundled demo frames — segmentation outline, predicted category (confidence), and selected suction point (yellow) for each." %}
     </figure>
+
   </section>
 
   <section class="pp-section" id="bibtex">

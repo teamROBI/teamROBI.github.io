@@ -67,7 +67,7 @@ have real demo clips, replace the image grid inside a tab panel with:
   poster="/assets/img/projects/<slug>/posters/<name>.jpg"
   data-src="/assets/video/projects/<slug>/<name>.mp4"
 >
-  <source data-src="/assets/video/projects/<slug>/<name>.mp4" type="video/mp4">
+  <source data-src="/assets/video/projects/<slug>/<name>.mp4" type="video/mp4" />
 </video>
 ```
 
