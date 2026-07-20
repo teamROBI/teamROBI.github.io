@@ -25,11 +25,17 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-**Team ROBI** is a research team of three graduate students — [HyeJung Yoon](/people/), Juno Kim, and Yesol Park — at the Biointelligence Lab, Seoul National University, advised by Prof. Byoung-Tak Zhang.
+<div class="lang-en">
+  <p><strong>Team ROBI</strong> is a research team of three graduate students — <a href="/people/">HyeJung Yoon</a>, Juno Kim, and Yesol Park — at the Biointelligence Lab, Seoul National University, advised by Prof. Byoung-Tak Zhang.</p>
+  <p>We work on Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer, with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.</p>
+  <p>See our <a href="/people/">people</a>, <a href="/publications/">publications</a>, and <a href="/awards/">awards</a> pages to learn more.</p>
+</div>
 
-We work on Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer, with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.
-
-See our [people](/people/), [publications](/publications/), and [awards](/awards/) pages to learn more.
+<div class="lang-ko" style="display: none">
+  <p><strong>Team ROBI</strong>는 서울대학교 바이오지능연구실 소속 대학원생 3명 — <a href="/people/">윤혜정</a>, 김주노, 박예솔 — 로 구성된 연구팀으로, 장병탁 교수님의 지도를 받고 있습니다.</p>
+  <p>Embodied AI, 로봇 인지, Vision-Language-Action(VLA) 모델, 3D 씬 이해, 로봇 학습, Sim2Real 전이를 연구하며, 강건한 매니퓰레이션과 모바일 로보틱스를 위해 명시적인 3D 인지와 정책 학습을 결합하는 데 집중하고 있습니다.</p>
+  <p>자세한 내용은 <a href="/people/">팀원</a>, <a href="/publications/">논문</a>, <a href="/awards/">수상</a> 페이지를 참고해주세요.</p>
+</div>
 
 <style>
   .publications .bibtex .highlight,

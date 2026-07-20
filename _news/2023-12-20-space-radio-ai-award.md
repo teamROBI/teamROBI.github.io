@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🏆 Team ROBI won **1st Place (Minister of Science & ICT Award)** at the AI Competition for Space Radio Disaster Prediction. [Coverage in 한국강사신문](https://www.lecturernews.com/news/articleView.html?idxno=142924).
+🏆 Team ROBI won **1st Place (Minister of Science & ICT Award)** at the AI Competition for Space Radio Disaster Prediction. [Coverage in Lecturer News](https://www.lecturernews.com/news/articleView.html?idxno=142924).

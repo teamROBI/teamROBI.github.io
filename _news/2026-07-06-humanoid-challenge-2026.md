@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🏆 Team ROBI won **1st Place (Minister of Trade, Industry & Energy Award)** at the 2026 Humanoid AI Challenge. [Coverage in 대구일보](https://www.dkilbo.com/news/articleView.html?idxno=547897).
+🏆 Team ROBI won **1st Place (Minister of Trade, Industry & Energy Award)** at the 2026 Humanoid AI Challenge. [Coverage in Daegu Ilbo](https://www.dkilbo.com/news/articleView.html?idxno=547897).
