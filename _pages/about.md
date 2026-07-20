@@ -30,3 +30,24 @@ latest_posts:
 We work on Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer, with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.
 
 See our [people](/people/), [publications](/publications/), and [awards](/awards/) pages to learn more.
+
+<style>
+  .publications .bibtex .highlight,
+  .publications .bibtex figure.highlight {
+    background: #f2f2f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    .publications .bibtex .highlight,
+    .publications .bibtex figure.highlight {
+      background: #2a2a2a;
+    }
+  }
+  :root[data-theme="dark"] .publications .bibtex .highlight,
+  :root[data-theme="dark"] .publications .bibtex figure.highlight {
+    background: #2a2a2a;
+  }
+  .publications .author,
+  .publications .periodical {
+    font-size: 0.88rem;
+  }
+</style>

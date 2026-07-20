@@ -45,6 +45,24 @@ nav_order: 1
   .bibsearch-form-input:focus {
     border-bottom: 1px solid var(--global-theme-color) !important;
   }
+  .publications .bibtex .highlight,
+  .publications .bibtex figure.highlight {
+    background: #f2f2f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    .publications .bibtex .highlight,
+    .publications .bibtex figure.highlight {
+      background: #2a2a2a;
+    }
+  }
+  :root[data-theme="dark"] .publications .bibtex .highlight,
+  :root[data-theme="dark"] .publications .bibtex figure.highlight {
+    background: #2a2a2a;
+  }
+  .publications .author,
+  .publications .periodical {
+    font-size: 0.88rem;
+  }
 </style>
 
 <div class="publications">
