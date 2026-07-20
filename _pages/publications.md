@@ -45,9 +45,29 @@ nav_order: 1
   .bibsearch-form-input:focus {
     border-bottom: 1px solid var(--global-theme-color) !important;
   }
+  /* NOTE: .bibtex itself carries the theme's collapse animation
+     (max-height: 0 + overflow: hidden — see _sass/_publications.scss) —
+     padding must NOT go on .bibtex directly, or it renders as a visible
+     sliver even while "collapsed" (padding isn't clipped by max-height
+     the way content is). Style the inner figure/pre instead. */
   .publications .bibtex .highlight,
   .publications .bibtex figure.highlight {
+    border-radius: 8px;
     background: #f2f2f2;
+    padding: 0.8rem;
+    display: block;
+  }
+  .publications .bibtex .highlight pre,
+  .publications .bibtex figure.highlight pre,
+  .publications .bibtex .highlight code,
+  .publications .bibtex figure.highlight code {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+  }
+  .publications .bibtex pre {
+    overflow-x: auto;
   }
   @media (prefers-color-scheme: dark) {
     .publications .bibtex .highlight,
@@ -62,6 +82,11 @@ nav_order: 1
   .publications .author,
   .publications .periodical {
     font-size: 0.88rem;
+  }
+  .code-display-wrapper:active .copy,
+  .code-display-wrapper:focus .copy,
+  .code-display-wrapper:hover .copy {
+    color: #888 !important;
   }
 </style>
 

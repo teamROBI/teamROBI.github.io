@@ -106,65 +106,10 @@
     select(initial, false);
   }
 
-  function copyText(text) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text);
-    }
-    // Fallback for browsers without the async Clipboard API.
-    var textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "absolute";
-    textarea.style.left = "-9999px";
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-      document.execCommand("copy");
-    } finally {
-      document.body.removeChild(textarea);
-    }
-    return Promise.resolve();
-  }
-
-  function initCopyButtons(root) {
-    var button = root.querySelector("[data-pp-copy-btn]");
-    var source = root.querySelector("[data-pp-copy-source]");
-    var icon = button && button.querySelector("[data-pp-copy-icon]");
-    if (!button || !source) return;
-
-    var defaultIconClass = icon ? icon.className : "";
-    var defaultLabel = button.getAttribute("aria-label");
-
-    button.addEventListener("click", function () {
-      copyText(source.textContent.trim())
-        .then(function () {
-          if (icon) icon.className = "fa-solid fa-check";
-          button.setAttribute("aria-label", "Copied to clipboard");
-          button.setAttribute("data-copied", "true");
-        })
-        .catch(function () {
-          if (icon) icon.className = "fa-solid fa-xmark";
-          button.setAttribute("aria-label", "Copy failed");
-        })
-        .then(function () {
-          setTimeout(function () {
-            if (icon) icon.className = defaultIconClass;
-            button.setAttribute("aria-label", defaultLabel);
-            button.removeAttribute("data-copied");
-          }, 1800);
-        });
-    });
-  }
-
   function init() {
     var tabRoots = document.querySelectorAll("[data-pp-tabs]");
     for (var i = 0; i < tabRoots.length; i++) {
       initTabs(tabRoots[i]);
-    }
-
-    var copyRoots = document.querySelectorAll("[data-pp-copy]");
-    for (var j = 0; j < copyRoots.length; j++) {
-      initCopyButtons(copyRoots[j]);
     }
   }
 

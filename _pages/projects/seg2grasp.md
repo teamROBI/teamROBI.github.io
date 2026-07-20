@@ -250,11 +250,7 @@ _styles: |
 
   <section class="pp-section" id="bibtex">
     <h2>BibTeX</h2>
-    <div class="pp-code-block" data-pp-copy>
-      <button type="button" class="pp-copy-btn" data-pp-copy-btn aria-label="Copy BibTeX to clipboard">
-        <i class="fa-regular fa-copy" data-pp-copy-icon aria-hidden="true"></i>
-      </button>
-      <div class="pp-bibtex" data-pp-copy-source>
+    <div class="pp-bibtex">
 {% highlight bibtex %}
 @inproceedings{yoon2024seg2grasp,
   title={Seg2Grasp: A Robust Modular Suction Grasping in Bin Picking},
@@ -265,7 +261,6 @@ _styles: |
   organization={IEEE}
 }
 {% endhighlight %}
-      </div>
     </div>
   </section>
 

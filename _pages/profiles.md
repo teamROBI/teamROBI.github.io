@@ -5,6 +5,18 @@ title: people
 description: Team ROBI - Biointelligence Lab, Seoul National University
 nav: true
 nav_order: 4
+_styles: |
+  .post article hr {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  /* When a profile's image floats left (align: left), list markers with the
+     default outside position get swallowed by the float instead of getting
+     their own indent — the bullet ends up flush with the wrapped text.
+     Switch to inside positioning just for lists next to a left float. */
+  .profile.float-left + .clearfix ul {
+    list-style-position: inside;
+  }
 
 profiles:
   - align: right

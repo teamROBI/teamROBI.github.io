@@ -9,6 +9,22 @@
   margin: 0 auto;
 }
 
+/* The real page <h1>/description come from the layout's own .post-header,
+   not from inside .project-page — center them to match the rest of the
+   (centered) header content below. Only takes effect on pages that import
+   this stylesheet. */
+.post-header {
+  text-align: center;
+}
+
+/* page.description still feeds SEO/OG/Twitter meta tags (see
+   _includes/metadata.liquid) — keep it in front matter, just hide the
+   visible duplicate here since the full venue name is repeated in
+   .pp-venue below. */
+.post-header .post-description {
+  display: none;
+}
+
 /* ---- Header: title / authors / affiliations / venue ---- */
 
 .project-page .pp-header {
@@ -224,20 +240,21 @@
   font-weight: 700;
 }
 
-/* ---- BibTeX / copyable code blocks ---- */
+/* ---- BibTeX / code blocks ----
+   Copy-to-clipboard is handled by the theme's built-in copy_code.js —
+   don't add a custom button here, it just duplicates that one. */
 
-.project-page .pp-code-block {
-  position: relative;
+.project-page .pp-bibtex {
   border-radius: 8px;
   background: #f2f2f2;
-  padding: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.8rem;
 }
 
 /* Rouge wraps output in <figure class="highlight"><pre>...; neutralize its
    own (theme-pink) background so our gray shows through instead. */
-.project-page .pp-code-block .highlight,
-.project-page .pp-code-block figure.highlight,
-.project-page .pp-code-block pre {
+.project-page .pp-bibtex .highlight,
+.project-page .pp-bibtex figure.highlight,
+.project-page .pp-bibtex pre {
   background: transparent;
   margin: 0;
 }
@@ -247,60 +264,23 @@
   font-size: 0.8rem;
 }
 
-.project-page .pp-copy-btn {
-  appearance: none;
-  -webkit-appearance: none;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.9rem;
-  height: 1.9rem;
-  padding: 0;
-  font-size: 0.9rem;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  background: transparent;
-  box-shadow: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-.project-page .pp-copy-btn:hover,
-.project-page .pp-copy-btn:focus-visible {
-  border-color: var(--global-divider-color, #dcdcdc);
-  background: rgba(0, 0, 0, 0.06);
-  outline: none;
-}
-
 @media (prefers-color-scheme: dark) {
-  .project-page .pp-copy-btn:hover,
-  .project-page .pp-copy-btn:focus-visible {
-    background: rgba(255, 255, 255, 0.1);
-  }
-}
-
-:root[data-theme="dark"] .project-page .pp-copy-btn:hover,
-:root[data-theme="dark"] .project-page .pp-copy-btn:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.project-page .pp-copy-btn[data-copied="true"] {
-  border-color: currentColor;
-  color: #1a7f37;
-}
-
-@media (prefers-color-scheme: dark) {
-  .project-page .pp-code-block {
+  .project-page .pp-bibtex {
     background: #2a2a2a;
   }
 }
 
-:root[data-theme="dark"] .project-page .pp-code-block {
+:root[data-theme="dark"] .project-page .pp-bibtex {
   background: #2a2a2a;
+}
+
+/* The theme's built-in copy_code.js button (.code-display-wrapper .copy)
+   turns the site's pink accent color on hover/focus/active by default —
+   override to a neutral gray instead, to match everywhere bibtex shows up. */
+.code-display-wrapper:active .copy,
+.code-display-wrapper:focus .copy,
+.code-display-wrapper:hover .copy {
+  color: #888 !important;
 }
 
 /* ---- Responsive ---- */
