@@ -128,7 +128,7 @@ nav_order: 2
 <div class="award-grid" style="margin-bottom: 2.5rem;">
   <div>
     <div class="award-highlight-card">
-      <img src="https://cdn.news.unn.net/news/thumbnail/202307/549874_357746_3110_v150.jpg" alt="RoboCup@Home 2023">
+      <img src="/assets/img/awards/robocup-home-2023.png" alt="RoboCup@Home 2023">
       <div class="caption">
         <div class="eyebrow">2023 · RoboCup@Home</div>
         <div class="headline">🏆 1st Place</div>
@@ -138,7 +138,7 @@ nav_order: 2
   </div>
   <div>
     <div class="award-highlight-card">
-      <img src="https://cdn.dkilbo.com/news/thumbnail/202607/547897_433293_1406_v150.jpg" alt="Humanoid AI Challenge 2026">
+      <img src="/assets/img/awards/humanoid-challenge-2026.jpg" alt="Humanoid AI Challenge 2026">
       <div class="caption">
         <div class="eyebrow">2026 · Humanoid Challenge</div>
         <div class="headline">🏆 1st Place</div>
@@ -148,7 +148,7 @@ nav_order: 2
   </div>
   <div>
     <div class="award-highlight-card">
-      <img src="https://image.edaily.co.kr/images/Photo/files/NP/S/2022/11/PS22110400665.jpg" alt="ZEUS Arm-Robot Competition 2022">
+      <img src="/assets/img/awards/zeus-arm-robot-2022.jpg" alt="ZEUS Arm-Robot Competition 2022">
       <div class="caption">
         <div class="eyebrow">2022 · R-Biz Arm Robot Challenge</div>
         <div class="headline">🏆 1st Place</div>
@@ -160,23 +160,23 @@ nav_order: 2
 
 <h2>All Awards</h2>
 
-| Year       | Award                                                                    | Competition / Event                                                                         |
-| ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
-| 2026       | Minister of Trade, Industry and Resources Award (1st Place, Grand Prize) | Humanoid AI Challenge                                                                       |
-| 2026       | President of LG AI Research Award (Excellence Award)                     | AI Co-Scientist Challenge Korea                                                             |
-| 2024       | President of the National Disaster Management Research Institute Award   | Disaster Safety Data Hackathon, National Disaster Management Research Institute             |
-| 2023       | Champion (1st Place), DSPL & OPL Leagues                                 | RoboCup@Home International AI Robot Competition                                             |
-| 2023       | Minister of Science and ICT Award (1st Place, Grand Prize)               | AI Competition for Space Radio Disaster Prediction                                          |
-| 2023       | Outstanding Paper Award                                                  | Korea Computer Congress (KCC)                                                               |
-| 2022, 2023 | Grand Prize (1st Place)                                                  | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU              |
-| 2022       | Presidential Award (1st Place, Grand Prize)                              | ZEUS Industrial Robot ZERO Mission Challenge, International Robot Contest (R-BIZ Challenge) |
-| 2022       | Honorable Mention                                                        | Logistics Paper Competition                                                                 |
+| Year       | Award                                                                     | Competition / Event                                                                         |
+| ---------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| 2026       | Minister of Trade, Industry and Resources Award (1st Place, Grand Prize)  | Humanoid AI Challenge                                                                       |
+| 2026       | Head of LG AI Research Award (Excellence Award)                           | AI Co-Scientist Challenge Korea                                                             |
+| 2024       | Director General of National Disaster Management Research Institute Award | Disaster Safety Data Hackathon, National Disaster Management Research Institute             |
+| 2023       | Champion (1st Place), DSPL & OPL Leagues                                  | RoboCup@Home International AI Robot Competition                                             |
+| 2023       | Minister of Science and ICT Award (1st Place, Grand Prize)                | AI Competition for Space Radio Disaster Prediction                                          |
+| 2023       | Outstanding Paper Award                                                   | Korea Computer Congress (KCC)                                                               |
+| 2022, 2023 | Grand Prize (1st Place)                                                   | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU              |
+| 2022       | Presidential Award (1st Place, Grand Prize)                               | ZEUS Industrial Robot ZERO Mission Challenge, International Robot Contest (R-BIZ Challenge) |
+| 2022       | Honorable Mention                                                         | Logistics Paper Competition                                                                 |
 
 <h2>Press & Media</h2>
 
 <div class="press-list">
   <a class="press-card" href="https://www.dkilbo.com/news/articleView.html?idxno=547897" target="_blank" rel="noopener">
-    <img src="https://cdn.dkilbo.com/news/thumbnail/202607/547897_433293_1406_v150.jpg" alt="Press thumbnail">
+    <img src="/assets/img/awards/humanoid-challenge-2026.jpg" alt="Press thumbnail">
     <div>
       <div class="outlet-date">Daegu Ilbo · 2026.07.06</div>
       <div class="headline">Seoul National University's Team ROBI Wins Grand Prize at the 2026 Humanoid Challenge</div>
@@ -197,14 +197,14 @@ nav_order: 2
     </div>
   </a>
   <a class="press-card" href="https://news.unn.net/news/articleView.html?idxno=549874" target="_blank" rel="noopener">
-    <img src="https://cdn.news.unn.net/news/thumbnail/202307/549874_357746_3110_v150.jpg" alt="Press thumbnail">
+    <img src="/assets/img/awards/robocup-home-2023.png" alt="Press thumbnail">
     <div>
       <div class="outlet-date">University News Network · 2023.07.13</div>
       <div class="headline">SNU-Pusan National University Joint Team Wins Two Leagues at International AI Robot Competition</div>
     </div>
   </a>
   <a class="press-card" href="https://www.edaily.co.kr/News/Read?newsId=02555126632522440&mediaCodeNo=257" target="_blank" rel="noopener">
-    <img src="https://image.edaily.co.kr/images/Photo/files/NP/S/2022/11/PS22110400665.jpg" alt="Press thumbnail">
+    <img src="/assets/img/awards/zeus-arm-robot-2022.jpg" alt="Press thumbnail">
     <div>
       <div class="outlet-date">Edaily · 2022.11.04</div>
       <div class="headline">Seoul National University AI Student Team Wins Presidential Award at the International Robot Business Competition</div>
@@ -228,7 +228,7 @@ nav_order: 2
 <div class="award-grid" style="margin-bottom: 2.5rem;">
   <div>
     <div class="award-highlight-card">
-      <img src="https://cdn.news.unn.net/news/thumbnail/202307/549874_357746_3110_v150.jpg" alt="RoboCup@Home 2023">
+      <img src="/assets/img/awards/robocup-home-2023.png" alt="RoboCup@Home 2023">
       <div class="caption">
         <div class="eyebrow">2023 · 로보컵@홈</div>
         <div class="headline">🏆 1위</div>
@@ -238,7 +238,7 @@ nav_order: 2
   </div>
   <div>
     <div class="award-highlight-card">
-      <img src="https://cdn.dkilbo.com/news/thumbnail/202607/547897_433293_1406_v150.jpg" alt="Humanoid AI Challenge 2026">
+      <img src="/assets/img/awards/humanoid-challenge-2026.jpg" alt="Humanoid AI Challenge 2026">
       <div class="caption">
         <div class="eyebrow">2026 · 휴머노이드 챌린지</div>
         <div class="headline">🏆 1위</div>
@@ -248,7 +248,7 @@ nav_order: 2
   </div>
   <div>
     <div class="award-highlight-card">
-      <img src="https://image.edaily.co.kr/images/Photo/files/NP/S/2022/11/PS22110400665.jpg" alt="ZEUS Arm-Robot Competition 2022">
+      <img src="/assets/img/awards/zeus-arm-robot-2022.jpg" alt="ZEUS Arm-Robot Competition 2022">
       <div class="caption">
         <div class="eyebrow">2022 · R-Biz 암로봇 챌린지</div>
         <div class="headline">🏆 1위</div>
@@ -276,7 +276,7 @@ nav_order: 2
 
 <div class="press-list">
   <a class="press-card" href="https://www.dkilbo.com/news/articleView.html?idxno=547897" target="_blank" rel="noopener">
-    <img src="https://cdn.dkilbo.com/news/thumbnail/202607/547897_433293_1406_v150.jpg" alt="Press thumbnail">
+    <img src="/assets/img/awards/humanoid-challenge-2026.jpg" alt="Press thumbnail">
     <div>
       <div class="outlet-date">대구일보 · 2026.07.06</div>
       <div class="headline">서울대 ROBI팀, '2026 휴머노이드 챌린지' 대상</div>
@@ -297,14 +297,14 @@ nav_order: 2
     </div>
   </a>
   <a class="press-card" href="https://news.unn.net/news/articleView.html?idxno=549874" target="_blank" rel="noopener">
-    <img src="https://cdn.news.unn.net/news/thumbnail/202307/549874_357746_3110_v150.jpg" alt="Press thumbnail">
+    <img src="/assets/img/awards/robocup-home-2023.png" alt="Press thumbnail">
     <div>
       <div class="outlet-date">한국대학신문 · 2023.07.13</div>
       <div class="headline">서울대·부산대 연합팀, 국제 인공지능 로봇대회에서 2개 리그 우승</div>
     </div>
   </a>
   <a class="press-card" href="https://www.edaily.co.kr/News/Read?newsId=02555126632522440&mediaCodeNo=257" target="_blank" rel="noopener">
-    <img src="https://image.edaily.co.kr/images/Photo/files/NP/S/2022/11/PS22110400665.jpg" alt="Press thumbnail">
+    <img src="/assets/img/awards/zeus-arm-robot-2022.jpg" alt="Press thumbnail">
     <div>
       <div class="outlet-date">이데일리 · 2022.11.04</div>
       <div class="headline">서울대 AI전공 학생팀, '국제로봇 사업화 경진대회' 대통령상 수상</div>

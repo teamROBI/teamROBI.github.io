@@ -8,10 +8,10 @@ subtitle_ko: 서울대학교 바이오지능연구실 · 지도교수 장병탁
 
 profile:
   align: right
-  image: prof_pic.jpg # TODO: replace with a team logo/photo
+  image: profile/robi_ex.jpeg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>Seoul National University</p>
+    <p>Team ROBI</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page (single-person feature, disabled for a team site)
@@ -40,6 +40,37 @@ latest_posts:
 </div>
 
 <style>
+  .more-info {
+    text-align: center;
+  }
+  /* al_folio_core's base .profile rule is width: 100% below the 576px
+     breakpoint (it only steps down to 30% at >= 576px) — cap it at 60%
+     on narrow screens instead so the photo doesn't dominate the page. */
+  @media (max-width: 575.98px) {
+    .profile {
+      width: 60%;
+      /* al_folio_core's own CSS sets a fixed margin-left (float-right) or
+         margin-right (float-left) of 1rem via a more specific
+         ".profile.float-right"/".profile.float-left" rule, which beats a
+         plain ".profile" margin declaration — leaving one side fixed and
+         the other auto, so the block hugs one edge instead of centering.
+         !important forces both to auto regardless of that specificity. */
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  /* Tailwind's compiled output wraps its utilities in "@layer utilities",
+     and per the CSS Cascade Layers spec any layered !important declaration
+     beats an unlayered !important one regardless of specificity — so this
+     override has to join the same layer to reliably win. */
+  @layer utilities {
+    @media (max-width: 575.98px) {
+      .profile.float-left,
+      .profile.float-right {
+        float: none !important;
+      }
+    }
+  }
   /* NOTE: .bibtex itself carries the theme's collapse animation
      (max-height: 0 + overflow: hidden — see _sass/_publications.scss) —
      padding must NOT go on .bibtex directly, or it renders as a visible

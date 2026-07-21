@@ -24,6 +24,36 @@ _styles: |
   .profile.float-left + .clearfix ul {
     display: flow-root;
   }
+  /* al_folio_core's base .profile rule is width: 100% below the 576px
+     breakpoint (it only steps down to 30% at >= 576px) — cap it at 60%
+     on narrow screens instead so the photo doesn't dominate the page. */
+  @media (max-width: 575.98px) {
+    .profile {
+      width: 60%;
+      /* al_folio_core's own CSS sets a fixed margin-left (float-right) or
+         margin-right (float-left) of 1rem via a more specific
+         ".profile.float-right"/".profile.float-left" rule, which beats a
+         plain ".profile" margin declaration — leaving one side fixed and
+         the other auto, so the block hugs one edge instead of centering.
+         !important forces both to auto regardless of that specificity. */
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  /* Tailwind's compiled output wraps its utilities in "@layer utilities",
+     and per the CSS Cascade Layers spec any layered !important declaration
+     beats an unlayered !important one regardless of specificity — so a
+     plain (unlayered) override here can never beat ".float-left" no matter
+     how specific the selector is. Join the same layer so normal
+     specificity/source-order rules decide instead. */
+  @layer utilities {
+    @media (max-width: 575.98px) {
+      .profile.float-left,
+      .profile.float-right {
+        float: none !important;
+      }
+    }
+  }
   /* Center the name + buttons under each profile photo, stacked, so they
      don't have to compete for width on one line (name wrapping past the
      buttons on narrower photos/names). */
@@ -32,6 +62,10 @@ _styles: |
   }
   .more-info p {
     margin: 0.3rem 0;
+  }
+  .more-info p:first-child .lang-ko {
+    font-weight: 700;
+    font-size: 1.15em;
   }
   /* .btn's border/padding only activates inside the publications page's
      .links wrapper (see main.css) — define our own rounded-rectangle
