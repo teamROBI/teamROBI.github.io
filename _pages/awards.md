@@ -142,7 +142,7 @@ nav_order: 2
       <div class="caption">
         <div class="eyebrow">2026 · Humanoid Challenge</div>
         <div class="headline">🏆 1st Place</div>
-        <div class="subline">Minister of Trade, Industry &amp; Energy Award</div>
+        <div class="subline">Minister of Trade, Industry &amp; Resources Award</div>
       </div>
     </div>
   </div>
@@ -160,17 +160,17 @@ nav_order: 2
 
 <h2>All Awards</h2>
 
-| Year       | Award                                                                  | Competition / Event                                                                         |
-| ---------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| 2026       | Minister of Trade, Industry and Energy Award (1st Place, Grand Prize)  | Humanoid AI Challenge                                                                       |
-| 2026       | President of LG AI Research Award (Excellence Award)                   | AI Co-Scientist Challenge Korea                                                             |
-| 2024       | President of the National Disaster Management Research Institute Award | Disaster Safety Data Hackathon, National Disaster Management Research Institute             |
-| 2023       | Champion (1st Place), DSPL & OPL Leagues                               | RoboCup@Home International AI Robot Competition                                             |
-| 2023       | Minister of Science and ICT Award (1st Place, Grand Prize)             | AI Competition for Space Radio Disaster Prediction                                          |
-| 2023       | Outstanding Paper Award                                                | Korea Computer Congress (KCC)                                                               |
-| 2022, 2023 | Grand Prize (1st Place)                                                | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU              |
-| 2022       | Presidential Award (1st Place, Grand Prize)                            | ZEUS Industrial Robot ZERO Mission Challenge, International Robot Contest (R-BIZ Challenge) |
-| 2022       | Honorable Mention                                                      | Logistics Paper Competition                                                                 |
+| Year       | Award                                                                    | Competition / Event                                                                         |
+| ---------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| 2026       | Minister of Trade, Industry and Resources Award (1st Place, Grand Prize) | Humanoid AI Challenge                                                                       |
+| 2026       | President of LG AI Research Award (Excellence Award)                     | AI Co-Scientist Challenge Korea                                                             |
+| 2024       | President of the National Disaster Management Research Institute Award   | Disaster Safety Data Hackathon, National Disaster Management Research Institute             |
+| 2023       | Champion (1st Place), DSPL & OPL Leagues                                 | RoboCup@Home International AI Robot Competition                                             |
+| 2023       | Minister of Science and ICT Award (1st Place, Grand Prize)               | AI Competition for Space Radio Disaster Prediction                                          |
+| 2023       | Outstanding Paper Award                                                  | Korea Computer Congress (KCC)                                                               |
+| 2022, 2023 | Grand Prize (1st Place)                                                  | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU              |
+| 2022       | Presidential Award (1st Place, Grand Prize)                              | ZEUS Industrial Robot ZERO Mission Challenge, International Robot Contest (R-BIZ Challenge) |
+| 2022       | Honorable Mention                                                        | Logistics Paper Competition                                                                 |
 
 <h2>Press & Media</h2>
 
@@ -242,7 +242,7 @@ nav_order: 2
       <div class="caption">
         <div class="eyebrow">2026 · 휴머노이드 챌린지</div>
         <div class="headline">🏆 1위</div>
-        <div class="subline">산업통상자원부 장관상</div>
+        <div class="subline">산업통상부 장관상</div>
       </div>
     </div>
   </div>
