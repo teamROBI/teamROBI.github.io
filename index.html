@@ -4,7 +4,18 @@
   }
 </style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://teamrobi.github.io/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item active"> <a class="nav-link" href="/">about <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/awards/">awards </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">people </a> </li> <li class="nav-item lang-switch-item"> <button id="lang-switch" class="lang-switch" type="button" data-lang="en" title="Switch language" aria-label="Switch language"> <span class="lang-switch-thumb"></span> <span class="lang-switch-option lang-switch-en">EN</span> <span class="lang-switch-option lang-switch-ko">KOR</span> </button> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <style>
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item active"> <a class="nav-link" href="/">about <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/awards/">awards </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/">people </a> </li> <li class="nav-item lang-switch-item"> <button id="lang-switch" class="lang-switch" type="button" data-lang="en" title="Switch language" aria-label="Switch language"> <span class="lang-switch-thumb"></span> <span class="lang-switch-option lang-switch-en">EN</span> <span class="lang-switch-option lang-switch-ko">KOR</span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <style>
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+  /* Roboto has no Hangul glyphs, so Korean text falls back to whatever
+     generic sans-serif the OS provides — add Noto Sans KR as the fallback
+     so Korean renders consistently everywhere (news, bios, about, etc.)
+     without changing how existing Latin text looks. */
+  body {
+    font-family:
+      Roboto,
+      "Noto Sans KR",
+      sans-serif;
+  }
   .lang-switch-item {
     display: flex;
     align-items: center;
@@ -85,7 +96,7 @@
       }
     });
   })();
-</script> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title"> Team ROBI </h1> <p class="desc">Biointelligence Lab, Seoul National University · advisor Prof. Byoung-Tak Zhang</p> </header> <article> <div class="profile float-right"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/prof_pic-480.webp 480w,/assets/img/prof_pic-800.webp 800w,/assets/img/prof_pic-1400.webp 1400w," type="image/webp" sizes="(min-width: 930px) 270.0px, (min-width: 576px) 30vw, 95vw"> <img src="/assets/img/prof_pic.jpg?v=974957d202f671e4fa6700c04e68deae" class="img-fluid z-depth-1 rounded" width="100%" height="auto" alt="prof_pic.jpg" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </source></picture> </figure> <div class="more-info"> <p>Seoul National University</p> </div> </div> <div class="clearfix"> <div class="lang-en"> <p><strong>Team ROBI</strong> is a research team of three graduate students — <a href="/people/">HyeJung Yoon</a>, Juno Kim, and Yesol Park — at the <a href="https://bi.snu.ac.kr" rel="external nofollow noopener" target="_blank">Biointelligence Lab</a>, Seoul National University, advised by <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" rel="external nofollow noopener" target="_blank">Prof. Byoung-Tak Zhang</a>.</p> <p>We work on Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer, with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.</p> <p>See our <a href="/people/">people</a>, <a href="/publications/">publications</a>, and <a href="/awards/">awards</a> pages to learn more.</p> </div> <div class="lang-ko" style="display: none"> <p><strong>Team ROBI</strong>는 서울대학교 <a href="https://bi.snu.ac.kr" rel="external nofollow noopener" target="_blank">바이오지능연구실</a> 소속 대학원생 3명 — <a href="/people/">윤혜정</a>, 김주노, 박예솔 — 로 구성된 연구팀으로, <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" rel="external nofollow noopener" target="_blank">장병탁 교수님</a>의 지도를 받고 있습니다.</p> <p>Embodied AI, 로봇 인지, Vision-Language-Action(VLA) 모델, 3D 씬 이해, 로봇 학습, Sim2Real 전이를 연구하며, 강건한 매니퓰레이션과 모바일 로보틱스를 위해 명시적인 3D 인지와 정책 학습을 결합하는 데 집중하고 있습니다.</p> <p>자세한 내용은 <a href="/people/">팀원</a>, <a href="/publications/">논문</a>, <a href="/awards/">수상</a> 페이지를 참고해주세요.</p> </div> <style>
+</script> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title"> Team ROBI </h1> <p class="desc">Biointelligence Lab, Seoul National University · advisor Prof. Byoung-Tak Zhang</p> </header> <article> <div class="profile float-right"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/prof_pic-480.webp 480w,/assets/img/prof_pic-800.webp 800w,/assets/img/prof_pic-1400.webp 1400w," type="image/webp" sizes="(min-width: 930px) 270.0px, (min-width: 576px) 30vw, 95vw"> <img src="/assets/img/prof_pic.jpg?v=974957d202f671e4fa6700c04e68deae" class="img-fluid z-depth-1 rounded" width="100%" height="auto" alt="prof_pic.jpg" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </source></picture> </figure> <div class="more-info"> <p>Seoul National University</p> </div> </div> <div class="clearfix"> <div class="lang-en"> <p><strong>Team ROBI</strong> is a research team of three graduate students — <a href="/people/#hyejung-yoon">HyeJung Yoon</a>, <a href="/people/#yesol-park">Yesol Park</a>, and <a href="/people/#juno-kim">Juno Kim</a> — at the <a href="https://bi.snu.ac.kr" rel="external nofollow noopener" target="_blank">Biointelligence Lab</a>, Seoul National University, advised by <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" rel="external nofollow noopener" target="_blank">Prof. Byoung-Tak Zhang</a>.</p> <p>We work on Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer, with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.</p> <p>See our <a href="/people/">people</a>, <a href="/publications/">publications</a>, and <a href="/awards/">awards</a> pages to learn more.</p> </div> <div class="lang-ko" style="display: none"> <p><strong>Team ROBI</strong>는 서울대학교 <a href="https://bi.snu.ac.kr" rel="external nofollow noopener" target="_blank">바이오지능연구실</a> 소속 대학원생 — <a href="/people/#hyejung-yoon">윤혜정</a>, <a href="/people/#yesol-park">박예솔</a>, <a href="/people/#juno-kim">김준오</a> — 로 구성된 연구팀으로, <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" rel="external nofollow noopener" target="_blank">장병탁 교수님</a>의 지도를 받고 있습니다.</p> <p>저희는 체화 인공지능(Embodied AI), 로봇 인지, 비전-언어-행동(Vision-Language-Action, VLA) 모델, 3차원 장면 이해, 로봇 학습, Sim2Real 전이를 연구합니다. 특히 명시적인 3차원 인지 기술과 정책 학습을 결합하여, 강건한 로봇 조작 및 이동 로봇 시스템을 구현하는 데 중점을 두고 있습니다.</p> <p>자세한 내용은 <a href="/people/">구성원</a>, <a href="/publications/">논문</a>, <a href="/awards/">수상 실적</a> 페이지에서 확인하실 수 있습니다.</p> </div> <style>
   /* NOTE: .bibtex itself carries the theme's collapse animation
      (max-height: 0 + overflow: hidden — see _sass/_publications.scss) —
      padding must NOT go on .bibtex directly, or it renders as a visible
@@ -129,7 +140,7 @@
   .code-display-wrapper:hover .copy {
     color: #888 !important;
   }
-</style> </div> <h2> <a href="/news/" style="color: inherit">news</a> </h2> <div class="news"> <div class="table-responsive" style="max-height: 60vw"> <table class="table table-sm table-borderless"> <tr> <th scope="row" style="width: 20%">Jul 2026</th> <td> 🏆 Team ROBI won <strong>1st Place (Minister of Trade, Industry &amp; Energy Award)</strong> at the 2026 Humanoid AI Challenge. <a href="https://www.dkilbo.com/news/articleView.html?idxno=547897" rel="external nofollow noopener" target="_blank">Coverage in Daegu Ilbo</a>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 2026</th> <td> Our paper “Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning” has been accepted to <strong>IROS 2026</strong> (Pittsburgh, Sep 27 – Oct 1, 2026). </td> </tr> <tr> <th scope="row" style="width: 20%">May 2026</th> <td> 🏆 Prof. Byoung-Tak Zhang’s research team (including Team ROBI) won an <strong>Outstanding Award</strong> at the 2026 AI Co-Scientist Challenge Korea. <a href="https://gsai.snu.ac.kr/category/board-89-GN-XLpzHDEo-20220216190236/" rel="external nofollow noopener" target="_blank">Coverage from SNU AI Institute</a>. </td> </tr> <tr> <th scope="row" style="width: 20%">Oct 2025</th> <td> Our paper “CDIS: Cross-Dimensional Class-Agnostic 3D Instance Segmentation via 2D Mask Tracking and 3D–2D Projection Merging” was presented at <strong>IROS 2025</strong> in Hangzhou. </td> </tr> <tr> <th scope="row" style="width: 20%">May 2025</th> <td> Our paper “DA-Fusion: Deformable Attention-Based RGB-D Fusion Transformer for Unseen Object Instance Segmentation” was presented at <strong>ICRA 2025</strong> in Atlanta. </td> </tr> </table> </div> <div class="news-view-all" style="text-align: right; margin-top: 0.4rem"> <a href="/news/" style="font-size: 0.85rem; opacity: 0.6">전체 보기 →</a> </div> </div> <h2> <a href="/publications/" style="color: inherit">selected publications</a> </h2> <div class="publications"> <ol class="bibliography"><li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">IROS</abbr> <figure> <picture> <img src="/assets/img/publication_preview/seg2grasp.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="seg2grasp.png" data-zoomable loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> <div id="yoon2024seg2grasp" class="col-sm-9"> <div class="title">Seg2Grasp: A Robust Modular Suction Grasping in Bin Picking</div> <div class="author"> <em>HyeJung Yoon<sup>*</sup></em>, <em>Juno Kim<sup>*</sup></em>, <em>Yesol Park<sup>*</sup></em>, and <span class="more-authors" title="click to view 2 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '2 more authors' ? 'J.-K. Lee, Byoung-Tak Zhang' : '2 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">2 more authors</span> </div> <div class="periodical"> <em>In IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2024 </div> <div class="periodical"> * Equal contribution </div> <div class="links"> <a href="/projects/seg2grasp/" class="btn btn-sm z-depth-0" role="button">Website</a> <a href="http://arxiv.org/abs/0000.00000" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a href="https://github.com/teamROBI/Seg2Grasp" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">yoon2024seg2grasp</span><span class="p">,</span>
+</style> </div> <h2> <a href="/news/" style="color: inherit">news</a> </h2> <div class="news"> <div class="table-responsive" style="max-height: 60vw"> <table class="table table-sm table-borderless"> <tr> <th scope="row" style="width: 20%">Jul 2026</th> <td> <span class="lang-en">🏆 Team ROBI won the <strong>Minister of Trade, Industry and Energy Award (1st Place, Grand Prize)</strong> at the <strong>2026 Humanoid AI Challenge</strong>. <a href="https://www.dkilbo.com/news/articleView.html?idxno=547897" rel="external nofollow noopener" target="_blank">Coverage in Daegu Ilbo</a>.</span><span class="lang-ko" style="display: none">🏆 Team ROBI가 <strong>2026 휴머노이드 AI 챌린지</strong>에서 <strong>산업통상부 장관상(1위·대상)</strong>을 수상했습니다. [관련 기사: <a href="https://www.dkilbo.com/news/articleView.html?idxno=547897" rel="external nofollow noopener" target="_blank">대구일보</a>]</span> </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 2026</th> <td> <span class="lang-en">🎉 Our paper “Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning” has been accepted to <strong>IROS 2026 (Pittsburgh, USA)</strong>.</span><span class="lang-ko" style="display: none">🎉 <strong>IROS 2026(피츠버그, 미국)</strong>에 논문 “Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning”이 채택되었습니다.</span> </td> </tr> <tr> <th scope="row" style="width: 20%">May 2026</th> <td> <span class="lang-en">🏆 Team ROBI received the <strong>President of LG AI Research Award (Excellence Award)</strong> at the <strong>2026 AI Co-Scientist Challenge Korea</strong>. <a href="https://gsai.snu.ac.kr/category/board-89-GN-XLpzHDEo-20220216190236/" rel="external nofollow noopener" target="_blank">Related news: SNU AI Institute</a>.</span><span class="lang-ko" style="display: none">🏆 Team ROBI가 <strong>2026 AI Co-Scientist Challenge Korea</strong>에서 <strong>LG AI연구원장상(우수상)</strong>을 수상했습니다. [관련 소식: <a href="https://gsai.snu.ac.kr/category/board-89-GN-XLpzHDEo-20220216190236/" rel="external nofollow noopener" target="_blank">서울대학교 AI연구원</a>]</span> </td> </tr> <tr> <th scope="row" style="width: 20%">Oct 2025</th> <td> <span class="lang-en">🎉 Our paper “CDIS: Cross-Dimensional Class-Agnostic 3D Instance Segmentation via 2D Mask Tracking and 3D–2D Projection Merging” was presented at <strong>IROS 2025 (Hangzhou, China)</strong>.</span><span class="lang-ko" style="display: none">🎉 <strong>IROS 2025(항저우, 중국)</strong>에서 논문 “CDIS: Cross-Dimensional Class-Agnostic 3D Instance Segmentation via 2D Mask Tracking and 3D–2D Projection Merging”을 발표했습니다.</span> </td> </tr> <tr> <th scope="row" style="width: 20%">May 2025</th> <td> <span class="lang-en">🎉 Our paper “DA-Fusion: Deformable Attention-Based RGB-D Fusion Transformer for Unseen Object Instance Segmentation” was presented at <strong>ICRA 2025 (Atlanta, USA)</strong>.</span><span class="lang-ko" style="display: none">🎉 <strong>ICRA 2025(애틀랜타, 미국)</strong>에서 논문 “DA-Fusion: Deformable Attention-Based RGB-D Fusion Transformer for Unseen Object Instance Segmentation”을 발표했습니다.</span> </td> </tr> </table> </div> <div class="news-view-all" style="text-align: right; margin-top: 0.4rem"> <a href="/news/" style="font-size: 0.85rem; color: var(--global-theme-color)"> <span class="lang-en">View all →</span><span class="lang-ko" style="display: none">전체 보기 →</span> </a> </div> </div> <h2> <a href="/publications/" style="color: inherit">selected publications</a> </h2> <div class="publications"> <ol class="bibliography"><li> <div class="row"> <div class="col col-sm-2 abbr"> <abbr class="badge rounded w-100">IROS</abbr> <figure> <picture> <img src="/assets/img/publication_preview/seg2grasp.png" class="preview z-depth-1 rounded" width="100%" height="auto" alt="seg2grasp.png" data-zoomable loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> <div id="yoon2024seg2grasp" class="col-sm-9"> <div class="title">Seg2Grasp: A Robust Modular Suction Grasping in Bin Picking</div> <div class="author"> <em>HyeJung Yoon<sup>*</sup></em>, <em>Juno Kim<sup>*</sup></em>, <em>Yesol Park<sup>*</sup></em>, and <span class="more-authors" title="click to view 2 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '2 more authors' ? 'J.-K. Lee, Byoung-Tak Zhang' : '2 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">2 more authors</span> </div> <div class="periodical"> <em>In IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</em>, 2024 </div> <div class="periodical"> * Equal contribution </div> <div class="links"> <a href="/projects/seg2grasp/" class="btn btn-sm z-depth-0" role="button">Website</a> <a href="http://arxiv.org/abs/0000.00000" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">arXiv</a> <a href="https://github.com/teamROBI/Seg2Grasp" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">yoon2024seg2grasp</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Seg2Grasp: A Robust Modular Suction Grasping in Bin Picking}</span><span class="p">,</span>
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Yoon, HyeJung and Kim, Juno and Park, Yesol and Lee, J.-K. and Zhang, Byoung-Tak}</span><span class="p">,</span>
   <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}</span><span class="p">,</span>
@@ -141,192 +152,4 @@
   };
 </script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
     addBackToTop();
-  </script> <script type="module" src="/assets/al_search/js/search/ninja-keys.min.js"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/al_search/js/search-setup.js"></script> <script>
-// get the ninja-keys element
-const ninja = document.querySelector('ninja-keys');
-
-// add the home and posts menu items
-ninja.data = [{
-    id: "nav-about",
-    title: "about",
-    section: "Navigation",
-    handler: () => {
-      window.location.href = "/";
-    },
-  },{id: "nav-publications",
-          title: "publications",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/publications/";
-          },
-        },{id: "nav-awards",
-          title: "awards",
-          description: "Competition awards won by Team ROBI (Biointelligence Lab, Seoul National University).",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/awards/";
-          },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A growing collection of your cool projects.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
-        },{id: "nav-people",
-          title: "people",
-          description: "Team ROBI - Biointelligence Lab, Seoul National University",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/people/";
-          },
-        },{id: "news-team-robi-won-1st-place-presidential-award-at-the-zeus-arm-robot-competition-part-of-the-international-robot-contest-r-biz-challenge-coverage-in-edaily",
-          title: '🏆 Team ROBI won 1st Place (Presidential Award) at the ZEUS Arm-Robot Competition,...',
-          description: "",
-          section: "News",},{id: "news-our-paper-visual-perception-based-assistive-mobile-robot-system-for-manipulation-tasks-was-presented-at-an-icra-2023-workshop-in-london",
-          title: 'Our paper “Visual Perception-Based Assistive Mobile Robot System for Manipulation Tasks” was presented...',
-          description: "",
-          section: "News",},{id: "news-team-robi-joint-with-pusan-national-university-won-the-dspl-league-championship-at-robocup-home-the-international-ai-robot-competition-coverage-in-university-news-network",
-          title: '🏆 Team ROBI (joint with Pusan National University) won the DSPL League Championship...',
-          description: "",
-          section: "News",},{id: "news-team-robi-won-1st-place-minister-of-science-amp-amp-ict-award-at-the-ai-competition-for-space-radio-disaster-prediction-coverage-in-lecturer-news",
-          title: '🏆 Team ROBI won 1st Place (Minister of Science &amp;amp;amp; ICT Award) at...',
-          description: "",
-          section: "News",},{id: "news-our-paper-ov-map-open-vocabulary-zero-shot-3d-instance-segmentation-map-for-robots-was-presented-as-an-oral-presentation-at-iros-2024-in-abu-dhabi",
-          title: 'Our paper “Ov-Map: Open-Vocabulary Zero-Shot 3D Instance Segmentation Map for Robots” was presented...',
-          description: "",
-          section: "News",},{id: "news-our-paper-seg2grasp-a-robust-modular-suction-grasping-in-bin-picking-was-presented-at-iros-2024-in-abu-dhabi-see-the-project-page-for-code-demo-footage-and-results",
-          title: 'Our paper “Seg2Grasp: A Robust Modular Suction Grasping in Bin Picking” was presented...',
-          description: "",
-          section: "News",},{id: "news-our-paper-da-fusion-deformable-attention-based-rgb-d-fusion-transformer-for-unseen-object-instance-segmentation-was-presented-at-icra-2025-in-atlanta",
-          title: 'Our paper “DA-Fusion: Deformable Attention-Based RGB-D Fusion Transformer for Unseen Object Instance Segmentation”...',
-          description: "",
-          section: "News",},{id: "news-our-paper-cdis-cross-dimensional-class-agnostic-3d-instance-segmentation-via-2d-mask-tracking-and-3d-2d-projection-merging-was-presented-at-iros-2025-in-hangzhou",
-          title: 'Our paper “CDIS: Cross-Dimensional Class-Agnostic 3D Instance Segmentation via 2D Mask Tracking and...',
-          description: "",
-          section: "News",},{id: "news-prof-byoung-tak-zhang-s-research-team-including-team-robi-won-an-outstanding-award-at-the-2026-ai-co-scientist-challenge-korea-coverage-from-snu-ai-institute",
-          title: '🏆 Prof. Byoung-Tak Zhang’s research team (including Team ROBI) won an Outstanding Award...',
-          description: "",
-          section: "News",},{id: "news-our-paper-scene-q-confidence-aware-coarse-to-fine-querying-of-3d-scenes-with-selective-vlm-reasoning-has-been-accepted-to-iros-2026-pittsburgh-sep-27-oct-1-2026",
-          title: 'Our paper “Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning”...',
-          description: "",
-          section: "News",},{id: "news-team-robi-won-1st-place-minister-of-trade-industry-amp-amp-energy-award-at-the-2026-humanoid-ai-challenge-coverage-in-daegu-ilbo",
-          title: '🏆 Team ROBI won 1st Place (Minister of Trade, Industry &amp;amp;amp; Energy Award)...',
-          description: "",
-          section: "News",},{id: "projects-project-1",
-          title: 'project 1',
-          description: "with background image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_project.html";
-            },},{id: "projects-project-2",
-          title: 'project 2',
-          description: "a project with a background image and giscus comments",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/2_project.html";
-            },},{id: "projects-project-3-with-very-long-name",
-          title: 'project 3 with very long name',
-          description: "a project that redirects to another website",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/3_project.html";
-            },},{id: "projects-project-4",
-          title: 'project 4',
-          description: "another without an image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project.html";
-            },},{id: "projects-project-5",
-          title: 'project 5',
-          description: "a project with a background image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/5_project.html";
-            },},{id: "projects-project-6",
-          title: 'project 6',
-          description: "a project with no image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/6_project.html";
-            },},{id: "projects-project-7",
-          title: 'project 7',
-          description: "with background image",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/7_project.html";
-            },},{id: "projects-project-8",
-          title: 'project 8',
-          description: "an other project with a background image and giscus comments",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/8_project.html";
-            },},{id: "projects-project-9",
-          title: 'project 9',
-          description: "another project with an image 🎉",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/9_project.html";
-            },},{
-        id: 'social-cv',
-        title: 'CV',
-        section: 'Socials',
-        handler: () => {
-          window.open("/assets/pdf/example_pdf.pdf", "_blank");
-        },
-      },{
-        id: 'social-email',
-        title: 'email',
-        section: 'Socials',
-        handler: () => {
-          window.open("mailto:%79%6F%75@%65%78%61%6D%70%6C%65.%63%6F%6D", "_blank");
-        },
-      },{
-        id: 'social-inspire',
-        title: 'Inspire HEP',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://inspirehep.net/authors/1010907", "_blank");
-        },
-      },{
-        id: 'social-rss',
-        title: 'RSS Feed',
-        section: 'Socials',
-        handler: () => {
-          window.open("/feed.xml", "_blank");
-        },
-      },{
-        id: 'social-scholar',
-        title: 'Google Scholar',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
-        },
-      },{
-        id: 'social-custom_social',
-        title: 'Custom_social',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://www.alberteinstein.com/", "_blank");
-        },
-      },{
-      id: 'light-theme',
-      title: 'Change theme to light',
-      description: 'Change the theme of the site to Light',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("light");
-      },
-    },
-    {
-      id: 'dark-theme',
-      title: 'Change theme to dark',
-      description: 'Change the theme of the site to Dark',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("dark");
-      },
-    },
-    {
-      id: 'system-theme',
-      title: 'Use system default theme',
-      description: 'Change the theme of the site to System Default',
-      section: 'Theme',
-      handler: () => {
-        setThemeSetting("system");
-      },
-    },];
-
-</script> <script src="/assets/al_search/js/shortcut-key.js"></script> </body> </html>
+  </script> </body> </html>
