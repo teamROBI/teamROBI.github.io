@@ -30,7 +30,9 @@
     </div>
     {% if include.limit and page.announcements.limit and news_size > news_limit %}
       <div class="news-view-all" style="text-align: right; margin-top: 0.4rem">
-        <a href="{{ '/news/' | relative_url }}" style="font-size: 0.85rem; opacity: 0.6">전체 보기 &rarr;</a>
+        <a href="{{ '/news/' | relative_url }}" style="font-size: 0.85rem; color: var(--global-theme-color)">
+          <span class="lang-en">View all &rarr;</span><span class="lang-ko" style="display: none">전체 보기 &rarr;</span>
+        </a>
       </div>
     {% endif %}
   {% else %}

@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper "Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning" has been accepted to **IROS 2026** (Pittsburgh, Sep 27 – Oct 1, 2026).
+<span class="lang-en">🎉 Our paper "Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning" has been accepted to **IROS 2026 (Pittsburgh, USA)**.</span><span class="lang-ko" style="display: none">🎉 **IROS 2026(피츠버그, 미국)**에 논문 "Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning"이 채택되었습니다.</span>
