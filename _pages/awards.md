@@ -160,16 +160,17 @@ nav_order: 2
 
 <h2>All Awards</h2>
 
-| Year       | Award                                                                  | Competition / Event                                                             |
-| ---------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| 2026       | Minister of Trade, Industry and Energy Award (1st Place, Grand Prize)   | Humanoid AI Challenge                                                           |
-| 2024       | President of the National Disaster Management Research Institute Award | Disaster Safety Data Hackathon, National Disaster Management Research Institute |
-| 2023       | Champion (1st Place), DSPL & OPL Leagues                                 | RoboCup@Home International AI Robot Competition                                 |
-| 2023       | Minister of Science and ICT Award (1st Place, Grand Prize)              | AI Competition for Space Radio Disaster Prediction                              |
-| 2023       | Outstanding Paper Award                                                 | Korea Computer Congress (KCC)                                                   |
-| 2022, 2023 | Grand Prize (1st Place)                                                 | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU  |
-| 2022       | Presidential Award (1st Place, Grand Prize)                             | ZEUS Industrial Robot ZERO Mission Challenge, International Robot Contest (R-BIZ Challenge) |
-| 2022       | Honorable Mention                                                       | Logistics Paper Competition                                                     |
+| Year       | Award                                                                  | Competition / Event                                                                         |
+| ---------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| 2026       | Minister of Trade, Industry and Energy Award (1st Place, Grand Prize)  | Humanoid AI Challenge                                                                       |
+| 2026       | President of LG AI Research Award (Excellence Award)                   | AI Co-Scientist Challenge Korea                                                             |
+| 2024       | President of the National Disaster Management Research Institute Award | Disaster Safety Data Hackathon, National Disaster Management Research Institute             |
+| 2023       | Champion (1st Place), DSPL & OPL Leagues                               | RoboCup@Home International AI Robot Competition                                             |
+| 2023       | Minister of Science and ICT Award (1st Place, Grand Prize)             | AI Competition for Space Radio Disaster Prediction                                          |
+| 2023       | Outstanding Paper Award                                                | Korea Computer Congress (KCC)                                                               |
+| 2022, 2023 | Grand Prize (1st Place)                                                | Creative Autonomous Research Competition, Interdisciplinary Program in AI, SNU              |
+| 2022       | Presidential Award (1st Place, Grand Prize)                            | ZEUS Industrial Robot ZERO Mission Challenge, International Robot Contest (R-BIZ Challenge) |
+| 2022       | Honorable Mention                                                      | Logistics Paper Competition                                                                 |
 
 <h2>Press & Media</h2>
 
@@ -259,16 +260,17 @@ nav_order: 2
 
 <h2>전체 수상 목록</h2>
 
-| 연도       | 수상                                     | 대회 / 행사                                                |
-| ---------- | ----------------------------------------- | ----------------------------------------------------------- |
-| 2026       | 산업통상부 장관상 (1위·대상)              | 휴머노이드 AI 챌린지                                       |
-| 2024       | 국립재난안전연구원장상                    | 재난안전데이터 해커톤, 국립재난안전연구원                  |
-| 2023       | 챔피언 (1위), DSPL 및 OPL 리그            | Robocup@Home 국제 AI 로봇대회                                 |
-| 2023       | 과학기술정보통신부 장관상 (1위·최우수상)      | 우주전파재난 예측 AI 경진대회                              |
-| 2023       | 우수논문상                                | 한국컴퓨터종합학술대회(KCC)                                |
-| 2022, 2023 | 대상 (1위)                                | 창의자율연구경진대회, 서울대학교 인공지능 협동과정         |
-| 2022       | 대통령상 (1위·대상)                       | 제우스 산업용 로봇 ZERO 미션 챌린지, 국제로봇콘테스트(R-BIZ 챌린지) |
-| 2022       | 장려상                                    | 물류 논문 경진대회                                         |
+| 연도       | 수상                                     | 대회 / 행사                                                         |
+| ---------- | ---------------------------------------- | ------------------------------------------------------------------- |
+| 2026       | 산업통상부 장관상 (1위·대상)             | 휴머노이드 AI 챌린지                                                |
+| 2026       | LG AI연구원장상 (우수상)                 | AI Co-Scientist Challenge Korea                                     |
+| 2024       | 국립재난안전연구원장상                   | 재난안전데이터 해커톤, 국립재난안전연구원                           |
+| 2023       | 챔피언 (1위), DSPL 및 OPL 리그           | Robocup@Home 국제 AI 로봇대회                                       |
+| 2023       | 과학기술정보통신부 장관상 (1위·최우수상) | 우주전파재난 예측 AI 경진대회                                       |
+| 2023       | 우수논문상                               | 한국컴퓨터종합학술대회(KCC)                                         |
+| 2022, 2023 | 대상 (1위)                               | 창의자율연구경진대회, 서울대학교 인공지능 협동과정                  |
+| 2022       | 대통령상 (1위·대상)                      | 제우스 산업용 로봇 ZERO 미션 챌린지, 국제로봇콘테스트(R-BIZ 챌린지) |
+| 2022       | 장려상                                   | 물류 논문 경진대회                                                  |
 
 <h2>보도자료</h2>
 
