@@ -2,7 +2,9 @@
 layout: profiles
 permalink: /people/
 title: people
+title_ko: 구성원
 description: Team ROBI - Biointelligence Lab, Seoul National University
+description_ko: Team ROBI - 서울대학교 바이오지능연구실
 nav: true
 nav_order: 4
 _styles: |

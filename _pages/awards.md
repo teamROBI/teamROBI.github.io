@@ -2,7 +2,9 @@
 layout: page
 permalink: /awards/
 title: awards
+title_ko: 수상
 description: Competition awards won by Team ROBI (Biointelligence Lab, Seoul National University).
+description_ko: 서울대학교 바이오지능연구실 Team ROBI가 수상한 대회 실적입니다.
 nav: true
 nav_order: 2
 ---

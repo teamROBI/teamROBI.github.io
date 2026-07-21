@@ -1,8 +1,10 @@
 ---
 layout: about
 title: about
+title_ko: 소개
 permalink: /
 subtitle: Biointelligence Lab, Seoul National University · advisor Prof. Byoung-Tak Zhang
+subtitle_ko: 서울대학교 바이오지능연구실 · 지도교수 장병탁
 
 profile:
   align: right
