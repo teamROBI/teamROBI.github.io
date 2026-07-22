@@ -26,7 +26,8 @@ _styles: |
       <sup>*</sup>Equal contribution
     </p>
     <div class="pp-buttons">
-      <a href="https://ieeexplore.ieee.org/document/10801644" target="_blank" rel="noopener noreferrer">Paper</a>
+      <a href="https://arxiv.org/abs/2607.17757" target="_blank" rel="noopener noreferrer">arXiv</a>
+      <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10801644" target="_blank" rel="noopener noreferrer">Paper</a>
       <a href="https://github.com/teamROBI/Seg2Grasp" target="_blank" rel="noopener noreferrer">Code</a>
       <a href="#bibtex">BibTeX</a>
     </div>

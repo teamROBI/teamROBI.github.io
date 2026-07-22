@@ -28,8 +28,9 @@ _styles: |
       <sup>*</sup>Equal contribution
     </p>
     <div class="pp-buttons">
-      <a href="#">Paper <em>(placeholder)</em></a>
-      <a href="#">Code <em>(placeholder)</em></a>
+      <a href="https://arxiv.org/abs/2607.17754" target="_blank" rel="noopener noreferrer">arXiv</a>
+      <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11128151" target="_blank" rel="noopener noreferrer">Paper</a>
+      <a href="https://github.com/teamROBI/DA-Fusion" target="_blank" rel="noopener noreferrer">Code</a>
       <a href="#bibtex">BibTeX</a>
     </div>
   </header>

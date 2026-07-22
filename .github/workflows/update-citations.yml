@@ -1,10 +1,10 @@
 name: Update Google Scholar Citations
 
 on:
-  schedule:
-    - cron: "0 0 * * 1" # Monday
-    - cron: "0 0 * * 3" # Wednesday
-    - cron: "0 0 * * 5" # Friday
+  # Disabled: scholar_userid in _data/socials.yml is still the al-folio
+  # starter's placeholder id, and no papers.bib entry sets google_scholar_id,
+  # so the badge this data feeds (_layouts/bib.liquid) never renders anyway.
+  # Re-add a schedule: block here once both are wired up for real.
   workflow_dispatch:
 
 jobs:
