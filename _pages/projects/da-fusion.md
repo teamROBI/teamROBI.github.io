@@ -15,7 +15,7 @@ _styles: |
     <p class="pp-venue">IEEE International Conference on Robotics and Automation (ICRA) 2025</p>
     <p class="pp-authors">
       Yesol Park<sup>1,*</sup> ·
-      HyeJung Yoon<sup>1,*</sup> ·
+      Hye-Jung Yoon<sup>1,*</sup> ·
       Juno Kim<sup>1,*</sup> ·
       Byoung-Tak Zhang<sup>1,2,3</sup>
     </p>
@@ -69,7 +69,7 @@ _styles: |
 {% highlight bibtex %}
 @inproceedings{park2025dafusion,
   title={DA-Fusion: Deformable Attention-Based RGB-D Fusion Transformer for Unseen Object Instance Segmentation},
-  author={Park, Yesol and Yoon, HyeJung and Kim, Juno and Zhang, Byoung-Tak},
+  author={Park, Yesol and Yoon, Hye-Jung and Kim, Juno and Zhang, Byoung-Tak},
   booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
   year={2025}
 }

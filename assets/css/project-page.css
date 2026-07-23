@@ -32,13 +32,6 @@
   margin-bottom: 2rem;
 }
 
-.project-page .pp-title {
-  font-size: 1.9rem;
-  font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 0.9rem;
-}
-
 .project-page .pp-authors {
   font-size: 1.1rem;
   margin-bottom: 0.4rem;
@@ -402,10 +395,6 @@
 /* ---- Responsive ---- */
 
 @media (max-width: 640px) {
-  .project-page .pp-title {
-    font-size: 1.5rem;
-  }
-
   .project-page .pp-viewer-stage {
     aspect-ratio: 4 / 3;
   }

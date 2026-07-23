@@ -16,7 +16,7 @@ _styles: |
     <p class="pp-authors">
       Juno Kim<sup>1,*</sup> ·
       Yesol Park<sup>1,*</sup> ·
-      HyeJung Yoon<sup>1,*</sup> ·
+      Hye-Jung Yoon<sup>1,*</sup> ·
       Byoung-Tak Zhang<sup>1,2,3</sup>
     </p>
     <p class="pp-affiliations">
@@ -68,7 +68,7 @@ _styles: |
 {% highlight bibtex %}
 @inproceedings{kim2026sceneq,
   title={Scene-Q: Confidence-Aware Coarse-to-Fine Querying of 3D Scenes with Selective VLM Reasoning},
-  author={Kim, Juno and Park, Yesol and Yoon, HyeJung and Zhang, Byoung-Tak},
+  author={Kim, Juno and Park, Yesol and Yoon, Hye-Jung and Zhang, Byoung-Tak},
   booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   year={2026},
   note={to appear}

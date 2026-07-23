@@ -64,8 +64,8 @@ _styles: |
       </div>
       <div class="pp-viewer-controls">
         <span class="pp-control-label">View</span>
-        <button type="button" class="pp-mode-btn is-active" data-ovmap-mode="0">3D Scene</button>
-        <button type="button" class="pp-mode-btn" data-ovmap-mode="1">Class-Agnostic Instances</button>
+        <button type="button" class="pp-mode-btn is-active" data-ovmap-mode="0" aria-pressed="true">3D Scene</button>
+        <button type="button" class="pp-mode-btn" data-ovmap-mode="1" aria-pressed="false">Class-Agnostic Instances</button>
       </div>
       <div class="pp-viewer-controls">
         <span class="pp-control-label">Query</span>
@@ -144,7 +144,6 @@ _styles: |
     </p>
     <div class="pp-compare" data-pp-compare>
       <img
-        class="pp-compare-after"
         src="{{ '/assets/img/projects/ov-map/depth/supplemented.png' | relative_url }}"
         alt="Supplemented depth map: the raw sensor depth with its holes filled from point-cloud-rendered synthetic depth, leaving a dense depth image."
         loading="lazy"
@@ -187,7 +186,7 @@ _styles: |
         <canvas class="pp-viewer-canvas" aria-label="3D point cloud assembling as camera views are merged"></canvas>
         <span class="pp-viewer-hint">drag to rotate · scroll to zoom</span>
       </div>
-      <div class="pp-viewer-controls pp-viewer-timeline">
+      <div class="pp-viewer-controls">
         <button type="button" class="pp-mode-btn" data-ovmap-play>▶ Play</button>
         <input type="range" class="pp-timeline-range" min="0" max="255" value="0" aria-label="Scrub through the views as the map is built" />
         <span class="pp-timeline-count"></span>

@@ -15,7 +15,7 @@ _styles: |
     <p class="pp-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2025</p>
     <p class="pp-authors">
       Juno Kim<sup>1,*</sup> ·
-      HyeJung Yoon<sup>1,*</sup> ·
+      Hye-Jung Yoon<sup>1,*</sup> ·
       Yesol Park<sup>1,*</sup> ·
       Byoung-Tak Zhang<sup>1,2,3</sup>
     </p>
@@ -69,7 +69,7 @@ _styles: |
 {% highlight bibtex %}
 @inproceedings{kim2025cdis,
   title={CDIS: Cross-Dimensional Class-Agnostic 3D Instance Segmentation via 2D Mask Tracking and 3D--2D Projection Merging},
-  author={Kim, Juno and Yoon, HyeJung and Park, Yesol and Zhang, Byoung-Tak},
+  author={Kim, Juno and Yoon, Hye-Jung and Park, Yesol and Zhang, Byoung-Tak},
   booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
   year={2025}
 }

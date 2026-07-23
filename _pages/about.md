@@ -28,7 +28,7 @@ latest_posts:
 ---
 
 <div class="lang-en">
-  <p><strong>Team ROBI</strong> is a research team of three graduate students — <a href="/people/#hyejung-yoon">HyeJung Yoon</a>, <a href="/people/#yesol-park">Yesol Park</a>, and <a href="/people/#juno-kim">Juno Kim</a> — at the <a href="https://bi.snu.ac.kr">Biointelligence Lab</a>, Seoul National University, advised by <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html">Prof. Byoung-Tak Zhang</a>.</p>
+  <p><strong>Team ROBI</strong> is a research team of three graduate students — <a href="/people/#hyejung-yoon">Hye-Jung Yoon</a>, <a href="/people/#yesol-park">Yesol Park</a>, and <a href="/people/#juno-kim">Juno Kim</a> — at the <a href="https://bi.snu.ac.kr">Biointelligence Lab</a>, Seoul National University, advised by <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html">Prof. Byoung-Tak Zhang</a>.</p>
   <p>We work on Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer, with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.</p>
   <p>See our <a href="/people/">people</a>, <a href="/publications/">publications</a>, and <a href="/awards/">awards</a> pages to learn more.</p>
 </div>

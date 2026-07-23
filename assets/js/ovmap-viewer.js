@@ -19,6 +19,18 @@
   var ACCENT = [0.98, 0.36, 0.14]; // highlight color
   var DIM = [0.82, 0.82, 0.84]; // non-matching color when a query is active
 
+  // Shared fetch cache so multiple viewers on one page (e.g. the demo + the merge
+  // animation, which use the same scene) download each asset only once.
+  var fetchCache = {};
+  function fetchOnce(url, kind) {
+    if (!fetchCache[url]) {
+      fetchCache[url] = fetch(url).then(function (r) {
+        return kind === "json" ? r.json() : r.arrayBuffer();
+      });
+    }
+    return fetchCache[url];
+  }
+
   // ---- minimal mat4 helpers ------------------------------------------------
   function perspective(out, fovy, aspect, near, far) {
     var f = 1.0 / Math.tan(fovy / 2),
@@ -184,6 +196,17 @@
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(1, 1, 1, 1);
 
+    // Draw only when something changed. markDirty() schedules a single frame; the loop
+    // does not spin at 60 fps when the scene is static (no per-frame layout reads / draws).
+    var frameQueued = false;
+    function markDirty() {
+      state.dirty = true;
+      if (!frameQueued) {
+        frameQueued = true;
+        requestAnimationFrame(render);
+      }
+    }
+
     function resize() {
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var w = Math.round(canvas.clientWidth * dpr),
@@ -196,27 +219,26 @@
     }
 
     function render() {
+      frameQueued = false;
       resize();
-      if (state.dirty) {
-        gl.viewport(0, 0, canvas.width, canvas.height);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        var eye = [
-          state.target[0] + state.radius * Math.sin(state.phi) * Math.cos(state.theta),
-          state.target[1] + state.radius * Math.sin(state.phi) * Math.sin(state.theta),
-          state.target[2] + state.radius * Math.cos(state.phi),
-        ];
-        perspective(proj, 0.9, canvas.width / canvas.height, 0.01, 100);
-        lookAt(view, eye, state.target, [0, 0, 1]);
-        multiply(mvp, proj, view);
-        gl.uniformMatrix4fv(uMVP, false, mvp);
-        // point size proportional to view distance so apparent density stays stable
-        gl.uniform1f(uPoint, state.radius * 3.0 * Math.min(window.devicePixelRatio || 1, 2));
-        gl.uniform1i(uMode, state.mode);
-        gl.uniform1f(uReveal, state.reveal);
-        gl.drawArrays(gl.POINTS, 0, state.n);
-        state.dirty = false;
-      }
-      requestAnimationFrame(render);
+      if (!state.dirty) return;
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      var eye = [
+        state.target[0] + state.radius * Math.sin(state.phi) * Math.cos(state.theta),
+        state.target[1] + state.radius * Math.sin(state.phi) * Math.sin(state.theta),
+        state.target[2] + state.radius * Math.cos(state.phi),
+      ];
+      perspective(proj, 0.9, canvas.width / canvas.height, 0.01, 100);
+      lookAt(view, eye, state.target, [0, 0, 1]);
+      multiply(mvp, proj, view);
+      gl.uniformMatrix4fv(uMVP, false, mvp);
+      // point size proportional to view distance so apparent density stays stable
+      gl.uniform1f(uPoint, state.radius * 3.0 * Math.min(window.devicePixelRatio || 1, 2));
+      gl.uniform1i(uMode, state.mode);
+      gl.uniform1f(uReveal, state.reveal);
+      gl.drawArrays(gl.POINTS, 0, state.n);
+      state.dirty = false;
     }
 
     function attrib(loc, buffer, size, type, normalize) {
@@ -279,12 +301,12 @@
       gl.bindBuffer(gl.ARRAY_BUFFER, hiBuf);
       gl.bufferSubData(gl.ARRAY_BUFFER, 0, hiArray);
       state.mode = 2;
-      state.dirty = true;
+      markDirty();
     }
 
     function setMode(m) {
       state.mode = m;
-      state.dirty = true;
+      markDirty();
     }
 
     // ---- pointer / wheel orbit controls ------------------------------------
@@ -303,7 +325,7 @@
       state.phi = Math.max(0.15, Math.min(Math.PI - 0.15, state.phi - (e.clientY - lastY) * 0.008));
       lastX = e.clientX;
       lastY = e.clientY;
-      state.dirty = true;
+      markDirty();
     });
     canvas.addEventListener("pointerup", function () {
       dragging = false;
@@ -313,31 +335,30 @@
       function (e) {
         e.preventDefault();
         state.radius = Math.max(0.5, Math.min(40, state.radius * (1 + Math.sign(e.deltaY) * 0.1)));
-        state.dirty = true;
+        markDirty();
       },
       { passive: false }
     );
     window.addEventListener("resize", function () {
-      state.dirty = true;
+      markDirty();
     });
+    // Redraw when the canvas actually gets/changes size (also covers the first layout,
+    // so the dirty-driven loop never stalls on a zero-size initial frame).
+    if (window.ResizeObserver) {
+      new ResizeObserver(function () {
+        markDirty();
+      }).observe(canvas);
+    }
 
     // ---- load data + wire UI -----------------------------------------------
-    Promise.all([
-      fetch(binUrl).then(function (r) {
-        return r.arrayBuffer();
-      }),
-      fetch(manifestUrl).then(function (r) {
-        return r.json();
-      }),
-    ])
+    Promise.all([fetchOnce(binUrl, "bin"), fetchOnce(manifestUrl, "json")])
       .then(function (res) {
         var bin = res[0],
           manifest = res[1];
         upload(bin, manifest);
         buildQueryUI(root, manifest, setHighlight);
-        if (timeline) setupTimeline(root, state, manifest);
-        root.classList.add("pp-viewer--ready");
-        requestAnimationFrame(render);
+        if (timeline) setupTimeline(root, state, manifest, markDirty);
+        markDirty();
       })
       .catch(function () {
         root.classList.add("pp-viewer--error");
@@ -362,6 +383,7 @@
       var chip = document.createElement("button");
       chip.type = "button";
       chip.className = "pp-query-chip";
+      chip.setAttribute("aria-pressed", "false");
       chip.textContent = word + " (" + ids.length + ")";
       chip.addEventListener("click", function () {
         setHighlight(ids);
@@ -372,7 +394,7 @@
     });
   }
 
-  function setupTimeline(root, state, manifest) {
+  function setupTimeline(root, state, manifest, requestFrame) {
     var range = root.querySelector(".pp-timeline-range");
     var play = root.querySelector("[data-ovmap-play]");
     var count = root.querySelector(".pp-timeline-count");
@@ -385,7 +407,7 @@
     }
     function setReveal(r) {
       state.reveal = r;
-      state.dirty = true;
+      requestFrame();
       if (range) range.value = r;
       if (count) count.textContent = "view " + viewOf(r) + " / " + nViews;
     }
@@ -427,10 +449,12 @@
   function selectButton(root, selector, active) {
     clearActive(root, selector);
     active.classList.add("is-active");
+    if (active.hasAttribute("aria-pressed")) active.setAttribute("aria-pressed", "true");
   }
   function clearActive(root, selector) {
     root.querySelectorAll(selector).forEach(function (b) {
       b.classList.remove("is-active");
+      if (b.hasAttribute("aria-pressed")) b.setAttribute("aria-pressed", "false");
     });
   }
 

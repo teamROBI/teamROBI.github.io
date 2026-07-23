@@ -99,7 +99,7 @@ profiles:
     content: about_hyejung_yoon.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p><span class="lang-en">HyeJung Yoon</span><span class="lang-ko" style="display: none">윤혜정</span></p>
+      <p><span class="lang-en">Hye-Jung Yoon</span><span class="lang-ko" style="display: none">윤혜정</span></p>
       <p><a href="https://www.linkedin.com/in/hyejung-yoon-19a271239" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
   - id: yesol-park
     align: left
