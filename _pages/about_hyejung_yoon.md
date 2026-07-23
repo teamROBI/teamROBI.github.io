@@ -1,6 +1,6 @@
 <div class="lang-en" markdown="1">
 
-**HyeJung Yoon** is an Integrated M.S./Ph.D. student in the [Interdisciplinary Program in Artificial Intelligence](https://gsai.snu.ac.kr/en) at Seoul National University, advised by Prof. Byoung-Tak Zhang (Biointelligence Lab).
+**Hye-Jung Yoon** is an Integrated M.S./Ph.D. student in the [Interdisciplinary Program in Artificial Intelligence](https://gsai.snu.ac.kr/en) at Seoul National University, advised by Prof. Byoung-Tak Zhang (Biointelligence Lab).
 
 Research interests: Embodied AI, Robot Perception, Vision-Language-Action (VLA) models, 3D Scene Understanding, Robot Learning, and Sim2Real Transfer — with a focus on integrating explicit 3D perception with policy learning for robust manipulation and mobile robotics.
 

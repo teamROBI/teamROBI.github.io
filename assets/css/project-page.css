@@ -395,7 +395,6 @@
 /* ---- Responsive ---- */
 
 @media (max-width: 640px) {
-
   .project-page .pp-viewer-stage {
     aspect-ratio: 4 / 3;
   }
