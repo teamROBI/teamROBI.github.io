@@ -18,7 +18,7 @@
 - Visual regression tests
 
 Runtime/component logic belongs in owning plugin repos (`al_folio_core`, `al_folio_distill`, `al_search`, `al_icons`, `al_cookie`, and other `al-*` gems).
-Long-form documentation lives in `docs/`; keep this root file as the short discovery entry point for coding agents.
+`docs/` only keeps repo-specific material now (`BOUNDARIES.md`, `PROJECT_PAGES.md`) — generic al-folio topics (install, customize, FAQ, SEO, troubleshooting, contributing) aren't duplicated locally; see the [upstream al-folio repo](https://github.com/alshedivat/al-folio) and its own `docs/` for those.
 
 ## Validated Local Command Set
 
