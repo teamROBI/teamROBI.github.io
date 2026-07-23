@@ -43,6 +43,44 @@ _styles: |
     3D-supervised network.
   </p>
 
+  <section class="pp-section" id="demo">
+    <h2>Interactive Demo</h2>
+    <p>
+      This is a real OV-MAP output — a ScanNet200 scene (<code>scene0011_00</code>)
+      that OV-MAP segmented into per-instance 3D masks with <em>no</em> 3D-supervised
+      network. Drag to rotate, scroll to zoom. Switch between the 3D scene (real colors)
+      and OV-MAP's class-agnostic instance masks, or click an open-vocabulary query to
+      light up every instance the map matches to that word.
+    </p>
+    <div
+      class="pp-viewer"
+      data-ovmap-viewer
+      data-bin="{{ '/assets/data/projects/ov-map/scene0011_00.bin' | relative_url }}"
+      data-manifest="{{ '/assets/data/projects/ov-map/scene0011_00.json' | relative_url }}"
+    >
+      <div class="pp-viewer-stage">
+        <canvas class="pp-viewer-canvas" aria-label="Interactive 3D point cloud of an OV-MAP scene"></canvas>
+        <span class="pp-viewer-hint">drag to rotate · scroll to zoom</span>
+      </div>
+      <div class="pp-viewer-controls">
+        <span class="pp-control-label">View</span>
+        <button type="button" class="pp-mode-btn is-active" data-ovmap-mode="0">3D Scene</button>
+        <button type="button" class="pp-mode-btn" data-ovmap-mode="1">Class-Agnostic Instances</button>
+      </div>
+      <div class="pp-viewer-controls">
+        <span class="pp-control-label">Query</span>
+        <div class="pp-viewer-queries"></div>
+      </div>
+    </div>
+    <p class="pp-note">
+      Each query is resolved by matching a CLIP text embedding against every 3D
+      instance's open-vocabulary feature — the same mechanism a robot would use to
+      localize an object from a spoken command. Highlighted regions are OV-MAP's
+      predictions, computed offline and replayed here for an instant response.
+      An interactive real-world scan is coming soon.
+    </p>
+  </section>
+
   <section class="pp-section" id="abstract">
     <h2>Abstract</h2>
     <p>
@@ -92,6 +130,74 @@ _styles: |
         querying of the resulting map.
       </li>
     </ol>
+  </section>
+
+  <section class="pp-section" id="depth">
+    <h2>Depth Supplementation</h2>
+    <p>
+      Consumer RGB-D sensors leave large holes in their depth maps — on dark, reflective, or
+      distant surfaces the sensor simply returns nothing. Those holes break the 2D-to-3D
+      projection that OV-MAP relies on. OV-MAP renders a <em>synthetic</em> depth map from the
+      reconstructed point cloud and uses it to fill only the missing pixels of the raw depth,
+      leaving valid measurements untouched. <strong>Drag the slider</strong> to compare the raw
+      sensor depth with the supplemented result on a real frame from <code>scene0011_00</code>.
+    </p>
+    <div class="pp-compare" data-pp-compare>
+      <img
+        class="pp-compare-after"
+        src="{{ '/assets/img/projects/ov-map/depth/supplemented.png' | relative_url }}"
+        alt="Supplemented depth map: the raw sensor depth with its holes filled from point-cloud-rendered synthetic depth, leaving a dense depth image."
+        loading="lazy"
+      />
+      <img
+        class="pp-compare-before"
+        src="{{ '/assets/img/projects/ov-map/depth/raw.png' | relative_url }}"
+        alt="Raw sensor depth map with large black holes where the depth camera returned no measurement."
+        loading="lazy"
+      />
+      <input type="range" class="pp-compare-range" min="0" max="100" value="50" aria-label="Slide to compare raw and supplemented depth" />
+      <div class="pp-compare-handle"></div>
+      <span class="pp-compare-label pp-compare-label--before">Raw sensor depth</span>
+      <span class="pp-compare-label pp-compare-label--after">Supplemented depth</span>
+    </div>
+    <p class="pp-note">
+      On this frame the raw depth is missing ~37% of its pixels; supplementation brings that
+      down to ~4%. Only the raw holes are replaced with the point-cloud-rendered synthetic
+      depth, so real measurements are never overwritten.
+    </p>
+  </section>
+
+  <section class="pp-section" id="merging">
+    <h2>Building the Map: Merging Across Views</h2>
+    <p>
+      OV-MAP never sees the whole room at once. It walks through the RGB-D stream one view
+      at a time, lifts each view's class-agnostic 2D masks into 3D, and <em>merges</em> them:
+      overlapping 3D masks from different views are fused into a single instance, and a
+      dominant-vote step settles the rest — no 3D-supervised network anywhere.
+      <strong>Press play</strong> to watch the per-instance map assemble, view by view.
+    </p>
+    <div
+      class="pp-viewer"
+      data-ovmap-viewer
+      data-ovmap-timeline
+      data-bin="{{ '/assets/data/projects/ov-map/scene0011_00.bin' | relative_url }}"
+      data-manifest="{{ '/assets/data/projects/ov-map/scene0011_00.json' | relative_url }}"
+    >
+      <div class="pp-viewer-stage">
+        <canvas class="pp-viewer-canvas" aria-label="3D point cloud assembling as camera views are merged"></canvas>
+        <span class="pp-viewer-hint">drag to rotate · scroll to zoom</span>
+      </div>
+      <div class="pp-viewer-controls pp-viewer-timeline">
+        <button type="button" class="pp-mode-btn" data-ovmap-play>▶ Play</button>
+        <input type="range" class="pp-timeline-range" min="0" max="255" value="0" aria-label="Scrub through the views as the map is built" />
+        <span class="pp-timeline-count"></span>
+      </div>
+    </div>
+    <p class="pp-note">
+      Each point appears at the view where OV-MAP first observes it; colors are the final
+      per-instance labels it converges to, and structural surfaces (wall / floor / ceiling)
+      are drawn in gray. Sampled every 10th frame of the trajectory.
+    </p>
   </section>
 
   <section class="pp-section" id="presentation">
@@ -237,3 +343,4 @@ _styles: |
 </div>
 
 <script defer src="{{ '/assets/js/project-page.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/ovmap-viewer.js' | relative_url }}"></script>
