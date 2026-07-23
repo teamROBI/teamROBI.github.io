@@ -54,6 +54,14 @@ _styles: |
       }
     }
   }
+  /* al_folio_core's base .profile rule is width: 30% at >= 576px — shrink
+     it to ~90% of that (27%) so the photo takes up less room and the bio
+     text next to it has more width to breathe. */
+  @media (min-width: 576px) {
+    .profile {
+      width: 27%;
+    }
+  }
   /* Center the name + buttons under each profile photo, stacked, so they
      don't have to compete for width on one line (name wrapping past the
      buttons on narrower photos/names). */
@@ -95,7 +103,7 @@ _styles: |
 profiles:
   - id: hyejung-yoon
     align: right
-    image: prof_pic.jpg
+    image: profile/hjyoon.png
     content: about_hyejung_yoon.md
     image_circular: false # crops the image to make it circular
     more_info: >
@@ -103,7 +111,7 @@ profiles:
       <p><a href="https://www.linkedin.com/in/hyejung-yoon-19a271239" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
   - id: yesol-park
     align: left
-    image: prof_pic.jpg
+    image: profile/yspark.png
     content: about_yesol_park.md
     image_circular: false # crops the image to make it circular
     more_info: >
@@ -111,7 +119,7 @@ profiles:
       <p><a href="https://www.linkedin.com/in/yesolpark125" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
   - id: juno-kim
     align: right
-    image: prof_pic.jpg
+    image: profile/jokim.png
     content: about_juno_kim.md
     image_circular: false # crops the image to make it circular
     more_info: >

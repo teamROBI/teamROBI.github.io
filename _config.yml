@@ -58,7 +58,7 @@ al_folio:
     allow_remote_loader: true
   features:
     cv:
-      enabled: true
+      enabled: false
     distill:
       enabled: true
   compat:
@@ -191,7 +191,6 @@ exclude:
   - Gemfile.lock
   - INSTALL.md
   - LICENSE
-  - lighthouse_results/
   - package.json
   - package-lock.json
   - _pages/about_einstein.md
