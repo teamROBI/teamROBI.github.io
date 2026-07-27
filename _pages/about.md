@@ -36,7 +36,7 @@ latest_posts:
 <div class="lang-ko" style="display: none">
   <p><strong>Team ROBI</strong>는 서울대학교 <a href="https://bi.snu.ac.kr">바이오지능연구실</a> 소속 대학원생 — <a href="/people/#hyejung-yoon">윤혜정</a>, <a href="/people/#yesol-park">박예솔</a>, <a href="/people/#juno-kim">김준오</a> — 로 구성된 연구팀으로, <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html">장병탁 교수님</a>의 지도를 받고 있습니다.</p>
   <p>저희는 체화 인공지능(Embodied AI), 로봇 인지, 비전-언어-행동(Vision-Language-Action, VLA) 모델, 3차원 장면 이해, 로봇 학습, Sim2Real 전이를 연구합니다. 특히 명시적인 3차원 인지 기술과 정책 학습을 결합하여, 강건한 로봇 조작 및 이동 로봇 시스템을 구현하는 데 중점을 두고 있습니다.</p>
-  <p>자세한 내용은 <a href="/people/">구성원</a>, <a href="/publications/">논문</a>, <a href="/awards/">수상 실적</a> 페이지에서 확인하실 수 있습니다.</p>
+  <p>자세한 내용은 <a href="/people/">구성원</a>, <a href="/publications/">연구실적</a>, <a href="/awards/">수상 실적</a> 페이지에서 확인하실 수 있습니다.</p>
 </div>
 
 <style>
@@ -44,11 +44,11 @@ latest_posts:
     text-align: center;
   }
   /* al_folio_core's base .profile rule is width: 100% below the 576px
-     breakpoint (it only steps down to 30% at >= 576px) — cap it at 60%
+     breakpoint (it only steps down to 30% at >= 576px) — cap it at 80%
      on narrow screens instead so the photo doesn't dominate the page. */
   @media (max-width: 575.98px) {
     .profile {
-      width: 60%;
+      width: 80%;
       /* al_folio_core's own CSS sets a fixed margin-left (float-right) or
          margin-right (float-left) of 1rem via a more specific
          ".profile.float-right"/".profile.float-left" rule, which beats a
@@ -69,6 +69,13 @@ latest_posts:
       .profile.float-right {
         float: none !important;
       }
+    }
+  }
+  /* al_folio_core's base .profile rule is width: 30% at >= 576px — bump it
+     up to 35% so the team photo reads a bit larger on desktop. */
+  @media (min-width: 576px) {
+    .profile {
+      width: 35%;
     }
   }
   /* NOTE: .bibtex itself carries the theme's collapse animation
@@ -108,6 +115,21 @@ latest_posts:
   .publications .author,
   .publications .periodical {
     font-size: 0.88rem;
+  }
+  /* Title/author links (to the project page / people page) shouldn't be
+     always-pink like a normal link — keep default text color, only hint
+     "clickable" on hover/focus. */
+  .publications .title a,
+  .publications .author a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .publications .title a:hover,
+  .publications .title a:focus-visible,
+  .publications .author a:hover,
+  .publications .author a:focus-visible {
+    color: var(--global-theme-color);
+    text-decoration: underline;
   }
   .code-display-wrapper:active .copy,
   .code-display-wrapper:focus .copy,

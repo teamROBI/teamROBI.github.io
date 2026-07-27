@@ -108,6 +108,14 @@
   text-align: center;
 }
 
+/* Some figures are exported directly from the paper with a transparent
+   background — in dark mode that would leave black text/lines from a
+   diagram meant for a white page invisible. Force a fixed white backing
+   regardless of site theme (no visible effect on already-opaque images). */
+.project-page .pp-figure img {
+  background: #fff;
+}
+
 .project-page .pp-figure figcaption {
   font-size: 0.9rem;
   opacity: 0.75;
@@ -121,8 +129,17 @@
   margin-right: auto;
 }
 
+/* Smaller still — e.g. a real-world validation figure that doesn't need
+   to be as prominent as the main results figures. */
+.project-page .pp-figure--sm {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 640px) {
-  .project-page .pp-figure--md {
+  .project-page .pp-figure--md,
+  .project-page .pp-figure--sm {
     max-width: 100%;
   }
 }

@@ -48,7 +48,13 @@
   <!-- Entry bib key -->
   <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-9{% else %}col-sm-10{% endif %}">
     <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    <div class="title">
+      {% if entry.website %}
+        <a href="{{ entry.website | relative_url }}">{{ entry.title }}</a>
+      {% else %}
+        {{ entry.title }}
+      {% endif %}
+    </div>
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
@@ -66,6 +72,17 @@
           {% if site.scholar.first_name contains author.first %}
             {% assign author_is_self = true %}
           {% endif %}
+        {%- endif -%}
+        {%- assign people_anchor = null -%}
+        {%- if author_is_self -%}
+          {%- case author_last_name -%}
+            {%- when 'Kim' -%}
+              {%- assign people_anchor = 'juno-kim' -%}
+            {%- when 'Park' -%}
+              {%- assign people_anchor = 'yesol-park' -%}
+            {%- when 'Yoon' -%}
+              {%- assign people_anchor = 'hyejung-yoon' -%}
+          {%- endcase -%}
         {%- endif -%}
         {% assign coauthor_url = null %}
         {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
@@ -86,8 +103,14 @@
         {% endif %}
         {%- if author_is_self -%}
           <em>
+            {%- if people_anchor -%}
+              <a href="{{ '/people/' | relative_url }}#{{ people_anchor }}">
+            {%- endif -%}
             {{- author.first }}
             {{ author_last_html -}}
+            {%- if people_anchor -%}
+              </a>
+            {%- endif -%}
           </em>
         {%- else -%}
           {%- if coauthor_url -%}
@@ -381,7 +404,7 @@
       <div class="bibtex hidden">
         {% highlight bibtex %}
         {{- entry.bibtex | hideCustomBibtex -}}
-      {% endhighlight %}
+        {% endhighlight %}
       </div>
     {% endif %}
 

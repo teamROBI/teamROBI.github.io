@@ -5,6 +5,13 @@ description: IEEE/RSJ IROS 2024 (Oral)
 permalink: /projects/ov-map/
 _styles: |
   @import url("/assets/css/project-page.css");
+  /* These figures are the paper's own exported figure files (not screen
+     captures), so they have no inherent breathing room like a captured
+     crop would — add it back here so they don't look edge-to-edge. */
+  .pp-figure img {
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
 ---
 
 <div class="project-page">
@@ -291,7 +298,7 @@ _styles: |
     </figure>
 
     <figure class="pp-figure">
-      {% include figure.liquid loading="lazy" path="assets/img/projects/ov-map/comparison.png" class="img-fluid rounded z-depth-1" alt="Per-voxel (OpenScene) vs per-instance (OV-MAP) qualitative comparison on three scenes: OV-MAP separates nearby objects such as items on a desk, a trash bin, and sofa cushions that the per-voxel method conflates together." caption="Per-voxel (OpenScene) vs. per-instance (ours) segmentation. Circled regions show where the per-voxel method conflates nearby objects — items on a desk, an attached trash bin, sofa cushions — that OV-MAP separates correctly." %}
+      {% include figure.liquid loading="lazy" path="assets/img/projects/ov-map/comparison.jpg" class="img-fluid rounded z-depth-1" alt="Per-voxel (OpenScene) vs per-instance (OV-MAP) qualitative comparison on three scenes: OV-MAP separates nearby objects such as items on a desk, a trash bin, and sofa cushions that the per-voxel method conflates together." caption="Per-voxel (OpenScene) vs. per-instance (ours) segmentation. Circled regions show where the per-voxel method conflates nearby objects — items on a desk, an attached trash bin, sofa cushions — that OV-MAP separates correctly." %}
     </figure>
 
   </section>
@@ -302,7 +309,7 @@ _styles: |
       Beyond the ScanNet200/Replica benchmarks, OV-MAP was also validated on a real-world
       scan captured outside either dataset, then queried with open-vocabulary text prompts.
     </p>
-    <figure class="pp-figure">
+    <figure class="pp-figure pp-figure--sm">
       {% include figure.liquid loading="lazy" path="assets/img/projects/ov-map/realworld.png" class="img-fluid rounded z-depth-1" alt="Real-world map creation validation: (a) 3D instance segmentation result on a real-world scan. (b) Open-vocabulary query results correctly localizing a door, a shelf, a water purifier, and a refrigerator." caption="(a) 3D instance segmentation on real-world data. (b) Open-vocabulary query results — the model correctly localizes objects for the text queries &ldquo;door,&rdquo; &ldquo;shelf,&rdquo; &ldquo;water purifier,&rdquo; and &ldquo;refrigerator.&rdquo;" %}
     </figure>
   </section>
