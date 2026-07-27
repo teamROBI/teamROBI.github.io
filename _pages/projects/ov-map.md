@@ -84,7 +84,6 @@ _styles: |
       instance's open-vocabulary feature — the same mechanism a robot would use to
       localize an object from a spoken command. Highlighted regions are OV-MAP's
       predictions, computed offline and replayed here for an instant response.
-      An interactive real-world scan is coming soon.
     </p>
   </section>
 
