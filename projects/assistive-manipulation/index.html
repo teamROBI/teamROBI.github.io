@@ -1,0 +1,116 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Visual Perception-Based Assistive Mobile Robot System for Manipulation Tasks | Team ROBI </title> <meta name="author" content=" "> <meta name="description" content="ICRA 2023 Workshop"> <meta name="keywords" content="research, lab, team-robi"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://teamrobi.github.io/projects/assistive-manipulation/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Team ROBI </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/"> <span class="lang-en">about</span> <span class="lang-ko" style="display: none">소개</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/"> <span class="lang-en">publications</span> <span class="lang-ko" style="display: none">연구실적</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/awards/"> <span class="lang-en">awards</span> <span class="lang-ko" style="display: none">수상</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/"> <span class="lang-en">people</span> <span class="lang-ko" style="display: none">구성원</span> </a> </li> <li class="nav-item lang-switch-item"> <button id="lang-switch" class="lang-switch" type="button" data-lang="en" title="Switch language" aria-label="Switch language"> <span class="lang-switch-thumb"></span> <span class="lang-switch-option lang-switch-en">EN</span> <span class="lang-switch-option lang-switch-ko">KOR</span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  /* Roboto has no Hangul glyphs, so Korean text falls back to whatever
+     generic sans-serif the OS provides — add Noto Sans KR as the fallback
+     so Korean renders consistently everywhere (news, bios, about, etc.)
+     without changing how existing Latin text looks. */
+  body {
+    font-family: Roboto, 'Noto Sans KR', sans-serif;
+  }
+  .lang-switch-item {
+    display: flex;
+    align-items: center;
+  }
+  .lang-switch {
+    position: relative;
+    display: inline-flex;
+    width: 64px;
+    height: 26px;
+    padding: 2px;
+    margin: 0 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .lang-switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(50% - 2px);
+    height: calc(100% - 4px);
+    border-radius: 999px;
+    background: var(--global-theme-color);
+    transition: transform 0.2s ease;
+    z-index: 1;
+  }
+  .lang-switch[data-lang='ko'] .lang-switch-thumb {
+    transform: translateX(100%);
+  }
+  .lang-switch-option {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color);
+    opacity: 0.55;
+    transition:
+      opacity 0.2s ease,
+      color 0.2s ease;
+  }
+  .lang-switch[data-lang='en'] .lang-switch-en,
+  .lang-switch[data-lang='ko'] .lang-switch-ko {
+    color: #fff;
+    opacity: 1;
+  }
+</style> <script>
+  (function () {
+    var STORAGE_KEY = 'site-lang';
+
+    function apply(lang) {
+      document.querySelectorAll('.lang-en').forEach(function (el) {
+        el.style.display = lang === 'en' ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-ko').forEach(function (el) {
+        el.style.display = lang === 'ko' ? '' : 'none';
+      });
+      var btn = document.getElementById('lang-switch');
+      if (btn) btn.dataset.lang = lang;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var saved = localStorage.getItem(STORAGE_KEY) || 'en';
+      apply(saved);
+
+      var btn = document.getElementById('lang-switch');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var next = btn.dataset.lang === 'en' ? 'ko' : 'en';
+          localStorage.setItem(STORAGE_KEY, next);
+          apply(next);
+        });
+      }
+    });
+  })();
+</script> <div class="container mt-5" role="main"> <style type="text/css">
+    @import url("/assets/css/project-page.css");
+/* Figures are exported directly from the paper with no margin — add it
+   back so they don't look edge-to-edge. */
+.pp-figure img {
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+  </style> <div class="post"> <header class="post-header"> <h1 class="post-title"> <span>Visual Perception-Based Assistive Mobile Robot System for Manipulation Tasks</span> </h1> <p class="post-description"> <span>ICRA 2023 Workshop</span> </p> </header> <article> <div class="project-page"> <header class="pp-header"> <p class="pp-venue"> ICRA 2023 Workshop — Emerging Paradigms for Assistive Robotic Manipulation: From Research Labs to the Real World </p> <p class="pp-authors"> Hye-Jung Yoon · Juno Kim · Yesol Park · Byoung-Tak Zhang<sup>1,2</sup> </p> <p class="pp-affiliations"> <sup>1</sup>Interdisciplinary Program in AI, Seoul National University  ·  <sup>2</sup>AI Institute, Seoul National University </p> <div class="pp-buttons"> <a href="https://drive.google.com/file/d/1tq-axEfVanYB65fi0FpImqKS0GW1BVRZ/view?usp=share_link" target="_blank" rel="noopener noreferrer">Paper</a> <a href="https://sites.google.com/unisi.it/workshop-manipulation/home-page" target="_blank" rel="noopener noreferrer">Workshop</a> <a href="#bibtex">BibTeX</a> </div> </header> <div class="pp-teaser pp-figure pp-figure--md"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/assistive-manipulation/teaser-480.webp 480w,/assets/img/projects/assistive-manipulation/teaser-800.webp 800w,/assets/img/projects/assistive-manipulation/teaser-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/assistive-manipulation/teaser.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Illustration of the proposed system: a mobile robot in a house is given the instruction 'Get me some water on the table,' determines the item, action, and place from the command, and navigates to complete the task." loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> </figure> </div> <p class="pp-tldr"> A visual perception-based assistive mobile robot system that performs both <strong>user-directive</strong> and <strong>robot-directive</strong> manipulation tasks — understanding natural-language instructions or autonomously perceiving user needs to help people with limited mobility. </p> <section class="pp-section" id="abstract"> <h2>Abstract</h2> <p> Mobile robots have the potential to assist humans in grasping and manipulating tasks. However, making a reliable and efficient mobile robot system is challenging due to the complexity of dynamic environments. In this paper, we present a visual perception-based mobile robot system assisting individuals lacking manipulation skills. Our system designed to perform the user-directive and robot-directive tasks and utilizes Toyota's Human-Support-Robot (HSR) along with the unifiedIO model for visual interpretation techniques. Furthermore, we conducted experiments to demonstrate the potential of the HSR with visual interpretation for real-world applications in household settings. Our approach enhances the effectiveness of the mobile robot system and extends the range of tasks that can be accomplished. </p> </section> <section class="pp-section" id="method"> <h2>Method</h2> <p> The system performs manipulation tasks through two task types, both executed on Toyota's Human Support Robot (HSR) using the unifiedIO model for visual grounding, image captioning, and VQA: </p> <ol> <li> <strong>User-directive tasks</strong> — the system parses a natural-language instruction into three components: item, action, and place. It then uses visual grounding to detect and locate the target item via the robot's head camera before executing the action. </li> <li> <strong>Robot-directive tasks</strong> — the robot autonomously perceives a specific user event through image captioning and uses VQA to determine whether the user needs assistance. If so, it asks the user whether they'd like help, then executes the confirmed task the same way as a user-directive task. </li> </ol> <figure class="pp-figure pp-figure--sm"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/assistive-manipulation/grasp-procedure-480.webp 480w,/assets/img/projects/assistive-manipulation/grasp-procedure-800.webp 800w,/assets/img/projects/assistive-manipulation/grasp-procedure-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/assistive-manipulation/grasp-procedure.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Procedure for grasping the target object: (a) the robot captures the angle of the object's surface at various angles, (b) it selects the corresponding pre-defined grasp pose optimized for that angle." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Procedure for grasping the target object. The robot first captures the angle of the object's surface (a), then selects the corresponding pre-defined grasp pose optimized for the object (b).</figcaption> </figure> </figure> <p> To execute the grasp itself, the robot obtains point cloud data of the target object's bounding box, determines the angle of its surface relative to the normal vector at the center point, and selects the pre-defined grasp pose optimized for that surface angle. </p> </section> <section class="pp-section" id="results"> <h2>Real-World Experiments</h2> <p> Tasks were tested across three pre-defined places — table, sofa, and refrigerator — in real household settings. </p> <figure class="pp-figure"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/assistive-manipulation/user-directive-480.webp 480w,/assets/img/projects/assistive-manipulation/user-directive-800.webp 800w,/assets/img/projects/assistive-manipulation/user-directive-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/assistive-manipulation/user-directive.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Example of the user-directive task: (a) 'Bring me the remote on the table' — the robot detects and retrieves the remote; (b) 'Please remove all the objects on the sofa' — the robot detects and removes multiple objects one by one." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Example of the user-directive task. The robot comprehends the NL instructions from the user and performs the user-given tasks: (a) retrieving the remote from the table, (b) removing all objects from the sofa.</figcaption> </figure> </figure> <p> In the robot-directive case, the robot inspects whether the user is eating via image captioning at breakfast time; if VQA finds no drinks on the table, it asks the user whether they need one, then executes the task the user confirms. </p> <figure class="pp-figure pp-figure--sm"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/assistive-manipulation/robot-directive-480.webp 480w,/assets/img/projects/assistive-manipulation/robot-directive-800.webp 800w,/assets/img/projects/assistive-manipulation/robot-directive-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/assistive-manipulation/robot-directive.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Example of the robot-directive task: the robot uses image captioning and VQA to determine the user is eating breakfast with no drinks on the table, asks if the user needs anything, and retrieves a coke from the refrigerator after the user confirms." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Example of the robot-directive task. The robot perceives the user status through image captioning and VQA, then receives tasks from the user by interacting.</figcaption> </figure> </figure> <p class="pp-note"> Across both task types, the robot correctly parsed the instruction/perceived event, located the target via visual grounding, and completed the manipulation — demonstrating the system's potential for assisting people with limited mobility in everyday household tasks. </p> </section> <section class="pp-section" id="bibtex"> <h2>BibTeX</h2> <div class="pp-bibtex"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">yoon2023workshop</span><span class="p">,</span>
+  <span class="na">title</span><span class="p">=</span><span class="s">{Visual Perception-Based Assistive Mobile Robot System for Manipulation Tasks}</span><span class="p">,</span>
+  <span class="na">author</span><span class="p">=</span><span class="s">{Yoon, Hye-Jung and Kim, Juno and Park, Yesol and Zhang, Byoung-Tak}</span><span class="p">,</span>
+  <span class="na">booktitle</span><span class="p">=</span><span class="s">{ICRA 2023 Workshop on Emerging Paradigms for Assistive Robotic Manipulation: From Research Labs to the Real World}</span><span class="p">,</span>
+  <span class="na">year</span><span class="p">=</span><span class="s">{2023}</span>
+<span class="p">}</span></code></pre></figure> </div> </section> </div> <script defer src="/assets/js/project-page.js"></script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 . Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> </body> </html>
