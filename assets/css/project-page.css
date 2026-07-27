@@ -80,6 +80,22 @@
   border-color: currentColor;
 }
 
+/* A resource that isn't public yet (e.g. a paper embargoed until after the
+   conference presentation) — same pill shape as a real button, but muted
+   and non-interactive so it doesn't look like a broken/dead link. */
+.project-page .pp-buttons .pp-btn-disabled {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px dashed var(--global-divider-color, #dcdcdc);
+  font-size: 0.92rem;
+  font-weight: 600;
+  opacity: 0.6;
+  cursor: default;
+}
+
 /* ---- Sections ---- */
 
 .project-page .pp-section {
@@ -137,9 +153,18 @@
   margin-right: auto;
 }
 
+/* Between the default (100%) and --md — a figure that's slightly too wide
+   edge-to-edge but still deserves to be fairly prominent. */
+.project-page .pp-figure--lg {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 640px) {
   .project-page .pp-figure--md,
-  .project-page .pp-figure--sm {
+  .project-page .pp-figure--sm,
+  .project-page .pp-figure--lg {
     max-width: 100%;
   }
 }
