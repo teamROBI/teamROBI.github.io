@@ -182,7 +182,6 @@
   }
 
   function initViewerWithContext(root, canvas, binUrl, manifestUrl, gl) {
-
     var timeline = root.hasAttribute("data-ovmap-timeline");
     var state = {
       radius: 2.4,

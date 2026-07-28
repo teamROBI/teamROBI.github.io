@@ -129,6 +129,7 @@ _styles: |
       and points CDIS left unassigned are shown in gray. Computed offline and replayed here for an
       instant response.
     </p>
+
   </section>
 
   <section class="pp-section" id="abstract">
