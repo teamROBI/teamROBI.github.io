@@ -1,0 +1,1 @@
+{"scene":"scene0609_03","dataset":"ScanNet200 (val)","nPoints":69895,"posScale":9.006757106016133e-05,"layout":["int16 xyz","uint8 rgb","uint8 seg","uint8 segNaive","uint16 inst","uint8 reveal"],"hasNaiveSeg":true}
