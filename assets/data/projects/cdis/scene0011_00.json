@@ -1,0 +1,15 @@
+{
+  "scene": "scene0011_00",
+  "dataset": "ScanNet200 (val)",
+  "nPoints": 237360,
+  "posScale": 0.00012582826284041325,
+  "layout": [
+    "int16 xyz",
+    "uint8 rgb",
+    "uint8 seg",
+    "uint8 segNaive",
+    "uint16 inst",
+    "uint8 reveal"
+  ],
+  "hasNaiveSeg": true
+}

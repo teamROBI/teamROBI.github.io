@@ -111,9 +111,10 @@
     "layout(location=2) in vec3 aInst;\n" +
     "layout(location=3) in float aHi;\n" +
     "layout(location=4) in float aReveal;\n" +
+    "layout(location=5) in vec3 aSegNaive;\n" +
     "uniform mat4 uMVP;\n" +
     "uniform float uPoint;\n" +
-    "uniform int uMode;\n" + // 0 rgb, 1 instance, 2 query
+    "uniform int uMode;\n" + // 0 rgb, 1 instance, 2 query, 3 naive/ablation instance coloring
     "uniform float uReveal;\n" + // points with aReveal > uReveal are hidden (merge animation)
     "uniform vec3 uAccent;\n" +
     "uniform vec3 uDim;\n" +
@@ -124,6 +125,7 @@
     "  gl_PointSize = clamp(uPoint / max(gl_Position.w, 0.15), 2.0, 22.0);\n" +
     "  if(uMode==0){ vColor=aRGB; }\n" +
     "  else if(uMode==1){ vColor=aInst; }\n" +
+    "  else if(uMode==3){ vColor=aSegNaive; }\n" +
     "  else { vColor = aHi>0.5 ? uAccent : uDim; }\n" +
     "}\n";
 
@@ -148,17 +150,38 @@
     return s;
   }
 
+  // Multiple viewers can request a WebGL2 context in the same tick (one per demo
+  // scene); on some browsers/GPUs the very first context creation right after page
+  // load is flaky and briefly returns null even though WebGL2 is genuinely supported
+  // (a reload "fixes" it once the GPU process has caught up). Retry a couple of times
+  // with a short delay before concluding it's actually unsupported.
+  function getWebGL2ContextRetrying(canvas, attempt, cb) {
+    var gl = canvas.getContext("webgl2", { antialias: true, alpha: false });
+    if (gl || attempt >= 3) {
+      cb(gl);
+      return;
+    }
+    setTimeout(function () {
+      getWebGL2ContextRetrying(canvas, attempt + 1, cb);
+    }, 150);
+  }
+
   function initViewer(root) {
     var canvas = root.querySelector(".pp-viewer-canvas");
     var binUrl = root.getAttribute("data-bin");
     var manifestUrl = root.getAttribute("data-manifest");
     if (!canvas || !binUrl || !manifestUrl) return;
 
-    var gl = canvas.getContext("webgl2", { antialias: true, alpha: false });
-    if (!gl) {
-      root.classList.add("pp-viewer--unsupported");
-      return;
-    }
+    getWebGL2ContextRetrying(canvas, 0, function (gl) {
+      if (!gl) {
+        root.classList.add("pp-viewer--unsupported");
+        return;
+      }
+      initViewerWithContext(root, canvas, binUrl, manifestUrl, gl);
+    });
+  }
+
+  function initViewerWithContext(root, canvas, binUrl, manifestUrl, gl) {
 
     var timeline = root.hasAttribute("data-ovmap-timeline");
     var state = {
@@ -251,12 +274,27 @@
       var n = manifest.nPoints,
         scale = manifest.posScale;
       state.n = n;
-      // layout: int16 xyz | uint8 rgb | uint8 seg (instance color) | uint16 inst | uint8 reveal
+      // layout: int16 xyz | uint8 rgb | uint8 seg (instance color) | [uint8 segNaive]? | uint16 inst | uint8 reveal
+      // segNaive (mode 3: an ablation/comparison coloring, e.g. "no tracking") is optional —
+      // manifest.hasNaiveSeg gates its presence so older manifests without it still parse correctly.
       var i16 = new Int16Array(bin, 0, n * 3);
-      var rgb = new Uint8Array(bin, n * 6, n * 3);
-      var seg = new Uint8Array(bin, n * 6 + n * 3, n * 3);
-      var inst = new Uint16Array(bin, n * 12, n);
-      var reveal = new Uint8Array(bin, n * 14, n);
+      var off = n * 6;
+      var rgb = new Uint8Array(bin, off, n * 3);
+      off += n * 3;
+      var seg = new Uint8Array(bin, off, n * 3);
+      off += n * 3;
+      var segNaive = null;
+      if (manifest.hasNaiveSeg) {
+        segNaive = new Uint8Array(bin, off, n * 3);
+        off += n * 3;
+      }
+      // Uint16Array requires an even byte offset. The preceding fields are all
+      // n*(odd count of 3-byte pixels), so this offset is only even when n itself is
+      // even -- pad one byte when n is odd (the writer inserts the same pad byte).
+      if (off % 2 !== 0) off += 1;
+      var inst = new Uint16Array(bin, off, n);
+      off += n * 2;
+      var reveal = new Uint8Array(bin, off, n);
       instByPoint = inst;
 
       var pos = new Float32Array(n * 3);
@@ -290,6 +328,12 @@
       gl.bindBuffer(gl.ARRAY_BUFFER, b);
       gl.bufferData(gl.ARRAY_BUFFER, reveal, gl.STATIC_DRAW);
       attrib(4, b, 1, gl.UNSIGNED_BYTE, false);
+      if (segNaive) {
+        b = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, b);
+        gl.bufferData(gl.ARRAY_BUFFER, segNaive, gl.STATIC_DRAW);
+        attrib(5, b, 3, gl.UNSIGNED_BYTE, true);
+      }
       state.dirty = true;
     }
 
@@ -473,9 +517,38 @@
     apply();
   }
 
+  // A viewer inside a hidden tab panel (display:none) has a zero-size canvas at page
+  // load; on some browsers WebGL2 context creation on a zero-size/hidden canvas fails
+  // outright (not just flakily), so switching to that tab later never recovers -- the
+  // failure was already latched in. Defer init until the canvas is actually laid out.
+  function initViewerWhenVisible(root) {
+    var canvas = root.querySelector(".pp-viewer-canvas");
+    if (!canvas) return;
+    var rect = canvas.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) {
+      initViewer(root);
+      return;
+    }
+    if (!window.IntersectionObserver) {
+      initViewer(root);
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        var r = entries[i].target.getBoundingClientRect();
+        if (r.width > 0 && r.height > 0) {
+          obs.disconnect();
+          initViewer(root);
+          return;
+        }
+      }
+    });
+    obs.observe(canvas);
+  }
+
   function init() {
     var roots = document.querySelectorAll("[data-ovmap-viewer]");
-    for (var i = 0; i < roots.length; i++) initViewer(roots[i]);
+    for (var i = 0; i < roots.length; i++) initViewerWhenVisible(roots[i]);
     var cmp = document.querySelectorAll("[data-pp-compare]");
     for (var j = 0; j < cmp.length; j++) initCompare(cmp[j]);
   }

@@ -106,10 +106,85 @@
     select(initial, false);
   }
 
+  // ---- frame scrubber (scrub/play through a precomputed image sequence) ----
+  // Markup contract:
+  //   <div data-pp-scrubber data-frames='["url1","url2",...]'>
+  //     <div class="pp-viewer-stage"><img class="pp-scrubber-img" src="url1"></div>
+  //     <div class="pp-viewer-controls">
+  //       <button data-pp-scrubber-play>Play</button>
+  //       <input type="range" class="pp-timeline-range">
+  //       <span class="pp-timeline-count"></span>
+  //     </div>
+  //   </div>
+  function initScrubber(root) {
+    var img = root.querySelector(".pp-scrubber-img");
+    var range = root.querySelector(".pp-timeline-range");
+    var count = root.querySelector(".pp-timeline-count");
+    var play = root.querySelector("[data-pp-scrubber-play]");
+    if (!img || !range) return;
+
+    var frames;
+    try {
+      frames = JSON.parse(root.getAttribute("data-frames"));
+    } catch (e) {
+      return;
+    }
+    if (!frames || !frames.length) return;
+
+    range.min = 0;
+    range.max = frames.length - 1;
+
+    function setFrame(i) {
+      i = Math.max(0, Math.min(frames.length - 1, i));
+      img.src = frames[i];
+      range.value = i;
+      if (count) count.textContent = "frame " + (i + 1) + " / " + frames.length;
+    }
+
+    var playing = false,
+      raf = null;
+    function stop() {
+      playing = false;
+      if (raf) cancelAnimationFrame(raf);
+      if (play) play.textContent = "▶ Play";
+    }
+    function start() {
+      if (prefersReducedMotion) return;
+      playing = true;
+      if (play) play.textContent = "⏸ Pause";
+      var last = 0,
+        msPerFrame = 500;
+      (function step(t) {
+        if (!playing) return;
+        if (t - last >= msPerFrame) {
+          last = t;
+          setFrame((+range.value + 1) % frames.length);
+        }
+        raf = requestAnimationFrame(step);
+      })(0);
+    }
+
+    range.addEventListener("input", function () {
+      stop();
+      setFrame(+range.value);
+    });
+    if (play) {
+      play.addEventListener("click", function () {
+        playing ? stop() : start();
+      });
+    }
+
+    setFrame(0);
+  }
+
   function init() {
     var tabRoots = document.querySelectorAll("[data-pp-tabs]");
     for (var i = 0; i < tabRoots.length; i++) {
       initTabs(tabRoots[i]);
+    }
+    var scrubberRoots = document.querySelectorAll("[data-pp-scrubber]");
+    for (var j = 0; j < scrubberRoots.length; j++) {
+      initScrubber(scrubberRoots[j]);
     }
   }
 
