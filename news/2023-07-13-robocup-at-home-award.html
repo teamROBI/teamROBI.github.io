@@ -64,6 +64,28 @@
     color: #fff;
     opacity: 1;
   }
+
+  /* Unified small badge-style link used to cite a news/press source
+     (replaces the old inconsistent "Coverage in X" / "Related news: X"
+     inline-link phrasing across _news/*.md). */
+  .news-src {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.05rem 0.55rem;
+    margin-left: 0.3rem;
+    font-size: 0.78em;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.06);
+    color: inherit;
+    text-decoration: none !important;
+  }
+  .news-src:hover {
+    background: rgba(0, 0, 0, 0.12);
+  }
 </style> <script>
   (function () {
     var STORAGE_KEY = 'site-lang';
@@ -93,7 +115,7 @@
       }
     });
   })();
-</script> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Robocup At Home Award</h1> <p class="post-meta"> Created on July 13, 2023 </p> <p class="post-tags"> <i class="fa-solid fa-calendar fa-sm"></i> 2023 </p> </header> <article class="post-content"> <div id="markdown-content"> <p><span class="lang-en">🏆 <strong>Team Tidyboy</strong>, a joint team from Pusan National University and Seoul National University that included Team ROBI, won <strong>both the DSPL and OPL leagues</strong> at <strong>RoboCup@Home</strong>, an international AI robotics competition. <a href="https://news.unn.net/news/articleView.html?idxno=549874" rel="external nofollow noopener" target="_blank">Coverage in University News Network</a>.</span><span class="lang-ko" style="display: none">🏆 Team ROBI가 참여한 <strong>Tidyboy 팀</strong>(부산대학교·서울대학교 연합팀)이 국제 인공지능 로봇 대회 <strong>RoboCup@Home</strong>의 <strong>DSPL 및 OPL 두 리그에서 모두 우승</strong>했습니다. [관련 기사: <a href="https://news.unn.net/news/articleView.html?idxno=549874" rel="external nofollow noopener" target="_blank">대학지성 In&amp;Out</a>]</span></p> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 . Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+</script> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Robocup At Home Award</h1> <p class="post-meta"> Created on July 13, 2023 </p> <p class="post-tags"> <i class="fa-solid fa-calendar fa-sm"></i> 2023 </p> </header> <article class="post-content"> <div id="markdown-content"> <p><span class="lang-en">🏆 We won <strong>both the DSPL and OPL leagues</strong> at <strong>RoboCup@Home</strong>. <a class="news-src" href="https://news.unn.net/news/articleView.html?idxno=549874" target="_blank" rel="noopener" title="University News Network">📰 Press</a></span><span class="lang-ko" style="display: none">🏆 <strong>RoboCup@Home</strong>에서 <strong>DSPL·OPL 두 리그 모두 우승</strong>했습니다. <a class="news-src" href="https://news.unn.net/news/articleView.html?idxno=549874" target="_blank" rel="noopener" title="대학지성 In&amp;Out">📰 Press</a></span></p> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 . Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
