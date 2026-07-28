@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-<span class="lang-en">🏆 Team ROBI won the **Minister of Trade, Industry and Resources Award (1st Place, Grand Prize)** at the **2026 Humanoid AI Challenge**. [Coverage in Daegu Ilbo](https://www.dkilbo.com/news/articleView.html?idxno=547897).</span><span class="lang-ko" style="display: none">🏆 Team ROBI가 **2026 휴머노이드 AI 챌린지**에서 **산업통상부 장관상(1위·대상)**을 수상했습니다. [관련 기사: [대구일보](https://www.dkilbo.com/news/articleView.html?idxno=547897)]</span>
+<span class="lang-en">🏆 We won the **Minister of Trade, Industry and Resources Award** (1st place) at the **2026 Humanoid AI Challenge**. <a class="news-src" href="https://www.dkilbo.com/news/articleView.html?idxno=547897" target="_blank" rel="noopener" title="Daegu Ilbo">📰 Press</a></span><span class="lang-ko" style="display: none">🏆 **2026 휴머노이드 AI 챌린지**에서 **산업통상부 장관상**(1위)을 수상했습니다. <a class="news-src" href="https://www.dkilbo.com/news/articleView.html?idxno=547897" target="_blank" rel="noopener" title="대구일보">📰 Press</a></span>

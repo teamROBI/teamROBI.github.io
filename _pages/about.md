@@ -19,7 +19,7 @@ social: false # includes social icons at the bottom of the page (single-person f
 announcements:
   enabled: true # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  limit: # leave blank to include all the news in the `_news` folder
 
 latest_posts:
   enabled: false # no blog on this site
@@ -42,6 +42,31 @@ latest_posts:
 <style>
   .more-info {
     text-align: center;
+  }
+  /* The "selected publications" heading sits right after the News table
+     (which only has a tight 1rem margin-bottom from the base .table rule),
+     but the actual paper list below it has a 2rem margin-top (from
+     al_folio_core's .publications rule) — so the heading visually reads as
+     part of News instead of Publications. Match the gap above it to the
+     gap already below it. */
+  .news + h2 {
+    margin-top: 2rem;
+  }
+  /* Light zebra striping for the News table so rows are easier to scan in
+     the scrollable box. --global-divider-color is tuned for hairline
+     borders, not fills, so it reads as too dark used as a row background —
+     use a low-opacity overlay instead (same subtlety as the .press-card
+     hover state on the awards page), with a separate dark-mode value. */
+  .news table tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.035);
+  }
+  @media (prefers-color-scheme: dark) {
+    .news table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  :root[data-theme="dark"] .news table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
   }
   /* al_folio_core's base .profile rule is width: 100% below the 576px
      breakpoint (it only steps down to 30% at >= 576px) — cap it at 80%
