@@ -5,7 +5,7 @@
 **Education**
 
 - Integrated M.S./Ph.D. in [Interdisciplinary Program in Artificial Intelligence](https://gsai.snu.ac.kr/en), Seoul National University (2022 – present, advisor: Prof. Byoung-Tak Zhang)
-- B.Eng., Korea University
+- Bachelor's degree in Computer Science, Korea University
 
 [LinkedIn](https://www.linkedin.com/in/juno-kim-738579361) · [CV](/assets/pdf/juno_kim_cv.pdf) · See the team's [Awards](/awards/) page for competition wins.
 
@@ -18,7 +18,7 @@
 **학력**
 
 - 서울대학교 [협동과정 인공지능전공](https://gsai.snu.ac.kr) 석·박사통합과정 (2022 – 현재, 지도교수: 장병탁 교수)
-- 고려대학교 학사
+- 고려대학교 컴퓨터공학 학사
 
 [LinkedIn](https://www.linkedin.com/in/juno-kim-738579361) · [이력서](/assets/pdf/juno_kim_cv.pdf) · 대회 수상 내역은 팀의 [수상 실적](/awards/) 페이지에서 확인하실 수 있습니다.
 

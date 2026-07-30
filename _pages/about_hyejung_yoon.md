@@ -7,7 +7,7 @@ Research interests: Embodied AI, Robot Perception, Vision-Language-Action (VLA) 
 **Education**
 
 - Integrated M.S./Ph.D. in [Interdisciplinary Program in Artificial Intelligence](https://gsai.snu.ac.kr/en), Seoul National University (2022 – present, advisor: Prof. Byoung-Tak Zhang)
-- B.Eng. in Computer Science and Engineering, Ewha Womans University
+- Bachelor's degree in Computer Science and Engineering, Ewha Womans University
 
 [LinkedIn](https://www.linkedin.com/in/hyejung-yoon-19a271239) · See the team's [Awards](/awards/) page for competition wins.
 
