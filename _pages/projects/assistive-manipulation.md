@@ -21,10 +21,10 @@ _styles: |
       Research Labs to the Real World
     </p>
     <p class="pp-authors">
-      Hye-Jung Yoon ·
-      Juno Kim ·
-      Yesol Park ·
-      Byoung-Tak Zhang<sup>1,2</sup>
+      <a href="{{ '/people/' | relative_url }}#hyejung-yoon">Hye-Jung Yoon</a> ·
+      <a href="{{ '/people/' | relative_url }}#juno-kim">Juno Kim</a> ·
+      <a href="{{ '/people/' | relative_url }}#yesol-park">Yesol Park</a> ·
+      <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" target="_blank" rel="noopener noreferrer">Byoung-Tak Zhang</a><sup>1,2</sup>
     </p>
     <p class="pp-affiliations">
       <sup>1</sup>Interdisciplinary Program in AI, Seoul National University &nbsp;·&nbsp;

@@ -19,10 +19,10 @@ _styles: |
   <header class="pp-header">
     <p class="pp-venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2024 (Oral)</p>
     <p class="pp-authors">
-      Juno Kim<sup>1,*</sup> ·
-      Yesol Park<sup>1,*</sup> ·
-      Hye-Jung Yoon<sup>1,*</sup> ·
-      Byoung-Tak Zhang<sup>1,2,3</sup>
+      <a href="{{ '/people/' | relative_url }}#juno-kim">Juno Kim</a><sup>1,*</sup> ·
+      <a href="{{ '/people/' | relative_url }}#yesol-park">Yesol Park</a><sup>1,*</sup> ·
+      <a href="{{ '/people/' | relative_url }}#hyejung-yoon">Hye-Jung Yoon</a><sup>1,*</sup> ·
+      <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" target="_blank" rel="noopener noreferrer">Byoung-Tak Zhang</a><sup>1,2,3</sup>
     </p>
     <p class="pp-affiliations">
       <sup>1</sup>Interdisciplinary Program in AI, Seoul National University &nbsp;·&nbsp;
