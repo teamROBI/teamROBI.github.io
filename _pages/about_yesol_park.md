@@ -7,7 +7,7 @@ Research interests: Vision-Language-Action (VLA) models, Robot Perception, 3D Sc
 **Education**
 
 - Integrated M.S./Ph.D. in [Interdisciplinary Program in Artificial Intelligence](https://gsai.snu.ac.kr/en), Seoul National University (2022 – present, advisor: Prof. Byoung-Tak Zhang)
-- B.Eng. in Computer Science and Engineering, Chung-Ang University
+- Bachelor's degree in Computer Science and Engineering, Chung-Ang University
 
 [LinkedIn](https://www.linkedin.com/in/parkyesol) · See the team's [Awards](/awards/) page for competition wins.
 

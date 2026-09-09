@@ -44,6 +44,73 @@ _styles: |
     without paying the cost of VLM reasoning on every query.
   </p>
 
+  <section class="pp-section" id="demo">
+    <h2>Interactive Demo</h2>
+    <p>
+      This demo replays an actual Scene-Q run on ScanNet200 scene <code>scene0011_00</code>:
+      class-agnostic 3D instances from OneFormer3D, scored with the SigLIP2 encoder used for
+      routing. Selecting an instance below displays its temperature-scaled confidence
+      distribution over all 198 candidate labels and indicates whether it was resolved on the
+      fast path or escalated to Qwen2.5-VL, following the routing procedure in Fig.&nbsp;1.
+    </p>
+    <div
+      class="pp-viewer"
+      data-ovmap-viewer
+      data-bin="{{ '/assets/data/projects/scene-q/scene0011_00.bin' | relative_url }}"
+      data-manifest="{{ '/assets/data/projects/scene-q/scene0011_00.json' | relative_url }}"
+      data-img-base="{{ '/assets/img/projects/scene-q/vlm-demo/' | relative_url }}"
+    >
+      <div class="pp-viewer-stage">
+        <canvas class="pp-viewer-canvas" aria-label="Interactive 3D point cloud of Scene-Q scene0011_00"></canvas>
+        <span class="pp-viewer-hint">drag to rotate · scroll to zoom</span>
+        <div class="pp-viewer-labels" aria-hidden="true"></div>
+      </div>
+      <div class="pp-viewer-controls">
+        <span class="pp-control-label">View</span>
+        <button type="button" class="pp-mode-btn is-active" data-ovmap-mode="0" aria-pressed="true">3D Scene</button>
+        <button type="button" class="pp-mode-btn" data-ovmap-mode="1" aria-pressed="false">Class-Agnostic Instances</button>
+        <button type="button" class="pp-mode-btn" data-ovmap-mode="4" aria-pressed="false">Semantic Instance Segmentation</button>
+      </div>
+      <div class="pp-semantic-legend"></div>
+      <div class="pp-viewer-controls">
+        <span class="pp-control-label">Instance</span>
+        <div class="pp-viewer-queries"></div>
+      </div>
+      <div class="pp-viewer-controls">
+        <span class="pp-control-label">Query</span>
+        <div class="pp-viewer-nlqueries"></div>
+      </div>
+      <div class="pp-instance-panel"></div>
+    </div>
+    <p class="pp-note">
+      <strong>Semantic Instance Segmentation</strong> colors each of this scene's 95 instances
+      by Scene-Q's predicted category (identical colors indicate identical labels); this is the
+      segmentation against which Table&nbsp;I's mAP, AP50, and AP25 are computed, as distinct
+      from the class-agnostic geometry shown above. The result is Scene-Q's own saved
+      end-to-end output for this scene (<code>sem_mask_array_CC_BB</code>, SigLIP2 with
+      selective Qwen2.5-VL routing), which we verified by independently re-deriving six of
+      its instances (below) and obtaining identical labels. Of the 95 instances, 56 (59%) were
+      escalated to the VLM, consistent with the paper's reported range of 39&ndash;62%.
+    </p>
+    <p class="pp-note">
+      The confidence bars use the per-instance SigLIP2 embeddings saved during evaluation,
+      re-scored with the paper's fitted temperature (T&nbsp;=&nbsp;0.01113&hellip;) and routing
+      thresholds (p<sub>max</sub>&nbsp;&ge;&nbsp;0.50, margin&nbsp;&ge;&nbsp;0.15, normalized
+      entropy&nbsp;&le;&nbsp;0.35 unless margin&nbsp;&ge;&nbsp;0.20), following Eq.&nbsp;8.
+      Escalated instances were reprocessed through Scene-Q's SAM&nbsp;+&nbsp;Qwen2.5-VL-7B
+      reasoning step (identical multi-view crops, bounding boxes, and prompt template),
+      computed once offline and replayed here; selecting an instance above shows the outcome
+      for that case.
+    </p>
+    <p class="pp-note">
+      The <strong>Query</strong> row replays the paper's four natural-language retrieval types
+      (Table&nbsp;III, Fig.&nbsp;5: Category, Attribute, Spatial, Affordance) on this scene,
+      since the paper's real-world retrieval set (11 novel maps, 1968 human-authored queries)
+      was not available on the machine used to build this site. Selecting a query above shows
+      how its target was identified.
+    </p>
+  </section>
+
   <section class="pp-section" id="abstract">
     <h2>Abstract</h2>
     <p>
@@ -183,10 +250,10 @@ _styles: |
       </table>
     </div>
     <p class="pp-note">
-      Selective routing beats <em>both</em> never- and always-calling the VLM for both encoders
-      &mdash; invoking the VLM on every instance can occasionally distract the model on cases the
-      encoder already had right, so reasoning is most valuable precisely on the ambiguous subset
-      (39&ndash;62% of instances per scene).
+      Selective routing outperforms <em>both</em> never- and always-calling the VLM for both
+      encoders &mdash; invoking the VLM on every instance can occasionally distract the model on
+      cases the encoder already had right, so reasoning is most valuable precisely on the
+      ambiguous subset (39&ndash;62% of instances per scene).
     </p>
 
     <figure class="pp-figure">
@@ -282,3 +349,4 @@ _styles: |
 </div>
 
 <script defer src="{{ '/assets/js/project-page.js' | relative_url }}"></script>
+<script defer src="{{ '/assets/js/ovmap-viewer.js' | relative_url }}"></script>

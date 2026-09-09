@@ -112,9 +112,10 @@
     "layout(location=3) in float aHi;\n" +
     "layout(location=4) in float aReveal;\n" +
     "layout(location=5) in vec3 aSegNaive;\n" +
+    "layout(location=6) in vec3 aSegSemantic;\n" +
     "uniform mat4 uMVP;\n" +
     "uniform float uPoint;\n" +
-    "uniform int uMode;\n" + // 0 rgb, 1 instance, 2 query, 3 naive/ablation instance coloring
+    "uniform int uMode;\n" + // 0 rgb, 1 instance, 2 query, 3 naive/ablation instance coloring, 4 semantic category
     "uniform float uReveal;\n" + // points with aReveal > uReveal are hidden (merge animation)
     "uniform vec3 uAccent;\n" +
     "uniform vec3 uDim;\n" +
@@ -126,6 +127,7 @@
     "  if(uMode==0){ vColor=aRGB; }\n" +
     "  else if(uMode==1){ vColor=aInst; }\n" +
     "  else if(uMode==3){ vColor=aSegNaive; }\n" +
+    "  else if(uMode==4){ vColor=aSegSemantic; }\n" +
     "  else { vColor = aHi>0.5 ? uAccent : uDim; }\n" +
     "}\n";
 
@@ -214,6 +216,9 @@
     var hiBuf = null,
       hiArray = null,
       instByPoint = null;
+    var labelPins = []; // [{pos:[x,y,z], el:HTMLElement}] -- at most one transient entry at a time
+    var pinsByLabel = {}; // label -> {pos:[x,y,z]}, from manifest.labelPins
+    var transientTimer = null;
 
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(1, 1, 1, 1);
@@ -261,6 +266,67 @@
       gl.uniform1f(uReveal, state.reveal);
       gl.drawArrays(gl.POINTS, 0, state.n);
       state.dirty = false;
+      updateLabelPins();
+    }
+
+    // ---- floating text labels, shown briefly on legend-chip click ----------
+    // Clicking a semantic-legend chip drops one plain absolutely-positioned
+    // HTML tag per real instance of that category (manifest.labelPins already
+    // excludes degenerate noise fragments -- see build script), reprojected
+    // through the current MVP matrix every redraw, then all auto-remove after
+    // 3s. Not a WebGL text/sprite system -- just DOM positioned from the same
+    // matrix math the vertex shader uses for points.
+    function indexLabelPins(manifest) {
+      (manifest.labelPins || []).forEach(function (pin) {
+        pinsByLabel[pin.label] = pin;
+      });
+    }
+
+    function showLabelPinFor(labelText) {
+      var pin = pinsByLabel[labelText];
+      var wrap = root.querySelector(".pp-viewer-labels");
+      if (!pin || !pin.positions || !pin.positions.length || !wrap) return;
+      if (transientTimer) clearTimeout(transientTimer);
+      wrap.innerHTML = "";
+      labelPins.length = 0;
+      pin.positions.forEach(function (pos) {
+        var el = document.createElement("span");
+        el.className = "pp-viewer-label-pin";
+        el.textContent = pin.label;
+        wrap.appendChild(el);
+        labelPins.push({ pos: pos, el: el });
+      });
+      markDirty();
+      transientTimer = setTimeout(function () {
+        wrap.innerHTML = "";
+        labelPins.length = 0;
+      }, 3000);
+    }
+
+    function updateLabelPins() {
+      if (!labelPins.length) return;
+      var w = canvas.clientWidth,
+        h = canvas.clientHeight;
+      for (var i = 0; i < labelPins.length; i++) {
+        var p = labelPins[i].pos,
+          el = labelPins[i].el;
+        var xc = mvp[0] * p[0] + mvp[4] * p[1] + mvp[8] * p[2] + mvp[12];
+        var yc = mvp[1] * p[0] + mvp[5] * p[1] + mvp[9] * p[2] + mvp[13];
+        var wc = mvp[3] * p[0] + mvp[7] * p[1] + mvp[11] * p[2] + mvp[15];
+        if (wc <= 0.01) {
+          el.style.display = "none";
+          continue;
+        }
+        var sx = (xc / wc) * 0.5 + 0.5,
+          sy = 0.5 - (yc / wc) * 0.5;
+        if (sx < -0.1 || sx > 1.1 || sy < -0.1 || sy > 1.1) {
+          el.style.display = "none";
+          continue;
+        }
+        el.style.display = "";
+        el.style.left = (sx * w).toFixed(1) + "px";
+        el.style.top = (sy * h).toFixed(1) + "px";
+      }
     }
 
     function attrib(loc, buffer, size, type, normalize) {
@@ -273,9 +339,11 @@
       var n = manifest.nPoints,
         scale = manifest.posScale;
       state.n = n;
-      // layout: int16 xyz | uint8 rgb | uint8 seg (instance color) | [uint8 segNaive]? | uint16 inst | uint8 reveal
-      // segNaive (mode 3: an ablation/comparison coloring, e.g. "no tracking") is optional —
-      // manifest.hasNaiveSeg gates its presence so older manifests without it still parse correctly.
+      // layout: int16 xyz | uint8 rgb | uint8 seg (instance color) | [uint8 segNaive]? | [uint8 segSemantic]? | uint16 inst | uint8 reveal
+      // segNaive (mode 3: an ablation/comparison coloring, e.g. "no tracking") and segSemantic
+      // (mode 4: colored by predicted category rather than per-instance id) are both optional —
+      // manifest.hasNaiveSeg / manifest.hasSemanticSeg gate their presence so manifests without
+      // them still parse correctly.
       var i16 = new Int16Array(bin, 0, n * 3);
       var off = n * 6;
       var rgb = new Uint8Array(bin, off, n * 3);
@@ -285,6 +353,11 @@
       var segNaive = null;
       if (manifest.hasNaiveSeg) {
         segNaive = new Uint8Array(bin, off, n * 3);
+        off += n * 3;
+      }
+      var segSemantic = null;
+      if (manifest.hasSemanticSeg) {
+        segSemantic = new Uint8Array(bin, off, n * 3);
         off += n * 3;
       }
       // Uint16Array requires an even byte offset. The preceding fields are all
@@ -332,6 +405,12 @@
         gl.bindBuffer(gl.ARRAY_BUFFER, b);
         gl.bufferData(gl.ARRAY_BUFFER, segNaive, gl.STATIC_DRAW);
         attrib(5, b, 3, gl.UNSIGNED_BYTE, true);
+      }
+      if (segSemantic) {
+        b = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, b);
+        gl.bufferData(gl.ARRAY_BUFFER, segSemantic, gl.STATIC_DRAW);
+        attrib(6, b, 3, gl.UNSIGNED_BYTE, true);
       }
       state.dirty = true;
     }
@@ -400,6 +479,8 @@
           manifest = res[1];
         upload(bin, manifest);
         buildQueryUI(root, manifest, setHighlight);
+        indexLabelPins(manifest);
+        buildSemanticLegend(root, manifest, showLabelPinFor);
         if (timeline) setupTimeline(root, state, manifest, markDirty);
         markDirty();
       })
@@ -414,27 +495,255 @@
         setMode(m);
         selectButton(root, "[data-ovmap-mode]", btn);
         clearActive(root, ".pp-query-chip");
+        var legendEl = root.querySelector(".pp-semantic-legend");
+        if (legendEl) legendEl.style.display = m === 4 ? "" : "none";
       });
     });
   }
 
-  function buildQueryUI(root, manifest, setHighlight) {
-    var wrap = root.querySelector(".pp-viewer-queries");
-    if (!wrap) return;
-    manifest.queryOrder.forEach(function (word) {
+  // ---- Semantic-category legend (mode 4: colored by Scene-Q's predicted
+  // category rather than per-instance id) — built once from manifest.semanticLegend.
+  // manifest.semanticLegend is sorted alphabetically for display; which entries
+  // actually get a chip (the vivid/distinct-color ones, vs. the muted tail) is
+  // its own `vivid` flag per entry, decided by confidence server-side.
+  function buildSemanticLegend(root, manifest, onLabelClick) {
+    var legend = manifest.semanticLegend;
+    var wrap = root.querySelector(".pp-semantic-legend");
+    if (!legend || !legend.length || !wrap) return;
+    var shown = legend.filter(function (item) {
+      return item.vivid;
+    });
+    shown.forEach(function (item) {
+      var chip = document.createElement("span");
+      chip.className = "pp-legend-chip";
+      var swatch = document.createElement("span");
+      swatch.className = "pp-legend-swatch";
+      swatch.style.background = item.color;
+      chip.appendChild(swatch);
+      chip.appendChild(document.createTextNode(item.label));
+      if (onLabelClick) {
+        chip.classList.add("pp-legend-chip--clickable");
+        chip.setAttribute("role", "button");
+        chip.setAttribute("tabindex", "0");
+        chip.addEventListener("click", function () {
+          onLabelClick(item.label);
+        });
+        chip.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onLabelClick(item.label);
+          }
+        });
+      }
+      wrap.appendChild(chip);
+    });
+    if (legend.length > shown.length) {
+      var more = document.createElement("span");
+      more.className = "pp-legend-more";
+      more.textContent = "+" + (legend.length - shown.length) + " more categories";
+      wrap.appendChild(more);
+    }
+    if (onLabelClick) {
+      var hint = document.createElement("div");
+      hint.className = "pp-legend-hint";
+      hint.textContent = "Click a label to flash its single largest instance for 3s (not every occurrence).";
+      wrap.appendChild(hint);
+    }
+    wrap.style.display = "none";
+  }
+
+  // Renders one group of chips (a subset of manifest.queryOrder) into a given
+  // container. All chip groups on the same viewer share one "active" scope
+  // (clicking a chip in either group clears is-active on every chip, in every
+  // group, plus the mode buttons) and one `.pp-instance-panel` below.
+  function buildQueryChipGroup(root, manifest, words, containerSelector, setHighlight) {
+    var wrap = root.querySelector(containerSelector);
+    if (!wrap || !words.length) return;
+    var hasInstanceInfo = !!manifest.instanceInfo;
+    var hasRetrievalInfo = !!manifest.retrievalInfo;
+    words.forEach(function (word) {
       var ids = manifest.queries[word];
       var chip = document.createElement("button");
       chip.type = "button";
       chip.className = "pp-query-chip";
       chip.setAttribute("aria-pressed", "false");
-      chip.textContent = word + " (" + ids.length + ")";
+      chip.textContent = hasInstanceInfo || hasRetrievalInfo ? word : word + " (" + ids.length + ")";
       chip.addEventListener("click", function () {
         setHighlight(ids);
         selectButton(root, ".pp-query-chip", chip);
         clearActive(root, "[data-ovmap-mode]");
+        var imgBase = root.getAttribute("data-img-base") || "";
+        if (hasInstanceInfo && manifest.instanceInfo[word]) {
+          renderInstancePanel(root, manifest.instanceInfo[word], manifest.thresholds, imgBase);
+        } else if (hasRetrievalInfo && manifest.retrievalInfo[word]) {
+          renderRetrievalPanel(root, manifest.retrievalInfo[word], imgBase);
+        }
       });
       wrap.appendChild(chip);
     });
+  }
+
+  // Splits manifest.queryOrder into an "Instance" group (confidence-routing
+  // chips, backed by instanceInfo) and a "Query" group (natural-language
+  // retrieval chips, backed by retrievalInfo) so both can live in one viewer.
+  // A manifest with only one of the two just renders that one group.
+  function buildQueryUI(root, manifest, setHighlight) {
+    var instanceWords = manifest.queryOrder.filter(function (w) {
+      return manifest.instanceInfo && manifest.instanceInfo[w];
+    });
+    var retrievalWords = manifest.queryOrder.filter(function (w) {
+      return manifest.retrievalInfo && manifest.retrievalInfo[w];
+    });
+    var plainWords = manifest.queryOrder.filter(function (w) {
+      return instanceWords.indexOf(w) === -1 && retrievalWords.indexOf(w) === -1;
+    });
+    // Manifests with neither instanceInfo nor retrievalInfo (e.g. OV-MAP's
+    // open-vocab query chips) fall back to the single default container.
+    buildQueryChipGroup(root, manifest, plainWords, ".pp-viewer-queries", setHighlight);
+    buildQueryChipGroup(root, manifest, instanceWords, ".pp-viewer-queries", setHighlight);
+    buildQueryChipGroup(root, manifest, retrievalWords, ".pp-viewer-nlqueries", setHighlight);
+  }
+
+  // ---- Natural-language retrieval panel (query text -> retrieved instance),
+  // rendered when a manifest ships `retrievalInfo` instead of `instanceInfo`.
+  // Same query-chip mechanism as above for 3D highlighting; this renders the
+  // query/result + a real RGB photo (yellow box) into `.pp-instance-panel`.
+  function renderRetrievalPanel(root, info, imgBase) {
+    var panel = root.querySelector(".pp-instance-panel");
+    if (!panel) return;
+    panel.innerHTML = "";
+
+    var badge = document.createElement("div");
+    badge.className = "pp-route-badge pp-route-badge--query";
+    badge.textContent = info.type + " query";
+    panel.appendChild(badge);
+
+    var result = document.createElement("p");
+    result.className = "pp-vlm-final";
+    result.innerHTML = "Query: <strong>“" + info.query + "”</strong> → retrieved: <strong>" + info.finalLabel + "</strong>";
+    panel.appendChild(result);
+
+    if (info.image) {
+      var fig = document.createElement("figure");
+      fig.className = "pp-vlm-view pp-vlm-view--single";
+      var img = document.createElement("img");
+      img.loading = "lazy";
+      img.src = imgBase + info.image;
+      img.alt = "RGB view with the retrieved instance boxed in yellow";
+      fig.appendChild(img);
+      panel.appendChild(fig);
+    }
+
+    appendPanelNote(panel, info.note);
+  }
+
+  // Per-item explanatory caption, shown only for the instance/query just
+  // clicked -- rather than one static paragraph listing every item at once.
+  function appendPanelNote(panel, note) {
+    if (!note) return;
+    var p = document.createElement("p");
+    p.className = "pp-panel-note";
+    p.textContent = note;
+    panel.appendChild(p);
+  }
+
+  // ---- Scene-Q confidence-routing panel (bar chart + fast-path/VLM-escalation
+  // detail), rendered when a manifest ships `instanceInfo` alongside its query
+  // chips. Reuses the query-chip mechanism above purely for 3D highlighting;
+  // this renders the per-instance detail into a sibling `.pp-instance-panel`.
+  function barRow(label, prob, isFinal) {
+    var row = document.createElement("div");
+    row.className = "pp-conf-row" + (isFinal ? " pp-conf-row--final" : "");
+    var name = document.createElement("span");
+    name.className = "pp-conf-label";
+    name.textContent = label;
+    var track = document.createElement("span");
+    track.className = "pp-conf-track";
+    var bar = document.createElement("span");
+    bar.className = "pp-conf-bar";
+    bar.style.width = Math.max(1, prob * 100).toFixed(1) + "%";
+    track.appendChild(bar);
+    var pct = document.createElement("span");
+    pct.className = "pp-conf-pct";
+    pct.textContent = (prob * 100).toFixed(1) + "%";
+    row.appendChild(name);
+    row.appendChild(track);
+    row.appendChild(pct);
+    return row;
+  }
+
+  function renderInstancePanel(root, info, thresholds, imgBase) {
+    var panel = root.querySelector(".pp-instance-panel");
+    if (!panel) return;
+    panel.innerHTML = "";
+
+    var badge = document.createElement("div");
+    badge.className = "pp-route-badge " + (info.routedToVlm ? "pp-route-badge--vlm" : "pp-route-badge--fast");
+    badge.textContent = info.routedToVlm ? "🧠 Escalated to VLM (~2s)" : "⚡ Fast path (~50ms)";
+    panel.appendChild(badge);
+
+    var stats = document.createElement("p");
+    stats.className = "pp-conf-stats";
+    stats.textContent =
+      "p_max=" +
+      info.pMax.toFixed(3) +
+      " (δ=" +
+      thresholds.pmax.toFixed(2) +
+      "), " +
+      "margin=" +
+      info.margin.toFixed(3) +
+      " (δ=" +
+      thresholds.margin.toFixed(2) +
+      "), " +
+      "norm. entropy=" +
+      info.normEntropy.toFixed(3) +
+      " (δ=" +
+      thresholds.norm_entropy.toFixed(2) +
+      ")";
+    panel.appendChild(stats);
+
+    var chart = document.createElement("div");
+    chart.className = "pp-conf-chart";
+    info.topLabels.forEach(function (pair) {
+      chart.appendChild(barRow(pair[0], pair[1], pair[0] === info.finalLabel));
+    });
+    panel.appendChild(chart);
+
+    if (info.routedToVlm) {
+      var final = document.createElement("p");
+      final.className = "pp-vlm-final";
+      final.innerHTML =
+        "Encoder's initial guess: <strong>" + info.initialLabel + "</strong> → VLM's answer: <strong>" + info.finalLabel + "</strong>";
+      panel.appendChild(final);
+
+      var grid = document.createElement("div");
+      grid.className = "pp-vlm-views";
+      info.views.forEach(function (v) {
+        var fig = document.createElement("figure");
+        fig.className = "pp-vlm-view";
+        var img = document.createElement("img");
+        img.loading = "lazy";
+        img.src = imgBase + v.fullImage;
+        img.alt = "Full camera view with the queried instance boxed in red";
+        var cap = document.createElement("figcaption");
+        cap.textContent = "VLM said: “" + v.vlmOutput + "”";
+        fig.appendChild(img);
+        fig.appendChild(cap);
+        grid.appendChild(fig);
+      });
+      panel.appendChild(grid);
+    } else if (info.image) {
+      var fig2 = document.createElement("figure");
+      fig2.className = "pp-vlm-view pp-vlm-view--single";
+      var img2 = document.createElement("img");
+      img2.loading = "lazy";
+      img2.src = imgBase + info.image;
+      img2.alt = "Camera view of the instance the encoder resolved directly";
+      fig2.appendChild(img2);
+      panel.appendChild(fig2);
+    }
+
+    appendPanelNote(panel, info.note);
   }
 
   function setupTimeline(root, state, manifest, requestFrame) {
