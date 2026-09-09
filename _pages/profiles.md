@@ -118,7 +118,7 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
       <p><span class="lang-en">Hye-Jung Yoon</span><span class="lang-ko" style="display: none">윤혜정</span></p>
-      <p><a href="https://www.linkedin.com/in/hyejung-yoon-19a271239" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
+      <p><a href="https://www.linkedin.com/in/yoonhyejung" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
   - id: yesol-park
     align: left
     image: profile/yspark.png
@@ -126,7 +126,7 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
       <p><span class="lang-en">Yesol Park</span><span class="lang-ko" style="display: none">박예솔</span></p>
-      <p><a href="https://www.linkedin.com/in/yesolpark125" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
+      <p><a href="https://www.linkedin.com/in/parkyesol" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></p>
   - id: juno-kim
     align: right
     image: profile/jokim.png
