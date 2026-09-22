@@ -25,7 +25,7 @@ _styles: |
       <sup>*</sup>Equal contribution
     </p>
     <div class="pp-buttons">
-      <span class="pp-btn-disabled">arXiv <em>(coming soon)</em></span>
+      <a href="https://arxiv.org/abs/2609.20235" target="_blank" rel="noopener noreferrer">arXiv</a>
       <span class="pp-btn-disabled">Paper <em>(coming soon)</em></span>
       <a href="https://github.com/teamROBI/Scene-Q" target="_blank" rel="noopener noreferrer">Code</a>
       <a href="#bibtex">BibTeX</a>
