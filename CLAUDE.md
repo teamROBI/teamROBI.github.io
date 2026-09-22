@@ -8,7 +8,7 @@ The import above (`AGENTS.md`, which itself defers to `.github/copilot-instructi
 
 ## What this repo is
 
-`al-folio` v1.x is a **thin Jekyll starter**, not a theme. It owns only: starter wiring (`Gemfile`, `_config.yml`, `_data/featured_plugins.yml`), example content (`_pages`, `_posts`, `_projects`, `_news`, `_teachings`, `_books`, `_bibliography`), docs (`docs/`), cross-gem integration tests (`test/integration_*.sh`), and visual/parity tests (`test/visual/`). **All runtime, layouts, includes, Sass, tags, filters, and feature JS live in versioned gems**, published independently on RubyGems. `docs/BOUNDARIES.md` is the authoritative area→gem ownership table.
+`al-folio` v1.x is a **thin Jekyll starter**, not a theme. It owns only: starter wiring (`Gemfile`, `_config.yml`, `_data/featured_plugins.yml`), content (here: `_pages`, `_news`, `_bibliography` — the starter's other example collections, `_posts`/`_projects`/`_teachings`/`_books`, were removed from this site), docs (`docs/`), cross-gem integration tests (`test/integration_*.sh`), and visual/parity tests (`test/visual/`). **All runtime, layouts, includes, Sass, tags, filters, and feature JS live in versioned gems**, published independently on RubyGems. `docs/BOUNDARIES.md` is the authoritative area→gem ownership table.
 
 The biggest recurring mistake is editing runtime here. If a change is layout/include/tag/filter/feature-behavior, it belongs in the owning gem (see routing below), not in this repo.
 
@@ -49,19 +49,19 @@ Architectural facts that span repos:
 
 ```bash
 bundle install                                # ruby gems
-bundle exec jekyll serve                      # dev server → http://localhost:4000/al-folio/  (NOTE baseurl)
-bundle exec jekyll build --baseurl /al-folio  # production-style build to _site/
+bundle exec jekyll serve                      # dev server → http://localhost:4000/  (baseurl is blank here)
+bundle exec jekyll build                      # production-style build to _site/
 bash test/integration_distill.sh             # run ONE integration test (any of the five)
 npm run test:visual:update                    # refresh playwright snapshots after intentional UI change
 bundle exec al-folio upgrade apply --safe     # deterministic codemods (font-weight-* → font-*, remote→local URLs)
 bundle exec al-folio upgrade overrides diff <path>    # then `overrides accept <path>` to acknowledge an override
 ```
 
-`bin/setup-python-deps` installs the optional Python toolchain in `requirements.txt` (`nbconvert` for `jekyll-jupyter-notebook`, `rendercv[full]` for CV rendering, `scholarly` for `bin/update_scholar_citations.py`). Responsive-image generation (`imagemagick.enabled: true`) needs ImageMagick `convert` on PATH. `bin/deploy` is the manual `gh-pages` build+purgecss+force-push path (CI normally deploys).
+`bin/setup-python-deps` installs the optional Python toolchain in `requirements.txt` (`nbconvert` for `jekyll-jupyter-notebook`, plus `pyyaml`). Responsive-image generation (`imagemagick.enabled: true`) needs ImageMagick `convert` on PATH. `bin/deploy` is the manual `gh-pages` build+purgecss+force-push path (CI normally deploys).
 
 ## Docker serving model (v1-specific)
 
-`docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify with the `/al-folio` baseurl: `curl -fsS http://127.0.0.1:8080/al-folio/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
+`docker compose up -d` bind-mounts the repo to `/srv/jekyll` and runs `bin/entry_point.sh`, which serves with `--force_polling --destination /tmp/_site`. The build output deliberately goes to **container-local `/tmp/_site`, not the bind-mounted `_site`** — writing `_site` back across the host bind mount caused write deadlocks. The container also `inotifywait`s `_config.yml` and restarts Jekyll on change (config edits aren't hot-reloaded by `--watch`). Verify at the root (this site's `baseurl` is blank): `curl -fsS http://127.0.0.1:8080/`. `docker-compose-slim.yml` pulls a prebuilt `:slim` image instead of building locally.
 
 ## CI gates and the style contract
 

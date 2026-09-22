@@ -484,7 +484,14 @@
         if (timeline) setupTimeline(root, state, manifest, markDirty);
         markDirty();
       })
-      .catch(function () {
+      .catch(function (err) {
+        // This catches fetch failures *and* anything thrown while parsing the
+        // manifest/binary above, so record the real cause — otherwise the only
+        // signal is a generic on-page message. Not console.warn: the site builds
+        // with terser `drop_console: true` (see _config.yml), which strips those
+        // entirely; a data attribute survives minification and is readable in
+        // DevTools on the deployed site.
+        root.setAttribute("data-viewer-error", (err && err.message) || String(err));
         root.classList.add("pp-viewer--error");
       });
 
