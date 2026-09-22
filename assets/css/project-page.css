@@ -453,9 +453,19 @@
   text-align: right;
 }
 
+/* Two distinct failures, two distinct messages: --unsupported means the browser
+   gave us no WebGL2 context, while --error means the scene data failed to load
+   or parse. Sharing one WebGL-worded message sent debugging down the wrong path. */
+.project-page .pp-viewer--unsupported .pp-viewer-stage::after {
+  content: "3D viewer unavailable — your browser must support WebGL2.";
+}
+
+.project-page .pp-viewer--error .pp-viewer-stage::after {
+  content: "3D viewer unavailable — this scene's data failed to load.";
+}
+
 .project-page .pp-viewer--unsupported .pp-viewer-stage::after,
 .project-page .pp-viewer--error .pp-viewer-stage::after {
-  content: "3D viewer unavailable — your browser must support WebGL2.";
   position: absolute;
   inset: 0;
   display: flex;

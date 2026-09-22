@@ -28,7 +28,7 @@ Run from repo root:
 npm ci
 npm run lint:prettier
 npm run lint:style-contract
-bundle exec jekyll build --baseurl /al-folio
+bundle exec jekyll build
 bash test/integration_comments.sh
 bash test/integration_plugin_toggles.sh
 bash test/integration_distill.sh
@@ -40,10 +40,12 @@ bundle exec al-folio upgrade audit
 bundle exec al-folio upgrade overrides audit
 bundle exec al-folio upgrade report
 docker compose up -d
-curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null
+curl -fsS http://127.0.0.1:8080/ >/dev/null
 docker compose logs --tail=80
 docker compose down
 ```
+
+Baseurl note: this site deploys at the domain root, so `baseurl` in `_config.yml` is blank — build and curl without the `/al-folio` prefix that the upstream starter's own docs use.
 
 Docker note: v1 uses `/srv/jekyll/bin/entry_point.sh` and serves from container-local `/tmp/_site` to avoid host bind-mount write deadlocks.
 
