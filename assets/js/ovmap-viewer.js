@@ -588,13 +588,18 @@
   // retrieval chips, backed by retrievalInfo) so both can live in one viewer.
   // A manifest with only one of the two just renders that one group.
   function buildQueryUI(root, manifest, setHighlight) {
-    var instanceWords = manifest.queryOrder.filter(function (w) {
+    // queryOrder is optional: a viewer can ship purely as a segmentation
+    // comparison with no query chips at all (e.g. CDIS's two scenes). Without
+    // this fallback the missing field throws, and since that lands in the
+    // loader's catch() the whole viewer is flagged unsupported instead.
+    var queryOrder = manifest.queryOrder || [];
+    var instanceWords = queryOrder.filter(function (w) {
       return manifest.instanceInfo && manifest.instanceInfo[w];
     });
-    var retrievalWords = manifest.queryOrder.filter(function (w) {
+    var retrievalWords = queryOrder.filter(function (w) {
       return manifest.retrievalInfo && manifest.retrievalInfo[w];
     });
-    var plainWords = manifest.queryOrder.filter(function (w) {
+    var plainWords = queryOrder.filter(function (w) {
       return instanceWords.indexOf(w) === -1 && retrievalWords.indexOf(w) === -1;
     });
     // Manifests with neither instanceInfo nor retrievalInfo (e.g. OV-MAP's
