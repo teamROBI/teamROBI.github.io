@@ -135,7 +135,7 @@ profiles:
     more_info: >
       <p><span class="lang-en">Juno Kim</span><span class="lang-ko" style="display: none">김준오</span></p>
       <p>
-        <a href="https://www.linkedin.com/in/juno-kim-738579361" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://www.linkedin.com/in/junokim5" target="_blank" class="profile-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
         <a href="/assets/pdf/juno_kim_cv.pdf" target="_blank" class="profile-btn"><i class="fa-solid fa-file-pdf"></i> CV</a>
       </p>
 ---
