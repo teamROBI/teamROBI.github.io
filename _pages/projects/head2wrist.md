@@ -101,16 +101,6 @@ _styles: |
       </video>
       <figcaption>Real FFW-SG2: cube into bowl (2x speed)</figcaption>
     </figure>
-    <p>
-      Along a replayed path, generated views match real D405 frames with <strong>SSIM 0.64</strong> and <strong>median misalignment 5.6 px</strong> (simulation: 0.84 and 0.3 px).
-    </p>
-    <figure class="pp-figure">
-      <video class="pp-demo-video" controls muted autoplay loop playsinline preload="metadata" poster="{{ '/assets/img/projects/head2wrist/posters/generated_vs_real_d405.jpg' | relative_url }}" aria-label="Generated wrist view, real D405 plan replay, and amplified pixel difference at identical planned poses">
-        <source src="{{ '/assets/video/projects/head2wrist/generated_vs_real_d405.mp4' | relative_url }}" type="video/mp4">
-        Your browser does not support embedded video. <a href="{{ '/assets/video/projects/head2wrist/generated_vs_real_d405.mp4' | relative_url }}">Download the wrist comparison</a>.
-      </video>
-      <figcaption>Generated wrist view, real D405 and amplified pixel difference at identical planned poses. This is open-loop plan replay, not a closed-loop policy trial.</figcaption>
-    </figure>
   </section>
 
   <section class="pp-section" id="simulation">
@@ -242,13 +232,6 @@ _styles: |
 }
 {% endhighlight %}
     </div>
-  </section>
-
-  <section class="pp-section" id="acknowledgements">
-    <h2>Acknowledgements</h2>
-    <p>
-      This work was partly supported by grants from the IITP (RS-2021-II211343-GSAI/10%, RS-2022-II220951-LBA/10%, RS-2022-II220953-PICA/10%, RS-2026-25553157-MIACC/10%), the NRF (RS-2024-00353991-SPARC/15%, RS-2023-00274280-HEI/15%), the KEIT (RS-2025-25453780/15%), and the KIAT (RS-2025-25460896/15%), funded by the Korean government.
-    </p>
   </section>
 
   <section class="pp-section" id="license">
