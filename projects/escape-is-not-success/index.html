@@ -1,0 +1,138 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Escape Is Not Success: Diagnosing Spatial-OOD Failures of Robot Action Interfaces | Team ROBI </title> <meta name="author" content=" "> <meta name="description" content="CoRL Workshop on Everything Beneath the Policy, 2026"> <meta name="keywords" content="research, lab, team-robi"> <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;"> <style>
+  :root {
+    --max-content-width: 930px;
+  }
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%A4%96&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://teamrobi.github.io/projects/escape-is-not-success/"> <script src="/assets/js/theme.js?v=7af685e2ba20b37fef545c97b8064050"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Team ROBI </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/"> <span class="lang-en">about</span> <span class="lang-ko" style="display: none">소개</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/"> <span class="lang-en">publications</span> <span class="lang-ko" style="display: none">연구실적</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/awards/"> <span class="lang-en">awards</span> <span class="lang-ko" style="display: none">수상</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/people/"> <span class="lang-en">people</span> <span class="lang-ko" style="display: none">구성원</span> </a> </li> <li class="nav-item lang-switch-item"> <button id="lang-switch" class="lang-switch" type="button" data-lang="en" title="Switch language" aria-label="Switch language"> <span class="lang-switch-thumb"></span> <span class="lang-switch-option lang-switch-en">EN</span> <span class="lang-switch-option lang-switch-ko">KOR</span> </button> </li> <li class="toggle-container"> <button id="light-toggle" type="button" title="Change theme" aria-label="Change color theme"> <i class="fa-half-sun-moon" id="light-toggle-system"></i> <i class="fa-solid fa-moon" id="light-toggle-dark"></i> <i class="fa-solid fa-sun" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  /* Roboto has no Hangul glyphs, so Korean text falls back to whatever
+     generic sans-serif the OS provides — add Noto Sans KR as the fallback
+     so Korean renders consistently everywhere (news, bios, about, etc.)
+     without changing how existing Latin text looks. */
+  body {
+    font-family: Roboto, 'Noto Sans KR', sans-serif;
+  }
+  .lang-switch-item {
+    display: flex;
+    align-items: center;
+  }
+  .lang-switch {
+    position: relative;
+    display: inline-flex;
+    width: 64px;
+    height: 26px;
+    padding: 2px;
+    margin: 0 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .lang-switch-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(50% - 2px);
+    height: calc(100% - 4px);
+    border-radius: 999px;
+    background: var(--global-theme-color);
+    transition: transform 0.2s ease;
+    z-index: 1;
+  }
+  .lang-switch[data-lang='ko'] .lang-switch-thumb {
+    transform: translateX(100%);
+  }
+  .lang-switch-option {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: var(--global-text-color);
+    opacity: 0.55;
+    transition:
+      opacity 0.2s ease,
+      color 0.2s ease;
+  }
+  .lang-switch[data-lang='en'] .lang-switch-en,
+  .lang-switch[data-lang='ko'] .lang-switch-ko {
+    color: #fff;
+    opacity: 1;
+  }
+
+  /* Unified small badge-style link used to cite a news/press source
+     (replaces the old inconsistent "Coverage in X" / "Related news: X"
+     inline-link phrasing across _news/*.md). */
+  .news-src {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.05rem 0.55rem;
+    margin-left: 0.3rem;
+    font-size: 0.78em;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: nowrap;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.06);
+    color: inherit;
+    text-decoration: none !important;
+  }
+  .news-src:hover {
+    background: rgba(0, 0, 0, 0.12);
+  }
+</style> <script>
+  (function () {
+    var STORAGE_KEY = 'site-lang';
+
+    function apply(lang) {
+      document.querySelectorAll('.lang-en').forEach(function (el) {
+        el.style.display = lang === 'en' ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-ko').forEach(function (el) {
+        el.style.display = lang === 'ko' ? '' : 'none';
+      });
+      var btn = document.getElementById('lang-switch');
+      if (btn) btn.dataset.lang = lang;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var saved = localStorage.getItem(STORAGE_KEY) || 'en';
+      apply(saved);
+
+      var btn = document.getElementById('lang-switch');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var next = btn.dataset.lang === 'en' ? 'ko' : 'en';
+          localStorage.setItem(STORAGE_KEY, next);
+          apply(next);
+        });
+      }
+    });
+  })();
+</script> <div class="container mt-5" role="main"> <style type="text/css">
+    @import url("/assets/css/project-page.css");
+/* Match OV-MAP's spacing around figures exported from the paper. */
+.pp-figure img {
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+  </style> <div class="post"> <header class="post-header"> <h1 class="post-title"> <span>Escape Is Not Success: Diagnosing Spatial-OOD Failures of Robot Action Interfaces</span> </h1> <p class="post-description"> <span>CoRL Workshop on Everything Beneath the Policy, 2026</span> </p> </header> <article> <div class="project-page"> <header class="pp-header"> <p class="pp-venue"><a href="https://beneath-the-policy.github.io/" target="_blank" rel="noopener noreferrer">CoRL Workshop on Everything Beneath the Policy</a>, 2026</p> <p class="pp-authors"> <a href="/people/#juno-kim">Juno Kim</a> · <a href="/people/#yesol-park">Yesol Park</a> · <a href="/people/#hyejung-yoon">Hye-Jung Yoon</a> · <a href="https://bi.snu.ac.kr/members/byoung-tak-zhang.html" target="_blank" rel="noopener noreferrer">Byoung-Tak Zhang</a> </p> <p class="pp-affiliations">Seoul National University</p> <div class="pp-buttons"> <a href="https://openreview.net/pdf?id=nRU0GzU0Hc" target="_blank" rel="noopener noreferrer">Paper</a> <a href="https://openreview.net/forum?id=nRU0GzU0Hc" target="_blank" rel="noopener noreferrer">OpenReview</a> <a href="https://github.com/teamROBI/escape-is-not-success" target="_blank" rel="noopener noreferrer">Code</a> <a href="#bibtex">BibTeX</a> </div> </header> <figure class="pp-teaser pp-figure"> <video class="pp-demo-video" style="width: 100%; max-width: none;" controls="" muted="" autoplay="" loop="" playsinline="" preload="metadata" poster="/assets/img/projects/escape-is-not-success/posters/teaser.jpg" aria-label="Joint absolute, EEF absolute and joint residual ACT rollouts at the same target, 20 cm beyond the envelope at 20 degrees, seed 0"> <source src="/assets/video/projects/escape-is-not-success/teaser.mp4" type="video/mp4"></source> Your browser does not support embedded video. <a href="/assets/video/projects/escape-is-not-success/teaser.mp4">Download the teaser</a>. </video> <figcaption>One rollout per policy in Figure 1, re-run for a side camera no policy uses: cube 20 cm out at 20°, seed 0. Joint absolute uses the head camera; EEF absolute uses the wrist camera; joint residual uses the head camera and a query-time state anchor. Shorter streams hold their last frame.</figcaption> </figure> <p class="pp-tldr"> Zero success can hide different failures: <strong>score escape, approach and strict completion separately</strong> to distinguish staying put, departing without approaching, and approaching without lifting. ACT policies with near-identical success stop at different stages. </p> <section class="pp-section" id="abstract"> <h2>Abstract</h2> <p> Success conflates policies that stay put with those that approach but fail to lift. We score escape, distance-normalised approach and strict completion in simulated cube lifting (targets 5–25 cm radially and 10–30° angularly beyond demonstrations; three training seeds per cell). Three ACT policies complete 0, 0 and 1 of 70 radial episodes per seed yet differ: one stays within 1 cm of the demonstrated region, one escapes but rarely approaches, and one often approaches but rarely completes. Absolute arms approach in at most 4 of 70 radial episodes per seed in either frame and, for EEF commands, with every camera tested; residual arms in 27–60. Under residual EEF commands, a wrist camera adds 19–32 strict radial completions per seed; absolute policies rarely approach, so their zero completions cannot isolate camera effects. Per-seed stages and matched contrasts expose interface failure modes. </p> </section> <section class="pp-section" id="setup"> <h2>Setup</h2> <p> A Franka Panda lifts a 5 cm cube in Isaac Lab. A scripted expert gives 15 demonstrations at each of 28 base-frame positions: r ∈ {0.35, 0.40, 0.45, 0.50} m and θ ∈ {−30°, −20°, …, 30°}. The demonstrated envelope is the sector <strong>r ∈ [0.325, 0.525] m, |θ| ≤ 35°</strong>, half a lattice step past the outer demonstrations so grasps there are not escapes. Test objects sit 5–25 cm beyond the envelope radially and 10–30° beyond it angularly. Each position has two rollouts of up to 600 steps at 30 Hz, with shared position and episode seeds. </p> <figure class="pp-figure pp-figure--md"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/escape-is-not-success/scene-480.webp 480w,/assets/img/projects/escape-is-not-success/scene-800.webp 800w,/assets/img/projects/escape-is-not-success/scene-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/escape-is-not-success/scene.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Poster scene schematic: robot base, demonstration envelope, training positions, interior midpoints, radial tests and angular tests." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Demonstration envelope, training positions, withheld interior midpoints and spatial-OOD test positions. Radial targets sit 5–25 cm beyond the envelope; angular targets are at |θ| = 45°, 55° and 65°.</figcaption> </figure> </figure> <p>The evaluation scores three stages independently:</p> <ol> <li> <strong>Escape.</strong> The grasp point's maximum excursion beyond the demonstrated envelope is strictly greater than 1 cm. </li> <li> <strong>Approach.</strong> Distance-normalised progress toward the object's nominal spawn position is ≥0.25. Approach is 1 minus the closest planar grasp-point distance to the spawn position divided by the object's distance from the envelope, clipped to [0, 1]: 0 if the grasp point never got nearer the object than the envelope edge, and 1 if it passed directly over it. </li> <li> <strong>Strict completion.</strong> The cube's centre stays at least 1 cm above its rest height and within 6 cm of the grasp point in the plane at three consecutive checks, 15 control steps apart. </li> </ol> </section> <section class="pp-section" id="results"> <h2>Results</h2> <p> <strong>Similar success, different stages.</strong> Three ACT policies complete 0, 0 and 1 of 70 radial episodes per seed: joint absolute never leaves the envelope by more than 1 cm; wrist-only absolute EEF leaves it in 40–44 episodes but approaches in only 2–4; per-query residual joint leaves in 49–52 and approaches in 29–31. </p> <figure class="pp-figure"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/escape-is-not-success/fig1_hero-480.webp 480w,/assets/img/projects/escape-is-not-success/fig1_hero-800.webp 800w,/assets/img/projects/escape-is-not-success/fig1_hero-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/escape-is-not-success/fig1_hero.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Figure 1: cube-lifting task and three ACT policies with similar strict completion counts but different escape and approach stages." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Figure 1. Escape is not success. Left: the task from the head camera, with envelope and positions drawn on; inset: collection-B training wrist view. Right: three ACT policies, with joint residual anchored per query. Top: seed 0's 70 radial grasp-point paths, coloured by furthest outcome. Bottom: radial episodes meeting each stage threshold; bars show the three-seed mean and whiskers the minimum and maximum. The policies differ in several interface choices.</figcaption> </figure> </figure> <figure class="pp-figure"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/escape-is-not-success/fig3_overlay-480.webp 480w,/assets/img/projects/escape-is-not-success/fig3_overlay-800.webp 800w,/assets/img/projects/escape-is-not-success/fig3_overlay-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/escape-is-not-success/fig3_overlay.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Figure 3: one side-camera rollout per policy at the same target, with earlier arm poses in grey and escape and approach measurements." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Figure 3. One rollout per policy in Figure 1: seed 0, cube 20 cm out at θ = 20°, where both evaluation episodes show its stage. Re-run for a side camera no policy uses; grey shows earlier poses.</figcaption> </figure> </figure> <p> <strong>The arm's command interface changes approach.</strong> In the main 2×2 comparison, no absolute-arm radial episode closes a tenth of the gap; residual cells average 0.31–0.69 approach and complete 3–10 of 70 episodes. All four cells use a head camera and absolute gripper commands. </p> <div class="pp-table-scroll" role="region" aria-label="Main 2 by 2 radial stage counts, horizontally scrollable" tabindex="0"> <table> <caption>Main 2×2 comparison: radial episodes meeting each stage threshold, of 70 per seed. Entries list training seeds 0/1/2, paired across rows.</caption> <thead> <tr> <th scope="col">Frame</th> <th scope="col">Arm commands</th> <th scope="col">Escaped &gt;1 cm</th> <th scope="col">Approach ≥0.25</th> <th scope="col">Strict completion</th> </tr> </thead> <tbody> <tr> <th scope="row">Joint</th> <td>Absolute</td> <td>0/0/0</td> <td>0/0/0</td> <td>0/0/0</td> </tr> <tr> <th scope="row">Joint</th> <td>Per-step residual</td> <td>62/48/68</td> <td>53/35/60</td> <td>10/5/4</td> </tr> <tr> <th scope="row">EEF</th> <td>Absolute</td> <td>0/12/0</td> <td>0/0/0</td> <td>0/0/0</td> </tr> <tr> <th scope="row">EEF</th> <td>Per-step residual</td> <td>60/67/66</td> <td>44/56/57</td> <td>3/7/9</td> </tr> </tbody> </table> </div> <p class="pp-note"> Counts transcribe the camera-ready Table 1. Absolute EEF uses quaternion orientation; residual EEF uses a rotation vector. A separate absolute rotation-vector control completes 55–56 of 56 training-cell episodes per seed, but no test episode reaches 0.25 approach. Closed-loop re-evaluation is not bitwise reproducible, so per-seed stage and completion counts can differ slightly from the paper. </p> <figure class="pp-figure"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/projects/escape-is-not-success/fig2_approach-480.webp 480w,/assets/img/projects/escape-is-not-success/fig2_approach-800.webp 800w,/assets/img/projects/escape-is-not-success/fig2_approach-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/projects/escape-is-not-success/fig2_approach.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" alt="Figure 2: approach and strict completion across radial distance bands for the main 2 by 2 and across EEF camera configurations." loading="lazy" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </picture> <figcaption class="caption">Figure 2. The arm's command interface changes approach; the cameras change completion. Left: the 2×2 with head camera and absolute gripper, per 5 cm band (14 radial episodes per seed); its absolute arms approach and complete in none. EEF rotation formats differ. Right: the EEF camera rows over all 70 radial episodes per seed. Markers show the three-seed mean; whiskers show the minimum and maximum.</figcaption> </figure> </figure> <p> Under residual EEF commands, strict radial completions rise from 6/5/1 with head views to 25/37/31 with head+wrist views and 27/24/32 with wrist views; absolute EEF approaches in only 0–4 of 70 radial episodes per seed, so its zero completions cannot isolate camera effects. </p> </section> <section class="pp-section" id="recommendation"> <h2>Recommendation</h2> <p> The study tests one simulated task, object, robot, top-down expert and ACT recipe; completion checks height and proximity, not contact; approach varies by seed. For spatial-OOD reaching, report: </p> <ol> <li>Demonstrated region, envelope construction, target distances, and all stage thresholds.</li> <li>Command frame, absolute or residual action, anchor, gripper, rates, and cameras.</li> <li>Per-seed continuous escape/approach and thresholded stage and completion counts.</li> <li>Count stage-order violations separately with values and completion flags (the moved-cube completion: a = 0.23 &lt; 0.25).</li> </ol> </section> <section class="pp-section" id="bibtex"> <h2>BibTeX</h2> <div class="pp-bibtex"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">kim2026escape</span><span class="p">,</span>
+  <span class="na">title</span> <span class="p">=</span> <span class="s">{Escape Is Not Success: Diagnosing Spatial-{OOD} Failures of Robot Action Interfaces}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Kim, Juno and Park, Yesol and Yoon, Hye-Jung and Zhang, Byoung-Tak}</span><span class="p">,</span>
+  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{CoRL 2026 Workshop on Everything Beneath the Policy}</span><span class="p">,</span>
+  <span class="na">year</span> <span class="p">=</span> <span class="s">{2026}</span><span class="p">,</span>
+  <span class="na">url</span> <span class="p">=</span> <span class="s">{https://openreview.net/forum?id=nRU0GzU0Hc}</span>
+<span class="p">}</span></code></pre></figure> </div> </section> </div> <script defer src="/assets/js/project-page.js"></script> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 . Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. </div> </footer> <script>
+  window.alFolio = {
+    compatBootstrap: false
+  };
+</script> <script src="/assets/js/nav-toggle.js?v=141bd79a73ebc0f0b6ea58e440ae79fc"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?v=e49affc7bd2646f6acdad1dbe02c2359" type="text/javascript"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/al_math/js/mathjax-setup.js"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script src="/assets/js/tooltips-setup.js?v=fe487e99db6c43751e6e7bdb2d6a0611"></script> <script src="/assets/js/no_defer.js?v=53b1b1a645525975c963ce8bf8bfefcf"></script> <script defer src="/assets/js/common.js?v=87baac90f765f2f3362dcf6aaf312a8a"></script> <script defer src="/assets/js/copy_code.js?v=c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?v=896d254890d9b47f0281f63bfccf0dee"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/al_img_tools/js/zoom.js"></script> <script defer src="/assets/js/progress-bar.js?v=499464c5c63ced6cf7ad62509f1e2610" type="text/javascript"></script> <script src="https://cdn.jsdelivr.net/npm/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js" integrity="sha256-uMJJ3EoTyfRBoTbR+lrfu1uRQ87RZG8AR3cVNuQVeFg=" crossorigin="anonymous"></script> <script>
+    addBackToTop();
+  </script> </body> </html>
