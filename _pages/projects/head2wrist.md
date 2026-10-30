@@ -25,6 +25,7 @@ _styles: |
     <p class="pp-affiliations">Seoul National University</p>
     <div class="pp-buttons">
       <a href="https://github.com/teamROBI/Head2Wrist/blob/main/docs/paper.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+      <a href="https://openreview.net/forum?id=VLfG1ekVkL" target="_blank" rel="noopener noreferrer">OpenReview</a>
       <a href="https://github.com/teamROBI/Head2Wrist" target="_blank" rel="noopener noreferrer">Code</a>
       <a href="https://huggingface.co/jkim50104/Head2Wrist-policy-cube-bowl" target="_blank" rel="noopener noreferrer">Models</a>
       <a href="https://huggingface.co/datasets/jkim50104/Head2Wrist-cube-bowl-252ep" target="_blank" rel="noopener noreferrer">Data</a>
