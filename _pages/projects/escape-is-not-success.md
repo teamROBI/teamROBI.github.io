@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Escape Is Not Success: Diagnosing Spatial-OOD Failures of Robot Action Interfaces"
-description: CoRL 2026 Workshop on Everything Beneath the Policy (Austin, USA, November 12, 2026), poster
+description: CoRL Workshop on Everything Beneath the Policy, 2026
 permalink: /projects/escape-is-not-success/
 _styles: |
   @import url("/assets/css/project-page.css");
@@ -15,7 +15,7 @@ _styles: |
 <div class="project-page">
 
   <header class="pp-header">
-    <p class="pp-venue">CoRL 2026 Workshop on Everything Beneath the Policy (Austin, USA, November 12, 2026), poster</p>
+    <p class="pp-venue"><a href="https://beneath-the-policy.github.io/" target="_blank" rel="noopener noreferrer">CoRL Workshop on Everything Beneath the Policy</a>, 2026</p>
     <p class="pp-authors">
       <a href="{{ '/people/' | relative_url }}#juno-kim">Juno Kim</a> ·
       <a href="{{ '/people/' | relative_url }}#yesol-park">Yesol Park</a> ·
