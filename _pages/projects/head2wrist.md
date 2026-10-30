@@ -34,12 +34,12 @@ _styles: |
     </div>
   </header>
 
-  <figure class="pp-teaser pp-figure pp-figure--md">
-    <video class="pp-demo-video" controls muted autoplay loop playsinline preload="metadata" poster="{{ '/assets/img/projects/head2wrist/posters/teaser.jpg' | relative_url }}" aria-label="Human head demonstration, generated wrist view, and real wrist plan replay, played independently">
+  <figure class="pp-teaser pp-figure">
+    <video class="pp-demo-video" style="width: 100%; max-width: none;" controls muted autoplay loop playsinline preload="metadata" poster="{{ '/assets/img/projects/head2wrist/posters/teaser.jpg' | relative_url }}" aria-label="Human head demonstration retimed to the plan's grasp and release, with generated and real wrist views at the same planned poses">
       <source src="{{ '/assets/video/projects/head2wrist/teaser.mp4' | relative_url }}" type="video/mp4">
       Your browser does not support embedded video. <a href="{{ '/assets/video/projects/head2wrist/teaser.mp4' | relative_url }}">Download the teaser</a>.
     </video>
-    <figcaption>Human head demonstration, generated wrist view and measured real D405 plan replay. The streams play independently; shorter streams hold their last frame. This illustration does not imply frame correspondence or a policy evaluation.</figcaption>
+    <figcaption>The three streams are synchronized by task phase: the human head video is retimed to the plan's grasp and release. Generated and real wrist views show the same planned poses; the real D405 stream is open-loop plan replay.</figcaption>
   </figure>
 
   <p class="pp-tldr">
