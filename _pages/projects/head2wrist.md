@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Head2Wrist: Wrist-Camera Robot Policies from Human Head-Camera Demonstrations without a Scene Scan"
-description: CoRL 2026 Workshop on UMI Arena (Poster)
+description: CoRL Workshop on UMI Arena, 2026
 permalink: /projects/head2wrist/
 _styles: |
   @import url("/assets/css/project-page.css");
@@ -15,7 +15,7 @@ _styles: |
 <div class="project-page">
 
   <header class="pp-header">
-    <p class="pp-venue">CoRL 2026 Workshop on UMI Arena (Poster)</p>
+    <p class="pp-venue">CoRL Workshop on UMI Arena, 2026</p>
     <p class="pp-authors">
       <a href="{{ '/people/' | relative_url }}#juno-kim">Juno Kim</a> ·
       <a href="{{ '/people/' | relative_url }}#yesol-park">Yesol Park</a> ·
@@ -227,7 +227,7 @@ _styles: |
 @inproceedings{kim2026head2wrist,
   title={Head2Wrist: Wrist-Camera Robot Policies from Human Head-Camera Demonstrations without a Scene Scan},
   author={Kim, Juno and Park, Yesol and Yoon, Hye-Jung and Zhang, Byoung-Tak},
-  booktitle={CoRL 2026 Workshop on UMI Arena},
+  booktitle={CoRL Workshop on UMI Arena},
   year={2026}
 }
 {% endhighlight %}
