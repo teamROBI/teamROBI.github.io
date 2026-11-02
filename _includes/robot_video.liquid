@@ -1,0 +1,21 @@
+{% assign video = include.video %}
+<figure class="robot-demo">
+  <video
+    controls
+    playsinline
+    preload="none"
+    poster="{{ video.poster | relative_url }}"
+    aria-label="{{ video.title.en | escape }}{% if include.full_run %} · Full task run{% endif %}"
+  >
+    <source src="{{ video.src | relative_url }}" type="video/mp4">
+    <a href="{{ video.src | relative_url }}">
+      <span class="lang-en">Download video</span><span class="lang-ko" style="display: none">영상 다운로드</span>
+    </a>
+  </video>
+  <figcaption>
+    <span class="robot-demo-title">
+      <span class="lang-en">{{ video.title.en }}</span><span class="lang-ko" style="display: none">{{ video.title.ko }}</span>
+    </span>
+    <span class="robot-demo-duration">{{ video.duration }}</span>
+  </figcaption>
+</figure>

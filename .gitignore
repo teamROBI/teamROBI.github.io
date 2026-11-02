@@ -12,6 +12,8 @@ assets/libs/
 assets/rendercv/rendercv_output/*.typ
 al-folio-upgrade-report.md
 node_modules/
+# Original recordings; publish edited clips under assets/video/.
+media/
 output/playwright/
 test-results/
 vendor

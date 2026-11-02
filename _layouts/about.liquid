@@ -45,6 +45,10 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
+    {% if page.robot_platforms %}
+      {% include robot_platforms.liquid compact=true %}
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>

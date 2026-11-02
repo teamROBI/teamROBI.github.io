@@ -1,0 +1,239 @@
+# Competition robots and research platforms are identified separately.
+# Keep research media separate from competition images and demo videos.
+# Related research is displayed newest first using each project's year.
+- id: ur5
+  name: ZEUS Robot 6-Axis & UR5
+  category:
+    en: Industrial & collaborative robot arms
+    ko: 산업용·협동 로봇팔
+  research_media:
+    image: assets/img/projects/da-fusion/real-robot.png
+    alt: UR5e robots performing shelf-picking and bin-picking in our DA-Fusion experiments.
+    caption:
+      en: Our UR5e shelf-picking and bin-picking setups for DA-Fusion.
+      ko: DA-Fusion 연구에 사용한 UR5e 선반 피킹 및 빈 피킹 실험 환경.
+  achievements:
+    - year: 2022
+      event:
+        en: R-Biz Arm Robot Challenge
+        ko: R-Biz 로봇팔 경진대회
+      award:
+        en: Presidential Award · 1st place
+        ko: 대통령상 · 1위
+      description:
+        en: Our ZEUS Robot 6-Axis worked as a shop counter, picking groceries from a conveyor and packing them into shopping bags.
+        ko: ZEUS Robot 6-Axis가 계산대 역할을 맡아 컨베이어 위의 상품을 집어 쇼핑백에 담는 과제를 수행했습니다.
+      image: assets/img/awards/zeus-arm-robot-2022.jpg
+      image_alt: Team ROBI at the 2022 R-Biz Arm Robot Challenge.
+      demos:
+        - title:
+            en: ZEUS Robot 6-Axis · Shop-counter demo 1
+            ko: ZEUS Robot 6-Axis · 계산대 시연 1
+          src: assets/video/robots/ur5/zeus-2022-demo-1.mp4
+          poster: assets/img/robots/ur5/zeus-2022-demo-1.jpg
+          duration: "4:15"
+          source_start: "00:16:30"
+          source_end: "00:20:45"
+        - title:
+            en: ZEUS Robot 6-Axis · Shop-counter demo 2
+            ko: ZEUS Robot 6-Axis · 계산대 시연 2
+          src: assets/video/robots/ur5/zeus-2022-demo-2.mp4
+          poster: assets/img/robots/ur5/zeus-2022-shop-counter.jpg
+          poster_source_timestamp: "01:39:56"
+          duration: "4:07"
+          source_start: "01:38:55"
+          source_end: "01:43:02"
+  experience:
+    en: We connect RGB-D perception to robot action, from segmenting unfamiliar objects to planning suction grasps and picking from cluttered bins and shelves.
+    ko: RGB-D 인지 기술을 실제 로봇 행동으로 연결합니다. 처음 보는 물체의 분할부터 흡착 파지 계획, 복잡하게 쌓인 물체의 빈 피킹과 선반 피킹까지 연구합니다.
+  projects:
+    - name: Seg2Grasp
+      year: 2024
+      venue: IROS 2024
+      url: /projects/seg2grasp/
+    - name: DA-Fusion
+      year: 2025
+      venue: ICRA 2025
+      url: /projects/da-fusion/
+
+- id: hsr
+  name: Toyota HSR
+  category:
+    en: Assistive mobile manipulation
+    ko: 일상 보조와 이동형 로봇 조작
+  research_media:
+    image: assets/img/projects/assistive-manipulation/user-directive.png
+    alt: Our Toyota HSR retrieving an object from a table and clearing objects from a sofa.
+    caption:
+      en: Our HSR following natural-language instructions in a household environment.
+      ko: 가정 환경에서 자연어 지시에 따라 작업을 수행하는 HSR.
+  achievements:
+    - year: 2023
+      event:
+        en: RoboCup@Home
+        ko: 로보컵앳홈
+      award:
+        en: Champion · DSPL & OPL leagues
+        ko: DSPL·OPL 양대 리그 우승
+      description:
+        en: Our Toyota HSR took on household service tasks, from welcoming guests and storing groceries to serving breakfast and helping with dinner in the final.
+        ko: Toyota HSR로 손님 맞이, 식료품 정리, 아침 식사 준비 등 가정 내 서비스 과제를 수행하고, 결승에서는 저녁 식사를 도왔습니다.
+      image: assets/img/awards/robocup-home-2023.png
+      image_alt: The team celebrating its RoboCup@Home 2023 championship.
+      demos:
+        - title:
+            en: RoboCup@Home 2023 · Competition highlights and final
+            ko: 2023 로보컵앳홈 · 대회 하이라이트와 결승
+          src: assets/video/robots/hsr/robocup-2023-highlights.mp4
+          poster: assets/img/robots/hsr/robocup-2023-dinner-service.jpg
+          poster_source_timestamp: "00:13:43"
+          duration: "15:05"
+          source_file: robocup2023 full.MOV
+  experience:
+    en: We build open-vocabulary 3D maps with OV-MAP and mobile robot systems that ground natural-language requests in the scene, retrieve and move household objects, and interact with people to offer assistance.
+    ko: OV-MAP으로 개방형 어휘 기반 3D 지도를 구축하고, 자연어 요청을 실제 장면과 연결하여 생활 물품을 찾아 옮기며 사람과의 상호작용을 통해 도움을 제공하는 이동형 로봇 시스템을 개발합니다.
+  projects:
+    - name: OV-MAP
+      year: 2024
+      venue: IROS 2024
+      url: /projects/ov-map/
+    - name: Assistive Manipulation
+      year: 2023
+      venue: ICRA Workshop 2023
+      url: /projects/assistive-manipulation/
+
+- id: ai-worker
+  name: AI-Worker FFW-SG2
+  category:
+    en: Robot learning and deployment
+    ko: 로봇 학습과 실제 환경 적용
+  research_media:
+    image: assets/img/projects/offsite/posters/bimanual.jpg
+    alt: The real AI-Worker FFW-SG2 transporting a container with both arms during an OffSite policy rollout.
+    caption:
+      en: OffSite's policy performs bimanual transport on the real FFW-SG2, trained on generated demonstrations.
+      ko: OffSite의 생성 시연 데이터로 학습한 정책이 실제 FFW-SG2에서 양팔 운반 과제를 수행합니다.
+  achievements:
+    - year: 2026
+      event:
+        en: Humanoid AI Challenge
+        ko: 휴머노이드 AI 챌린지
+      award:
+        en: Minister of Trade, Industry and Resources Award · 1st place
+        ko: 산업통상부 장관상 · 1위
+      description:
+        en: Our FFW-SG2 tackled four tasks — sorting nuts between bins, moving a box from a conveyor, placing a nut on a peg, and fitting a wheel onto a rod.
+        ko: FFW-SG2로 너트 분류, 컨베이어에서 상자 운반, 페그에 너트 끼우기, 봉에 휠 조립의 네 가지 과제에 도전했습니다.
+      image: assets/img/awards/humanoid-challenge-2026.jpg
+      image_alt: Team ROBI at the 2026 Humanoid AI Challenge.
+      # Curated broadcast excerpts, rather than the complete competition runs.
+      demos:
+        - title:
+            en: Task A · Nut sorting
+            ko: 과제 A · 너트 분류
+          src: assets/video/robots/ai-worker/humanoid-2026-task-a.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-a.jpg
+          duration: "1:45"
+          source_start: "01:42:50"
+          source_end: "01:44:35"
+        - title:
+            en: Task B · Box transfer
+            ko: 과제 B · 상자 운반
+          src: assets/video/robots/ai-worker/humanoid-2026-task-b.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-b.jpg
+          duration: "1:28"
+          source_start: "02:07:05"
+          source_end: "02:08:33"
+        - title:
+            en: Task C · Nut-on-peg assembly
+            ko: 과제 C · 페그에 너트 조립
+          src: assets/video/robots/ai-worker/humanoid-2026-task-c.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-c.jpg
+          duration: "4:55"
+          source_file: 2026_Humanoid_Challenge/2026-휴머노이드-챌린지-Humanoid-Challenge_1부_1080p.mp4
+          source_start: "00:49:35"
+          source_end: "00:54:30"
+          poster_source_timestamp: "00:50:49"
+        - title:
+            en: Task D · Wheel-on-rod task
+            ko: 과제 D · 봉에 휠 조립
+          src: assets/video/robots/ai-worker/humanoid-2026-task-d.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-d.jpg
+          duration: "1:00"
+          source_start: "01:00:41"
+          source_end: "01:01:41"
+      # Continuous arena recordings, kept separate from the broadcast highlights.
+      full_runs:
+        - title:
+            en: Task A · Nut sorting
+            ko: 과제 A · 너트 분류
+          src: assets/video/robots/ai-worker/humanoid-2026-task-a-full.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-a-full.jpg
+          duration: "6:42"
+          source_file: 2026_Humanoid_Challenge/on-site_shooting/DJI_20260702101528_0115_D-001.MP4
+          source_start: "00:09:31"
+          source_end: "00:16:13"
+          poster_source_timestamp: "00:12:52"
+        - title:
+            en: Task B · Box transfer
+            ko: 과제 B · 상자 운반
+          src: assets/video/robots/ai-worker/humanoid-2026-task-b-full.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-b-full.jpg
+          duration: "1:56"
+          source_file: 2026_Humanoid_Challenge/on-site_shooting/DJI_20260702104023_0116_D-005.MP4
+          source_start: "00:05:32"
+          source_end: "00:07:28"
+          poster_source_timestamp: "00:06:01"
+        - title:
+            en: Task C · Nut-on-peg assembly
+            ko: 과제 C · 페그에 너트 조립
+          src: assets/video/robots/ai-worker/humanoid-2026-task-c-full.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-c-full.jpg
+          duration: "4:41"
+          source_file: 2026_Humanoid_Challenge/on-site_shooting/DJI_20260702090700_0112_D-002.MP4
+          source_start: "00:28:39"
+          source_end: "00:33:20"
+          poster_source_timestamp: "00:30:59"
+        - title:
+            en: Task D · Wheel-on-rod task
+            ko: 과제 D · 봉에 휠 조립
+          src: assets/video/robots/ai-worker/humanoid-2026-task-d-full.mp4
+          poster: assets/img/robots/ai-worker/humanoid-2026-task-d-full.jpg
+          duration: "12:26"
+          source_file: 2026_Humanoid_Challenge/on-site_shooting/DJI_20260702094100_0113_D-003.MP4
+          source_start: "00:08:55"
+          source_end: "00:21:21"
+          poster_source_timestamp: "00:15:08"
+    - year: 2026
+      event:
+        en: AI Co-Scientist Challenge Korea
+        ko: AI Co-Scientist Challenge Korea
+      award:
+        en: Head of LG AI Research Award · Excellence Award
+        ko: LG AI연구원장상 · 우수상
+      description:
+        en: Our AI agents generate and validate robot-training data in digital twins of real environments. The demo follows scene reconstruction, failure correction, and policy training through to deployment on the FFW-SG2.
+        ko: 실제 환경을 복원한 디지털 트윈에서 로봇 학습 데이터를 자동 생성·검증하는 AI 에이전트 시스템을 개발했습니다. 환경 복원과 실패 교정, 정책 학습을 실제 FFW-SG2 구동까지 연결합니다.
+      image: assets/img/profile/robi_ex.jpeg
+      image_alt: Team ROBI with its Excellence Award at the 2026 AI Co-Scientist Challenge Korea.
+      demos:
+        - title:
+            en: Digital twin to real robot · System demo
+            ko: 디지털 트윈에서 실제 로봇까지 · 시스템 시연
+          src: assets/video/robots/ai-worker/ai-co-scientist-2026-system-demo.mp4
+          poster: assets/img/robots/ai-worker/ai-co-scientist-2026-system-demo.jpg
+          poster_source_timestamp: "00:02:14"
+          duration: "2:16"
+          source_file: 2026_AI-Co-Scientist/최종발표영상.mp4
+  experience:
+    en: We turn scene captures and human demonstrations into robot-training data. OffSite connects navigation and manipulation using one capture of the deployment scene. Head2Wrist develops wrist-camera policies from human head-camera demonstrations, achieving 18/20 cube-into-bowl successes near demonstrated starts using views generated from three demonstrations.
+    ko: 환경 촬영과 사람 시연을 로봇 학습 데이터로 연결합니다. OffSite는 실제 작업 환경을 한 번 촬영한 데이터로 이동과 조작을 함께 학습합니다. Head2Wrist는 사람의 헤드 카메라 시연을 손목 카메라 정책으로 연결하여, 시연 3개에서 생성한 영상으로 학습한 큐브 담기 실험에서 시연 시작점 근처 20회 중 18회 성공했습니다.
+  projects:
+    - name: Head2Wrist
+      year: 2026
+      venue: CoRL Workshop 2026
+      url: /projects/head2wrist/
+    - name: OffSite
+      year: 2026
+      venue: Research project
+      url: /projects/offsite/

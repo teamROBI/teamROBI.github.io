@@ -14,3 +14,6 @@ _data/citations.yml
 
 # Generated point-cloud demo data (binary + manifest)
 assets/data/**
+
+# Original competition recordings are source media, not formatted site files.
+media/**

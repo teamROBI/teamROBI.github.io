@@ -6,7 +6,7 @@ title_ko: 구성원
 description: Team ROBI is a research team of three graduate students — <a href='#hyejung-yoon'>Hye-Jung Yoon</a>, <a href='#yesol-park'>Yesol Park</a>, and <a href='#juno-kim'>Juno Kim</a>— at the Biointelligence Lab, Seoul National University, advised by Prof. Byoung-Tak Zhang.
 description_ko: Team ROBI는 서울대학교 바이오지능연구실 소속 대학원생 — <a href='#hyejung-yoon'>윤혜정</a>, <a href='#yesol-park'>박예솔</a>, <a href='#juno-kim'>김준오</a> — 로 구성된 연구팀으로, 장병탁 교수님의 지도를 받고 있습니다.
 nav: true
-nav_order: 4
+nav_order: 3
 _styles: |
   .post article hr {
     margin-top: 3rem;

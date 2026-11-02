@@ -1,0 +1,78 @@
+# About-page introductions are separate from the achievement groups in robots.yml.
+# Manufacturer product photo sources are retained for attribution.
+# Decorative emoji icons are original SVG illustrations for the shortcuts.
+members:
+  - id: zeus
+    emoji: assets/img/robots/emoji/zeus.svg
+    name: ZEUS
+    model: Robot 6-Axis
+    role:
+      en: Industrial arm
+      ko: 산업용 로봇팔
+    image: assets/img/robots/portraits/zeus-isolated.webp
+    image_width: 412
+    image_height: 550
+    image_alt: ZEUS six-axis robot arm, shown on its own.
+    url: /robots/#ur5
+    manufacturer: ZEUS
+    source_page: https://www.globalzeus.com/en/sub/company/history.asp
+    source_image: https://www.globalzeus.com/img/sub/historyPoint.png
+
+  - id: ur5
+    emoji: assets/img/robots/emoji/ur5.svg
+    name: UR5
+    model: UR5 / UR5e
+    role:
+      en: Collaborative arm
+      ko: 협동 로봇팔
+    image: assets/img/robots/portraits/ur5e.webp
+    image_width: 480
+    image_height: 594
+    image_alt: Universal Robots UR5e collaborative arm, shown on its own.
+    url: /robots/#research-ur5
+    manufacturer: Universal Robots
+    source_page: https://www.universal-robots.com/media/1807465/ur5e_e-series_datasheets_web.pdf
+    source_image: https://www.universal-robots.com/media/1807465/ur5e_e-series_datasheets_web.pdf
+
+  - id: hsr
+    emoji: assets/img/robots/emoji/hsr.svg
+    name: HSR
+    model: Toyota
+    role:
+      en: Human support robot
+      ko: 생활 지원 로봇
+    image: assets/img/robots/portraits/hsr-full.webp
+    image_width: 423
+    image_height: 640
+    image_alt: Toyota HSR holding a bottle, shown in full from its head to its mobile base.
+    url: /robots/#hsr
+    manufacturer: Toyota
+    source_page: https://global.toyota/jp/download/8725226
+    source_image: https://global.toyota/pages/news/images/2015/07/16/1330/20150716_01_01_s.png
+
+  - id: ai-worker
+    emoji: assets/img/robots/emoji/ai-worker.svg
+    name: AI-Worker
+    model: FFW-SG2
+    role:
+      en: Dual-arm mobile robot
+      ko: 양팔 이동형 로봇
+    image: assets/img/robots/portraits/ai-worker-isolated.webp
+    image_width: 163
+    image_height: 400
+    image_alt: ROBOTIS AI-Worker FFW-SG2, with two arms and a mobile base.
+    url: /robots/#ai-worker
+    manufacturer: ROBOTIS
+    source_page: https://robotis.com/en/product/ecosystem-aiworker.php
+    source_image: https://robotis.com/assets/img/thumb/thumb_humanoid_aiworker.webp?v=20260417
+
+incoming:
+  name: IGRIS-C
+  role:
+    en: Our next robot teammate
+    ko: 곧 함께할 새 로봇 팀원
+  image: assets/img/robots/portraits/igris-c.webp
+  image_alt: ROBROS IGRIS-C humanoid robot, shown from the front.
+  manufacturer: ROBROS
+  source_page: https://www.robros.co.kr/en/igrisc
+  source_image: https://www.robros.co.kr/images/igrisc/igrisc-front.png

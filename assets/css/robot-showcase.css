@@ -1,0 +1,276 @@
+/* About-page robot lineup. All presentation stays inside this section. */
+.robot-showcase {
+  --showcase-muted: color-mix(in srgb, var(--global-text-color) 62%, var(--global-bg-color));
+  clear: both;
+  margin: 2.4rem 0 2.8rem;
+  color: var(--global-text-color);
+  background: transparent;
+}
+
+.robot-showcase span {
+  color: inherit;
+}
+
+.robot-showcase a:focus-visible,
+.robot-showcase summary:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 5px;
+}
+
+.robot-showcase-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-bottom: 2.6rem;
+}
+
+.robot-showcase-heading h2 {
+  margin: 0;
+  color: var(--global-text-color);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  scroll-margin-top: 6rem;
+}
+
+.robot-showcase-intro {
+  margin: 0.75rem 0 0;
+  color: var(--showcase-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.robot-showcase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--global-theme-color);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.robot-showcase-link:hover {
+  color: var(--global-theme-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.robot-showcase-lineup {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.robot-showcase-lineup > li {
+  min-width: 0;
+  margin: 0;
+}
+
+.robot-showcase-person {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  color: var(--global-text-color);
+  text-decoration: none;
+}
+
+.robot-showcase-person:hover {
+  color: var(--global-text-color);
+  text-decoration: none;
+}
+
+.robot-showcase-photo {
+  --showcase-height: 13.125rem;
+  display: flex;
+  align-items: flex-end;
+  height: 17.25rem;
+  padding: 0 0.125rem 1.4rem;
+  overflow: visible;
+  background: transparent;
+}
+
+.robot-showcase-photo--hsr {
+  --showcase-height: 14.25rem;
+}
+
+.robot-showcase-photo--ai-worker {
+  --showcase-height: 15.125rem;
+}
+
+.robot-showcase-photo img {
+  display: block;
+  width: 100%;
+  height: var(--showcase-height);
+  object-fit: contain;
+  object-position: center bottom;
+  transition: transform 0.22s ease;
+}
+
+.robot-showcase-person:hover img,
+.robot-showcase-person:focus-visible img {
+  transform: translateY(-4px);
+}
+
+.robot-showcase-copy {
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.robot-showcase-copy h3 {
+  margin: 0;
+  color: var(--global-text-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.robot-showcase-person:hover h3,
+.robot-showcase-person:focus-visible h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.robot-showcase-model {
+  margin: 0.45rem 0 0;
+  color: var(--showcase-muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.robot-showcase-role {
+  margin: 1rem 0 0;
+  color: var(--showcase-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.robot-showcase-future {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+.robot-showcase-future > img {
+  display: block;
+  width: 2.4rem;
+  height: 5.5rem;
+  object-fit: contain;
+}
+
+.robot-showcase-future-label {
+  margin: 0 0 0.4rem;
+  color: var(--showcase-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.robot-showcase-future-name {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.65rem;
+  margin: 0;
+  color: var(--global-text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.robot-showcase-future-name .robot-showcase-soon {
+  color: var(--showcase-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.robot-showcase-hello {
+  margin-left: 0.125rem;
+  font-size: 1.125rem;
+}
+
+.robot-showcase-credits {
+  margin-top: 1.125rem;
+  color: var(--showcase-muted);
+  font-size: 0.7rem;
+}
+
+.robot-showcase-credits summary {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.robot-showcase-credits p {
+  margin: 0.5rem 0 0;
+  line-height: 1.6;
+}
+
+.robot-showcase-credits a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .robot-showcase-heading {
+    margin-bottom: 1.9rem;
+  }
+
+  .robot-showcase-heading h2 {
+    font-size: 1.9rem;
+  }
+
+  .robot-showcase-lineup {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.9rem 1.25rem;
+  }
+
+  .robot-showcase-photo {
+    --showcase-height: 11.5rem;
+    height: 15.5rem;
+  }
+
+  .robot-showcase-photo--hsr {
+    --showcase-height: 12.75rem;
+  }
+
+  .robot-showcase-photo--ai-worker {
+    --showcase-height: 13.5rem;
+  }
+
+  .robot-showcase-copy {
+    padding-top: 1.05rem;
+  }
+
+  .robot-showcase-copy h3 {
+    font-size: 1.2rem;
+  }
+
+  .robot-showcase-role {
+    margin-top: 0.75rem;
+  }
+
+  .robot-showcase-future {
+    margin-top: 1.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-showcase-photo img {
+    transition: none;
+  }
+
+  .robot-showcase-person:hover img,
+  .robot-showcase-person:focus-visible img {
+    transform: none;
+  }
+}

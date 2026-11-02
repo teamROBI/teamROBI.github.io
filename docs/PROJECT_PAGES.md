@@ -41,12 +41,25 @@ The first one is [`_pages/projects/seg2grasp.md`](../_pages/projects/seg2grasp.m
 
 ## Shared CSS/JS
 
+Anonymous project pages can use `_layouts/anonymous_project.liquid`, as
+`_pages/projects/offsite.md` does. This layout omits site branding, author
+details, analytics, and the shared site metadata. OffSite's task content is
+in `_data/offsite.yml`, and its page-specific styles are in
+`assets/css/offsite.css`. The page reuses the shared demo-tabs component.
+Keep original source material under the ignored `media/` directory; publish
+only the reviewed images and video exports under `assets/`.
+
 - `assets/css/project-page.css` — container width, typography, resource
   buttons, tab UI, responsive image grid, results-table scroll wrapper.
 - `assets/js/project-page.js` — one generic accessible tabs component
   (keyboard nav, ARIA state) shared by every project page's demo section.
   It also knows how to lazily activate/pause `<video data-src>` elements
   (see below) — don't copy this logic per-page, just reuse the file.
+
+For chapter navigation, put a video and buttons with `data-pp-seek="seconds"`
+inside a `data-pp-video-chapters` wrapper. A `data-pp-single-playback`
+container pauses its other videos when one starts playing. Both behaviors
+are opt-in, as on OffSite's full workflow video.
 
 Edit these two files once and every project page picks up the change; don't
 copy CSS/JS into individual paper pages.

@@ -27,6 +27,7 @@
       var video = videos[i];
       var source = video.querySelector("source[data-src]") || video;
       var target = source.tagName === "SOURCE" ? source : video;
+      if (prefersReducedMotion) video.autoplay = false;
       target.setAttribute("src", target.getAttribute("data-src"));
       video.load();
       if (!prefersReducedMotion && video.hasAttribute("autoplay")) {
@@ -177,7 +178,76 @@
     setFrame(0);
   }
 
+  // Optional chapter buttons for a native video in the same wrapper.
+  function initVideoChapters(root) {
+    var video = root.querySelector("video");
+    var buttons = Array.prototype.slice.call(root.querySelectorAll("button[data-pp-seek]"));
+    if (!video || !buttons.length) return;
+
+    var pendingTime = null;
+
+    function playAt(time) {
+      video.currentTime = time;
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(function () {
+          /* Keep native controls available if playback is blocked. */
+        });
+      }
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var time = Number(button.getAttribute("data-pp-seek"));
+        if (!isFinite(time) || time < 0) return;
+        if (video.readyState >= 1) {
+          playAt(time);
+        } else {
+          pendingTime = time;
+          video.load();
+        }
+      });
+    });
+
+    video.addEventListener("loadedmetadata", function () {
+      if (pendingTime !== null) {
+        var time = pendingTime;
+        pendingTime = null;
+        playAt(time);
+      }
+    });
+
+    video.addEventListener("timeupdate", function () {
+      var current = null;
+      buttons.forEach(function (button) {
+        if (Number(button.getAttribute("data-pp-seek")) <= video.currentTime) current = button;
+      });
+      buttons.forEach(function (button) {
+        if (button === current) button.setAttribute("aria-current", "true");
+        else button.removeAttribute("aria-current");
+      });
+    });
+  }
+
+  function initSinglePlayback(root) {
+    root.addEventListener(
+      "play",
+      function (event) {
+        if (event.target.tagName !== "VIDEO") return;
+        var videos = root.querySelectorAll("video");
+        for (var i = 0; i < videos.length; i++) {
+          if (videos[i] !== event.target && !videos[i].paused) videos[i].pause();
+        }
+      },
+      true
+    );
+  }
+
   function init() {
+    var playbackRoots = document.querySelectorAll("[data-pp-single-playback]");
+    for (var p = 0; p < playbackRoots.length; p++) {
+      initSinglePlayback(playbackRoots[p]);
+    }
     var tabRoots = document.querySelectorAll("[data-pp-tabs]");
     for (var i = 0; i < tabRoots.length; i++) {
       initTabs(tabRoots[i]);
@@ -185,6 +255,10 @@
     var scrubberRoots = document.querySelectorAll("[data-pp-scrubber]");
     for (var j = 0; j < scrubberRoots.length; j++) {
       initScrubber(scrubberRoots[j]);
+    }
+    var chapterRoots = document.querySelectorAll("[data-pp-video-chapters]");
+    for (var k = 0; k < chapterRoots.length; k++) {
+      initVideoChapters(chapterRoots[k]);
     }
   }
 

@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="{{ '/assets/css/robot-showcase.css' | relative_url }}">
+
+<section class="robot-showcase robot-platforms-preview" aria-labelledby="robot-platforms-heading">
+  <div class="robot-showcase-heading">
+    <div>
+      <h2 id="robot-platforms-heading">
+        <span class="lang-en">Meet our robots.</span><span class="lang-ko" style="display: none">함께하는 로봇</span>
+      </h2>
+      <p class="robot-showcase-intro">
+        <span class="lang-en">The robot members of Team ROBI.</span>
+        <span class="lang-ko" style="display: none">Team ROBI와 함께하는 로봇 팀원을 소개합니다.</span>
+      </p>
+    </div>
+    <a class="robot-showcase-link" href="{{ '/robots/' | relative_url }}">
+      <span class="lang-en">See our robots in action</span><span class="lang-ko" style="display: none">로봇 시연 영상 보기</span>
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+
+  <ul class="robot-showcase-lineup" role="list">
+    {% for robot in site.data.robot_team.members %}
+      <li>
+        <a class="robot-showcase-person" href="{{ robot.url | relative_url }}">
+          <div class="robot-showcase-photo robot-showcase-photo--{{ robot.id }}">
+            <img
+              src="{{ robot.image | relative_url }}"
+              alt="{{ robot.image_alt }}"
+              width="{{ robot.image_width }}"
+              height="{{ robot.image_height }}"
+              loading="eager"
+              decoding="async"
+            >
+          </div>
+          <div class="robot-showcase-copy">
+            <h3>{{ robot.name }}</h3>
+            <p class="robot-showcase-model">{{ robot.model }}</p>
+            <p class="robot-showcase-role">
+              <span class="lang-en">{{ robot.role.en }}</span><span class="lang-ko" style="display: none">{{ robot.role.ko }}</span>
+            </p>
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% assign incoming = site.data.robot_team.incoming %}
+  <aside class="robot-showcase-future" aria-label="{{ incoming.name }} joining Team ROBI soon">
+    <img src="{{ incoming.image | relative_url }}" alt="{{ incoming.image_alt }}" width="212" height="640" loading="eager" decoding="async">
+    <div>
+      <p class="robot-showcase-future-label">
+        <span class="lang-en">{{ incoming.role.en }}</span><span class="lang-ko" style="display: none">{{ incoming.role.ko }}</span>
+      </p>
+      <p class="robot-showcase-future-name">
+        {{ incoming.name }}
+        <span class="robot-showcase-soon"><span class="lang-en">Joining soon</span><span class="lang-ko" style="display: none">합류 예정</span></span>
+      </p>
+    </div>
+    <span class="robot-showcase-hello" aria-hidden="true">👋</span>
+  </aside>
+
+  <details class="robot-showcase-credits">
+    <summary><span class="lang-en">Image credits</span><span class="lang-ko" style="display: none">이미지 출처</span></summary>
+    <p>
+      {% for robot in site.data.robot_team.members %}
+        <a href="{{ robot.source_page }}">{{ robot.manufacturer }}</a> &middot;
+      {% endfor %}
+      <a href="{{ incoming.source_page }}">{{ incoming.manufacturer }}</a>
+    </p>
+  </details>
+</section>

@@ -1,0 +1,24 @@
+{% assign incoming = site.data.robot_team.incoming %}
+<aside
+  class="robot-incoming{% if include.compact %} robot-incoming--compact{% endif %}"
+  {% unless include.compact %}
+    id="igris-c"
+  {% endunless %}
+  aria-label="{{ incoming.name }} joining Team ROBI soon"
+>
+  <div class="robot-incoming-image">
+    <img src="{{ incoming.image | relative_url }}" alt="{{ incoming.image_alt }}" width="212" height="640" loading="lazy" decoding="async">
+  </div>
+  <div class="robot-incoming-copy">
+    <p class="robot-incoming-label">
+      <span class="lang-en">{{ incoming.role.en }}</span><span class="lang-ko" style="display: none">{{ incoming.role.ko }}</span>
+    </p>
+    <p class="robot-incoming-name">
+      {{ incoming.name }}
+      <span class="robot-incoming-badge"><span class="lang-en">Joining soon</span><span class="lang-ko" style="display: none">합류 예정</span></span>
+    </p>
+  </div>
+  <span class="robot-incoming-greeting" aria-hidden="true"
+    ><span class="lang-en">See you soon!</span><span class="lang-ko" style="display: none">곧 만나요!</span></span
+  >
+</aside>

@@ -1,0 +1,165 @@
+{% if include.compact %}
+  {% include robot_showcase.liquid %}
+{% else %}
+  <link rel="stylesheet" href="{{ '/assets/css/robots.css' | relative_url }}">
+  <div class="robot-platforms robot-platforms-page">
+    <p class="robot-intro">
+      <span class="lang-en"
+        >From lab experiments to competition wins, these are the robots we work with &mdash; and what we have achieved with them.</span
+      >
+      <span class="lang-ko" style="display: none">연구실 실험부터 로봇 대회 우승까지, 함께 연구해 온 로봇과 그 로봇으로 이룬 성과를 소개합니다.</span>
+    </p>
+    <div class="robot-team-nav">
+      <div class="robot-jump-heading">
+        <p>
+          <span aria-hidden="true">👋</span> <span class="lang-en">Meet the robot teammates</span
+          ><span class="lang-ko" style="display: none">로봇 팀원을 만나보세요</span>
+        </p>
+        <a class="robot-next-link" href="#igris-c"
+          ><span aria-hidden="true">+</span> IGRIS-C <span class="lang-en">joining soon</span
+          ><span class="lang-ko" style="display: none">합류 예정</span></a
+        >
+      </div>
+      <nav class="robot-jump-links" aria-label="Jump to a robot's work">
+        {% for robot in site.data.robot_team.members %}
+          {% assign robot_target = robot.url | split: '#' | last %}
+          <a href="#{{ robot_target }}">
+            <span class="robot-jump-emoji robot-jump-emoji--{{ robot.id }}" aria-hidden="true"
+              ><img src="{{ robot.emoji | relative_url }}" alt="" loading="lazy" decoding="async" width="128" height="128"
+            ></span>
+            <span class="robot-jump-copy"
+              ><span class="robot-jump-name">{{ robot.name }}</span><span class="robot-jump-model">{{ robot.model }}</span></span
+            >
+            <span class="robot-jump-arrow" aria-hidden="true">↓</span>
+          </a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    {% for robot in site.data.robots %}
+      <section id="{{ robot.id }}" class="robot-entry" aria-labelledby="robot-title-{{ robot.id }}">
+        <header class="robot-entry-heading">
+          <span class="robot-index" aria-hidden="true">0{{ forloop.index }}</span>
+          <div>
+            <h2 id="robot-title-{{ robot.id }}">{{ robot.name }}</h2>
+            <p class="robot-category">
+              <span class="lang-en">{{ robot.category.en }}</span><span class="lang-ko" style="display: none">{{ robot.category.ko }}</span>
+            </p>
+          </div>
+        </header>
+        <div class="robot-competition-section">
+          <h3 class="robot-subheading"><span class="lang-en">Competition</span><span class="lang-ko" style="display: none">대회 성과</span></h3>
+          <div class="robot-competitions">
+            {% for achievement in robot.achievements %}
+              <article class="robot-competition" aria-labelledby="competition-{{ robot.id }}-{{ forloop.index }}">
+                <div class="robot-competition-overview">
+                  <div class="robot-competition-copy">
+                    <h4 id="competition-{{ robot.id }}-{{ forloop.index }}" class="robot-award-event">
+                      {{ achievement.year }} &middot; <span class="lang-en">{{ achievement.event.en }}</span
+                      ><span class="lang-ko" style="display: none">{{ achievement.event.ko }}</span>
+                    </h4>
+                    <p class="robot-award-title">
+                      <span class="lang-en">{{ achievement.award.en }}</span
+                      ><span class="lang-ko" style="display: none">{{ achievement.award.ko }}</span>
+                    </p>
+                    <p class="robot-competition-description">
+                      <span class="lang-en">{{ achievement.description.en }}</span
+                      ><span class="lang-ko" style="display: none">{{ achievement.description.ko }}</span>
+                    </p>
+                  </div>
+                  {% if achievement.image %}
+                    <div class="robot-award-photo">
+                      {% include figure.liquid path=achievement.image loading="lazy" alt=achievement.image_alt sizes="208px" %}
+                    </div>
+                  {% endif %}
+                </div>
+                {% if achievement.demos %}
+                  <div class="robot-competition-demos">
+                    <p class="robot-demo-heading">
+                      <span class="lang-en">Watch the competition</span><span class="lang-ko" style="display: none">대회 시연 영상</span>
+                    </p>
+                    <div class="robot-demo-grid">
+                      {% for demo in achievement.demos %}
+                        {% include robot_video.liquid video=demo %}
+                      {% endfor %}
+                    </div>
+                    {% if achievement.full_runs %}
+                      <details class="robot-full-runs">
+                        <summary>
+                          <span class="robot-full-runs-heading">
+                            <span class="robot-full-runs-title">
+                              <span class="lang-en">Behind the scenes</span><span class="lang-ko" style="display: none">대회 비하인드</span>
+                            </span>
+                            <span class="robot-full-runs-meta">
+                              <span class="lang-en">Full task runs &middot; {{ achievement.full_runs.size }} videos</span>
+                              <span class="lang-ko" style="display: none">과제 전체 과정 &middot; 영상 {{ achievement.full_runs.size }}개</span>
+                            </span>
+                          </span>
+                          <span class="robot-full-runs-toggle" aria-hidden="true"></span>
+                        </summary>
+                        <div class="robot-full-runs-content">
+                          <p class="robot-full-runs-description">
+                            <span class="lang-en"
+                              >Follow each task from start to finish, recorded on a team member's chest camera inside the arena.</span
+                            >
+                            <span class="lang-ko" style="display: none"
+                              >대회장 안에서 촬영한 팀원의 체스트 카메라 영상으로 각 과제의 전체 수행 과정을 볼 수 있습니다.</span
+                            >
+                          </p>
+                          <div class="robot-demo-grid">
+                            {% for full_run in achievement.full_runs %}
+                              {% include robot_video.liquid video=full_run full_run=true %}
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </details>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="robot-research-section" id="research-{{ robot.id }}">
+          <h3 class="robot-subheading"><span class="lang-en">Research</span><span class="lang-ko" style="display: none">관련 연구</span></h3>
+          <div class="robot-entry-grid">
+            <div class="robot-visual">
+              {% include figure.liquid path=robot.research_media.image loading="lazy" alt=robot.research_media.alt sizes="(min-width: 768px) 400px, 95vw" %}
+              <p class="robot-image-caption">
+                <span class="lang-en">{{ robot.research_media.caption.en }}</span>
+                <span class="lang-ko" style="display: none">{{ robot.research_media.caption.ko }}</span>
+              </p>
+            </div>
+            <div class="robot-research-detail">
+              <p class="robot-experience">
+                <span class="lang-en">{{ robot.experience.en }}</span><span class="lang-ko" style="display: none">{{ robot.experience.ko }}</span>
+              </p>
+              <ul class="robot-research-links">
+                {% assign research_projects = robot.projects | sort: 'year' | reverse %}
+                {% for project in research_projects %}
+                  <li>
+                    <a href="{{ project.url | relative_url }}">
+                      {{- project.name }}
+                      <span aria-hidden="true">&rarr;</span></a
+                    >
+                    <span class="robot-research-venue">{{ project.venue }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+
+    {% include robot_incoming.liquid %}
+
+    <p class="robot-footer-link">
+      <a href="{{ '/awards/' | relative_url }}">
+        <span class="lang-en">See our full awards record</span><span class="lang-ko" style="display: none">전체 수상 실적 보기</span>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </p>
+  </div>
+  <script defer src="{{ '/assets/js/robot-platforms.js' | relative_url }}"></script>
+{% endif %}

@@ -1,0 +1,53 @@
+tasks:
+  - id: navigate
+    number: "01"
+    title: Navigate-to-Pick
+    short_title: Navigate & pick
+    description: Move toward the object, reach into the workspace, and lift it at least 10 cm.
+    capability: Base motion + grasping
+    successes: 21
+    rate: "70.0"
+    teleop_rate: "56.7"
+    matched_rate: "56.7"
+    speed: "4×"
+    video: assets/video/projects/offsite/navigate.mp4
+    poster: assets/img/projects/offsite/posters/navigate.jpg
+  - id: shelf
+    number: "02"
+    title: Vertical Shelf Transfer
+    short_title: Shelf transfer
+    description: Pick an object from the lower shelf, extend the lift, and place it on the upper shelf.
+    capability: Grasping + lift control
+    successes: 22
+    rate: "73.3"
+    teleop_rate: "50.0"
+    matched_rate: "53.3"
+    speed: "5×"
+    video: assets/video/projects/offsite/shelf.mp4
+    poster: assets/img/projects/offsite/posters/shelf.jpg
+  - id: bimanual
+    number: "03"
+    title: Bimanual Transport
+    short_title: Two-arm transport
+    description: Grasp a large container with both arms, lift it, and move the base laterally to the target zone.
+    capability: Two-arm coordination + base motion
+    successes: 15
+    rate: "50.0"
+    teleop_rate: "36.7"
+    matched_rate: "30.0"
+    speed: "4×"
+    video: assets/video/projects/offsite/bimanual.mp4
+    poster: assets/img/projects/offsite/posters/bimanual.jpg
+  - id: delivery
+    number: "04"
+    title: Cross-Room Delivery
+    short_title: Room-scale delivery
+    description: Pick up the object, turn, navigate 3–4 m across the room, and place it at the sink.
+    capability: Pick + navigate + place
+    successes: 14
+    rate: "46.7"
+    teleop_rate: "30.0"
+    matched_rate: "33.3"
+    speed: "4×"
+    video: assets/video/projects/offsite/delivery.mp4
+    poster: assets/img/projects/offsite/posters/delivery.jpg
