@@ -1,0 +1,1 @@
+document.querySelectorAll(".robot-full-runs").forEach(e=>{e.addEventListener("toggle",()=>{e.open||e.querySelectorAll("video").forEach(e=>e.pause())})});
